@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TextField, Grid, Button } from "@mui/material";
+import { TextField, Grid, Button, TableContainer, Container } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -8,13 +8,15 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import BrandsTable from "../components/BrandsTable";
 
 const API_URL = "http://localhost:5005";
 
 export default function Brands() {
   const [open, setOpen] = React.useState(false);
   const [brandInput, setBrandInput] = React.useState("");
-  const [brands, setBrands] = React.useState([]);
+  const [brands, setBrands] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,6 +32,10 @@ export default function Brands() {
       .then((response) => setBrands(response.data))
       .catch((error) => console.log(error));
   };
+  
+  useEffect(() => {
+    getBrands();
+  }, [] );
 
   const handleNewBrand = (e) => {
     e.preventDefault();
@@ -45,9 +51,9 @@ export default function Brands() {
   };
 
   return (
-    <div>
-      <h3 style={{ margin: "20px" }}>Listado de marcas</h3>
-      <Grid container sx={{ px: 2 }} spacing={2}>
+    <Container>
+      <h3>Listado de marcas</h3>
+      <Grid container spacing={2}>
         <Grid item md={9} xs>
           <form>
             <Grid container>
@@ -100,6 +106,7 @@ export default function Brands() {
           </Dialog>
         </Grid>
       </Grid>
-    </div>
+      <BrandsTable brands={brands} getBrands={getBrands} onEdit={(brand) => setOpen(true)}/>
+    </Container>
   );
 }

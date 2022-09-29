@@ -61,11 +61,11 @@ export default function LogIn({ authenticate }) {
           margin="dense"
           type="email"
           label="Correo"
-          variant="standard"
+          size="small"
           name="username"
           value={username}
           fullWidth
-          helperText="Ingresa tu correo"
+          variant="standard"
           onChange={handleInputChange}
           required
         />
@@ -75,9 +75,9 @@ export default function LogIn({ authenticate }) {
           label="Contraseña"
           type="password"
           name="password"
-          variant="standard"
+          size="small"
           fullWidth
-          helperText="Ingresa tu contraseña"
+          variant="standard"
           value={password}
           onChange={handleInputChange}
           required
