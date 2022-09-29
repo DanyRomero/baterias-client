@@ -16,17 +16,11 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-
 const API_URL = "http://localhost:5005";
-
-
-
-
 
 const BrandsTable = (props) => {
   const { brands, onEdit } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
- 
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -45,12 +39,10 @@ const BrandsTable = (props) => {
       .then(() => {
         // Once the delete request is resolved successfully
         // navigate back to the list of projects.
-        props.getBrands()
+        props.getBrands();
       })
       .catch((err) => console.log(err));
   };
-
-
 
   return (
     <TableContainer sx={{ mt: 3 }} component={Paper}>
@@ -69,26 +61,12 @@ const BrandsTable = (props) => {
               <TableCell>{brand.name}</TableCell>
               <TableCell align="right">
                 <div>
-                  <Button aria-describedby={ID} onClick={handleClick}>
-                    <MoreHorizIcon />
+                  <Button onClick={() => deleteBrand(brand._id)}>
+                    <DeleteOutlineOutlinedIcon />
                   </Button>
-                  <Popover
-                    id={ID}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "left",
-                    }}
-                  >
-                    <Button onClick={()=>deleteBrand(brand._id)}>
-                      <DeleteOutlineOutlinedIcon/>
-                    </Button>
-                    <Button onClick={() => onEdit(brand)}>
-                      <ModeEditOutlineOutlinedIcon />
-                    </Button>
-                  </Popover>
+                  <Button onClick={() => onEdit(brand)}>
+                    <ModeEditOutlineOutlinedIcon />
+                  </Button>
                 </div>
               </TableCell>
             </TableRow>
