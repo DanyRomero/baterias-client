@@ -5,6 +5,9 @@ import "./Signup";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 
+import { Avatar, Button, Grid, Paper, TextField } from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
@@ -16,7 +19,6 @@ export default function LogIn({ authenticate }) {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-
     return setForm({ ...form, [name]: value });
   }
 
@@ -35,28 +37,47 @@ export default function LogIn({ authenticate }) {
       navigate(PATHS.HOMEPAGE);
     });
   }
-
+  const paperStyle = {
+    padding: 20,
+    height: "50vh",
+    width: 250,
+    margin: "20px auto",
+  };
+  const avatarStyle = {
+    backgroundColor: "rgb(0, 88, 155)",
+  };
   return (
-    <div>
-      <h1>Log In</h1>
+    <Grid>
+      <Paper elevation={12} style={paperStyle}>
+        <Grid align="center">
+          <Avatar style={avatarStyle}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <h2>Login</h2>
+        </Grid>
+
       <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
+        <TextField
+          margin="dense"
+          type="email"
+          label="Correo"
+          variant="standard"
           name="username"
-          placeholder="username"
           value={username}
+          fullWidth
+          helperText="Ingresa tu correo"
           onChange={handleInputChange}
           required
         />
-
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
+        
+        <TextField
+          margin="dense"
+          label="Contraseña"
           type="password"
           name="password"
-          placeholder="Password"
+          variant="standard"
+          fullWidth
+          helperText="Ingresa tu contraseña"
           value={password}
           onChange={handleInputChange}
           required
@@ -65,15 +86,16 @@ export default function LogIn({ authenticate }) {
 
         {error && (
           <div className="error-block">
-            <p>There was an error submiting the form:</p>
+            <p>Existe un error en el formulario:</p>
             <p>{error.message}</p>
           </div>
         )}
 
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
+        <Button type="submit" fullWidth variant="contained" style={{marginTop:"25px"}}>
+            Entrar
+        </Button>
       </form>
-    </div>
+      </Paper>
+    </Grid>
   );
 }

@@ -1,38 +1,57 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import { Button, Grid } from "@mui/material";
 
 const Navbar = (props) => {
   return (
-    <nav>
-      <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with IronLauncher
-      </Link>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Box sx={{ flexGrow: 1, display:"flex", alignItems: "center"}}>
+            <img height="30" src="/images/logo.png" />
 
-      <div className="nav__authLinks">
-        {props.user ? (
-          <>
-            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
-              Protected Page
-            </Link>
-            <button className="nav-logoutbtn" onClick={props.handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to={PATHS.SIGNUPPAGE} className="authLink">
-              Signup
-            </Link>
-            <Link to={PATHS.LOGINPAGE} className="authLink">
-              Log In
-            </Link>
-          </>
-        )}
-      </div>
-    </nav>
+            <Button sx={{ color: "#fff" }} component={Link} to="/">
+              Distelub - Baterías a domicilio
+            </Button>
+          </Box>
+
+          <Box>
+            {/* menu que se muestra cuando un usuario inicia sesión */}
+            {props.user ? (
+              <>
+                <Button sx={{ color: "#fff" }} component={Link} to="/pedidos">
+                  Pedidos
+                </Button>
+
+                <Button sx={{ color: "#fff" }} component={Link} to="/marcas">
+                  Marcas
+                </Button>
+
+                <Button sx={{ color: "#fff" }} component={Link} to="/usuarios">
+                  Usuarios
+                </Button>
+
+                <Button sx={{ color: "#fff" }} onClick={props.handleLogout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button sx={{ color: "#fff" }} component={Link} to="/admin">
+                  Login
+                </Button>
+              </>
+            )}
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 
