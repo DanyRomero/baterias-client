@@ -53,6 +53,7 @@ const BatteryForm = (props) => {
               onChange={(e) => setBatteryModelInput(e.target.value)}
             />
             <TextField
+              type="number"
               required
               margin="dense"
               label="Precio"

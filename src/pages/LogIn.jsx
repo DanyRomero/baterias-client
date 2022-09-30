@@ -15,7 +15,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined';
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
@@ -62,7 +62,7 @@ export default function LogIn({ authenticate }) {
       <Paper elevation={12} style={paperStyle}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
-            <LockOutlinedIcon />
+            <DirectionsCarFilledOutlinedIcon />
           </Avatar>
           <h2>Login</h2>
         </Grid>

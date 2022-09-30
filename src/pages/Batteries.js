@@ -53,6 +53,7 @@ const Batteries = () => {
     axios
       .put(`${API_URL}/baterias/${editingBattery._id}`, formData)
       .then((response) => {
+        console.log(response)
         getBatteries();
         setOpenEdit(false);
       })

@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import Signup from "./pages/Signup";
 import Brands from "./pages/Brands";
 import Batteries from "./pages/Batteries";
+import Models from "./pages/Models";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -67,7 +68,7 @@ export default function App() {
         <Route path="/signup" element={<Signup />}/>
         <Route path="/marcas" element={user ? <Brands /> : <Navigate to="/admin" replace />}/>
         <Route path="/baterias" element={user ? <Batteries /> : <Navigate to="/admin" replace />}/>
-        
+        <Route path="/modelos" element={user ? <Models /> : <Navigate to="/admin" replace />}/>  
         
 
       </Routes>

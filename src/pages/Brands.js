@@ -10,7 +10,7 @@ import BrandForm from "../components/BrandForm";
 const API_URL = "http://localhost:5005";
 
 export default function Brands() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [brands, setBrands] = useState([]);
   const [openEdit, setOpenEdit] = useState(false);
   const [editingBrand, setEditingBrand] = useState(null);
@@ -40,23 +40,19 @@ export default function Brands() {
   }, []);
 
   const handleNewBrand = (formData) => {
-    axios
-      .post(`${API_URL}/marcas`, formData)
-      .then((response) => {
-        getBrands();
-        setOpen(false);
-      })
-      .catch((error) => console.log(error));
+    return axios.post(`${API_URL}/marcas`, formData).then((response) => {
+      getBrands();
+      setOpen(false);
+    });
   };
 
   const handleEditBrand = (formData) => {
-    axios
+    return axios
       .put(`${API_URL}/marcas/${editingBrand._id}`, formData)
       .then((response) => {
         getBrands();
         setOpenEdit(false);
-      })
-      .catch((error) => console.log(error));
+      });
   };
 
   const editBrand = (brand) => {
@@ -92,15 +88,22 @@ export default function Brands() {
           <Button variant="outlined" onClick={handleClickOpen}>
             <AddIcon /> Marca
           </Button>
-          <BrandForm
-            open={open}
-            onClose={handleClose}
-            onSubmit={handleNewBrand}
-            submitText="Agregar"
-          />
+          {open && (
+            <BrandForm
+              open={open}
+              onClose={handleClose}
+              onSubmit={handleNewBrand}
+              submitText="Agregar"
+            />
+          )}
         </Grid>
       </Grid>
-      <BrandsTable brands={brands} getBrands={getBrands} onEdit={editBrand} filter={filter} />
+      <BrandsTable
+        brands={brands}
+        getBrands={getBrands}
+        onEdit={editBrand}
+        filter={filter}
+      />
       {openEdit && (
         <BrandForm
           open={openEdit}

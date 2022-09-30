@@ -11,8 +11,8 @@ import {
 import React from "react";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -65,7 +65,7 @@ const BrandsTable = (props) => {
         <TableBody>
           {filteredBrands.map((brand) => (
             <TableRow key={brand._id}>
-              <TableCell>{brand.name}</TableCell>
+              <TableCell><Link to="/modelos">{brand.name}</Link></TableCell>
               <TableCell align="right">
                 <div>
                   <Button onClick={() => deleteBrand(brand._id)}>
@@ -74,6 +74,7 @@ const BrandsTable = (props) => {
                   <Button onClick={() => onEdit(brand)}>
                     <ModeEditOutlineOutlinedIcon />
                   </Button>
+                 
                 </div>
               </TableCell>
             </TableRow>

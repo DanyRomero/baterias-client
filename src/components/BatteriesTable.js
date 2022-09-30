@@ -44,7 +44,7 @@ const BatteriesTable = (props) => {
   };
 
   let filteredBatteries = batteries;
-  
+
   if (filter) {
     filteredBatteries = batteries.filter((battery) =>
       battery.name.toLowerCase().includes(filter.toLowerCase())
