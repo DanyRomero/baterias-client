@@ -6,8 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import BrandsTable from "../components/BrandsTable";
 import BrandForm from "../components/BrandForm";
-
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../utils/consts";
 
 export default function Brands() {
   const [open, setOpen] = useState(false);
@@ -31,7 +30,10 @@ export default function Brands() {
   const getBrands = () => {
     axios
       .get(`${API_URL}/marcas`)
-      .then((response) => setBrands(response.data))
+      .then((response) => {
+        console.log(response.data)
+        setBrands(response.data)
+      })
       .catch((error) => console.log(error));
   };
 

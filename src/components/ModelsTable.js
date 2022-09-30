@@ -16,9 +16,8 @@ import { Link } from "react-router-dom";
 import { API_URL } from "../utils/consts";
 
 
-
-const BrandsTable = (props) => {
-  const { brands, onEdit, filter } = props;
+const ModelsTable = (props) => {
+  const { models, onEdit, filter } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -32,22 +31,23 @@ const BrandsTable = (props) => {
   const open = Boolean(anchorEl);
   const ID = open ? "simple-popover" : undefined;
 
-  const deleteBrand = (id) => {
+  const deleteModel = (id) => {
     axios
-      .delete(`${API_URL}/marcas/${id}`)
+      .delete(`${API_URL}/modelos/${id}`)
       .then(() => {
         // Once the delete request is resolved successfully
         // navigate back to the list of projects.
-        props.getBrands();
+        console.log(props.getModels)
+        props.getModels();
       })
       .catch((err) => console.log(err));
   };
 
-  let filteredBrands = brands;
-  console.log("filtered", filteredBrands)
+  let filteredModels = models;
+
   if (filter) {
-    filteredBrands = brands.filter((brand) =>
-      brand.name.toLowerCase().includes(filter.toLowerCase())
+    filteredModels = models.filter((model) =>
+      model.name.toLowerCase().includes(filter.toLowerCase())
     );
   }
 
@@ -63,22 +63,22 @@ const BrandsTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {filteredBrands?.map((brand) => (
-            <TableRow key={brand._id}>
+          {filteredModels.map((model) => (
+            <TableRow key={model._id}>
               <TableCell>
                 <Link
                   style={{ color: "#1976D2", textDecoration: "none" }}
-                  to={`/marcas/${brand._id}`}
+                  to={`/modelos/${model._id}`}
                 >
-                  {brand.name}
+                  {model.name}
                 </Link>
               </TableCell>
               <TableCell align="right">
                 <div>
-                  <Button onClick={() => deleteBrand(brand._id)}>
+                  <Button onClick={() => deleteModel(model._id)}>
                     <DeleteOutlineOutlinedIcon />
                   </Button>
-                  <Button onClick={() => onEdit(brand)}>
+                  <Button onClick={() => onEdit(model)}>
                     <ModeEditOutlineOutlinedIcon />
                   </Button>
                 </div>
@@ -91,4 +91,4 @@ const BrandsTable = (props) => {
   );
 };
 
-export default BrandsTable;
+export default ModelsTable;
