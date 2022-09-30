@@ -14,6 +14,11 @@ export default function Brands() {
   const [brands, setBrands] = useState([]);
   const [openEdit, setOpenEdit] = useState(false);
   const [editingBrand, setEditingBrand] = useState(null);
+  const [filter, setFilter] = useState("");
+
+  const handleInput = (e) => {
+    setFilter(e.target.value);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -70,9 +75,9 @@ export default function Brands() {
                 <TextField
                   size="small"
                   label="Buscar por Nombre"
-                  value={""}
+                  value={filter}
                   fullWidth
-                  onChange={(e) => e.target.value}
+                  onChange={handleInput}
                 />
               </Grid>
               <Grid item xs="auto">
@@ -95,7 +100,7 @@ export default function Brands() {
           />
         </Grid>
       </Grid>
-      <BrandsTable brands={brands} getBrands={getBrands} onEdit={editBrand} />
+      <BrandsTable brands={brands} getBrands={getBrands} onEdit={editBrand} filter={filter} />
       {openEdit && (
         <BrandForm
           open={openEdit}

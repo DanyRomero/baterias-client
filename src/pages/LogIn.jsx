@@ -7,6 +7,7 @@ import * as USER_HELPERS from "../utils/userToken";
 
 import {
   Avatar,
+  Box,
   Button,
   Grid,
   Paper,
@@ -57,7 +58,7 @@ export default function LogIn({ authenticate }) {
     backgroundColor: "rgb(0, 88, 155)",
   };
   return (
-    <Grid>
+    <Box>
       <Paper elevation={12} style={paperStyle}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
@@ -67,7 +68,7 @@ export default function LogIn({ authenticate }) {
         </Grid>
 
         <form onSubmit={handleFormSubmission} className="signup__form">
-          <Stack spacing={3} >
+          <Stack spacing={3}>
             <TextField
               margin="dense"
               type="email"
@@ -112,6 +113,6 @@ export default function LogIn({ authenticate }) {
           </Stack>
         </form>
       </Paper>
-    </Grid>
+    </Box>
   );
 }

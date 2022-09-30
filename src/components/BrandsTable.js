@@ -17,7 +17,7 @@ import axios from "axios";
 const API_URL = "http://localhost:5005";
 
 const BrandsTable = (props) => {
-  const { brands, onEdit } = props;
+  const { brands, onEdit, filter } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -42,6 +42,15 @@ const BrandsTable = (props) => {
       .catch((err) => console.log(err));
   };
 
+  let filteredBrands = brands;
+  
+  if (filter) {
+    filteredBrands = brands.filter((brand) =>
+      brand.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+  
+
   return (
     <TableContainer sx={{ mt: 3 }} component={Paper}>
       <Table>
@@ -54,7 +63,7 @@ const BrandsTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {brands.map((brand) => (
+          {filteredBrands.map((brand) => (
             <TableRow key={brand._id}>
               <TableCell>{brand.name}</TableCell>
               <TableCell align="right">

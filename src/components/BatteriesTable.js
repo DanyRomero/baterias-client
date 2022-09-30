@@ -18,7 +18,7 @@ const API_URL = "http://localhost:5005";
 
 
 const BatteriesTable = (props) => {
-  const { batteries, onEdit } = props;
+  const { batteries, filter, onEdit } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -42,6 +42,16 @@ const BatteriesTable = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
+  let filteredBatteries = batteries;
+  
+  if (filter) {
+    filteredBatteries = batteries.filter((battery) =>
+      battery.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+  
+
   return (
     <TableContainer sx={{ mt: 3 }} component={Paper}>
       <Table>
@@ -60,7 +70,7 @@ const BatteriesTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {batteries.map((battery) => (
+          {filteredBatteries.map((battery) => (
             <TableRow key={battery._id}>
               <TableCell>{battery.name}</TableCell>
               <TableCell>{battery.model}</TableCell>
