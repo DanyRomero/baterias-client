@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  TextField,
-  Grid,
-  Button,
-  Container,
-} from "@mui/material";
+import { TextField, Grid, Button, Container } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
@@ -17,6 +12,8 @@ const API_URL = "http://localhost:5005";
 export default function Brands() {
   const [open, setOpen] = React.useState(false);
   const [brands, setBrands] = useState([]);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [editingBrand, setEditingBrand] = useState(null);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -45,6 +42,21 @@ export default function Brands() {
         setOpen(false);
       })
       .catch((error) => console.log(error));
+  };
+
+  const handleEditBrand = (formData) => {
+    axios
+      .put(`${API_URL}/marcas/${editingBrand._id}`, formData)
+      .then((response) => {
+        getBrands();
+        setOpenEdit(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const editBrand = (brand) => {
+    setEditingBrand(brand);
+    setOpenEdit(true);
   };
 
   return (
@@ -79,14 +91,20 @@ export default function Brands() {
             open={open}
             onClose={handleClose}
             onSubmit={handleNewBrand}
+            submitText="Agregar"
           />
         </Grid>
       </Grid>
-      <BrandsTable
-        brands={brands}
-        getBrands={getBrands}
-        onEdit={(brand) => setOpen(true)}
-      />
+      <BrandsTable brands={brands} getBrands={getBrands} onEdit={editBrand} />
+      {openEdit && (
+        <BrandForm
+          open={openEdit}
+          onClose={() => setOpenEdit(false)}
+          onSubmit={handleEditBrand}
+          submitText="Editar"
+          brand={editingBrand}
+        />
+      )}
     </Container>
   );
 }

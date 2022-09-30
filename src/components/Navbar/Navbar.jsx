@@ -23,7 +23,7 @@ const drawerWidth = 240;
 const navUser = [
   { to: "/pedidos", title: "Ordenes" },
   {to: "/marcas", title: "Marcas"},
-  {to: "/usuarios", title: "Usuarios"},
+  {to: "/baterias", title: "Baterías"},
 ]
 
 const navItems = ["login"];

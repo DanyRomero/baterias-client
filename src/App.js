@@ -9,6 +9,7 @@ import LogIn from "./pages/LogIn";
 import HomePage from "./pages/HomePage";
 import Signup from "./pages/Signup";
 import Brands from "./pages/Brands";
+import Batteries from "./pages/Batteries";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -65,7 +66,8 @@ export default function App() {
         <Route path="/admin" element={<LogIn authenticate={authenticate} />}/>
         <Route path="/signup" element={<Signup />}/>
         <Route path="/marcas" element={user ? <Brands /> : <Navigate to="/admin" replace />}/>
-        <Route path="/marcas/edit" element={user ? <Brands /> : <Navigate to="/marcas" replace />}/>
+        <Route path="/baterias" element={user ? <Batteries /> : <Navigate to="/admin" replace />}/>
+        
         
 
       </Routes>

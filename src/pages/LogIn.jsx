@@ -5,7 +5,15 @@ import "./Signup";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 
-import { Avatar, Button, Grid, Paper, TextField } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Grid,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 export default function LogIn({ authenticate }) {
@@ -30,7 +38,9 @@ export default function LogIn({ authenticate }) {
     };
     login(credentials).then((res) => {
       if (!res.status) {
-        return setError({ message: "Invalid credentials" });
+        return setError({
+          message: "Error en el correo o contraseña",
+        });
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
@@ -39,7 +49,7 @@ export default function LogIn({ authenticate }) {
   }
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+
     width: 250,
     margin: "20px auto",
   };
@@ -56,45 +66,51 @@ export default function LogIn({ authenticate }) {
           <h2>Login</h2>
         </Grid>
 
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <TextField
-          margin="dense"
-          type="email"
-          label="Correo"
-          size="small"
-          name="username"
-          value={username}
-          fullWidth
-          variant="standard"
-          onChange={handleInputChange}
-          required
-        />
-        
-        <TextField
-          margin="dense"
-          label="Contraseña"
-          type="password"
-          name="password"
-          size="small"
-          fullWidth
-          variant="standard"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"
-        />
+        <form onSubmit={handleFormSubmission} className="signup__form">
+          <Stack spacing={3} >
+            <TextField
+              margin="dense"
+              type="email"
+              label="Correo"
+              size="small"
+              name="username"
+              value={username}
+              fullWidth
+              variant="standard"
+              onChange={handleInputChange}
+              required
+            />
 
-        {error && (
-          <div className="error-block">
-            <p>Existe un error en el formulario:</p>
-            <p>{error.message}</p>
-          </div>
-        )}
+            <TextField
+              margin="dense"
+              label="Contraseña"
+              type="password"
+              name="password"
+              size="small"
+              fullWidth
+              variant="standard"
+              value={password}
+              onChange={handleInputChange}
+              required
+              minLength="8"
+            />
 
-        <Button type="submit" fullWidth variant="contained" style={{marginTop:"25px"}}>
-            Entrar
-        </Button>
-      </form>
+            {error && (
+              <Typography color="red" align="center">
+                {error.message}
+              </Typography>
+            )}
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              style={{ marginTop: "25px" }}
+            >
+              Entrar
+            </Button>
+          </Stack>
+        </form>
       </Paper>
     </Grid>
   );

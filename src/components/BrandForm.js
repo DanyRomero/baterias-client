@@ -7,21 +7,18 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
 
 const BrandForm = (props) => {
-  const { open, onClose, onSubmit } = props;
-  const [brandInput, setBrandInput] = useState("");
+  const { open, onClose, onSubmit, submitText, brand } = props;
+  const [brandInput, setBrandInput] = useState(brand?.name || '');
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ name: brandInput });
     setBrandInput("");
   };
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog fullWidth open={open} onClose={onClose}>
       <DialogTitle>Marca</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>
-          <DialogContentText>
-            Ingrese el nombre de la nueva marca
-          </DialogContentText>
           <TextField
             required
             margin="dense"
@@ -35,7 +32,7 @@ const BrandForm = (props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose}>Cancelar</Button>
-          <Button type="submit">Agregar</Button>
+          <Button type="submit">{submitText}</Button>
         </DialogActions>
       </form>
     </Dialog>

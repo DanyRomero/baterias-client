@@ -16,8 +16,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 
-const BrandsTable = (props) => {
-  const { brands, onEdit } = props;
+
+const BatteriesTable = (props) => {
+  const { batteries, onEdit } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -31,17 +32,16 @@ const BrandsTable = (props) => {
   const open = Boolean(anchorEl);
   const ID = open ? "simple-popover" : undefined;
 
-  const deleteBrand = (id) => {
+  const deleteBattery = (id) => {
     axios
-      .delete(`${API_URL}/marcas/${id}`)
+      .delete(`${API_URL}/baterias/${id}`)
       .then(() => {
         // Once the delete request is resolved successfully
         // navigate back to the list of projects.
-        props.getBrands();
+        props.getBatteries();
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <TableContainer sx={{ mt: 3 }} component={Paper}>
       <Table>
@@ -50,19 +50,27 @@ const BrandsTable = (props) => {
             <TableCell>
               <strong>Nombre</strong>
             </TableCell>
+            <TableCell>
+              <strong>Modelo</strong>
+            </TableCell>
+            <TableCell>
+              <strong>Precio</strong>
+            </TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {brands.map((brand) => (
-            <TableRow key={brand._id}>
-              <TableCell>{brand.name}</TableCell>
+          {batteries.map((battery) => (
+            <TableRow key={battery._id}>
+              <TableCell>{battery.name}</TableCell>
+              <TableCell>{battery.model}</TableCell>
+              <TableCell>$ {battery.price}</TableCell>
               <TableCell align="right">
                 <div>
-                  <Button onClick={() => deleteBrand(brand._id)}>
+                  <Button onClick={() => deleteBattery(battery._id)}>
                     <DeleteOutlineOutlinedIcon />
                   </Button>
-                  <Button onClick={() => onEdit(brand)}>
+                  <Button onClick={() => onEdit(battery)}>
                     <ModeEditOutlineOutlinedIcon />
                   </Button>
                 </div>
@@ -72,7 +80,7 @@ const BrandsTable = (props) => {
         </TableBody>
       </Table>
     </TableContainer>
-  );
-};
+  )
+}
 
-export default BrandsTable;
+export default BatteriesTable
