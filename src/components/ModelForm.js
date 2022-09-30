@@ -7,7 +7,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
 
 const ModelForm = (props) => {
-  const { open, onClose, onSubmit, submitText, model } = props;
+  const { open, onClose, onSubmit, submitText, model, brandId } = props;
   const [modelInput, setModelInput] = useState(model?.name || "");
   const [errors, setErrors] = useState({});
 
@@ -19,7 +19,7 @@ const ModelForm = (props) => {
       setModelInput("")
       return
     }
-    onSubmit({ name: modelInput })
+    onSubmit({ name: modelInput, brand: brandId })
       .then(() => setModelInput(""))
       .catch((error) => {
         if (error.response.data.errors) {

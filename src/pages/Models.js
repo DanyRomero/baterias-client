@@ -117,6 +117,7 @@ const Models = () => {
             onClose={handleClose}
             onSubmit={handleNewModel}
             submitText="Agregar"
+            brandId={brand._id}
           />
         )}
       </Grid>
