@@ -52,7 +52,7 @@ const BrandsTable = (props) => {
   }
 
   return (
-    <TableContainer sx={{ mt: 3 }} component={Paper}>
+    <TableContainer sx={{ my: 3 }} component={Paper}>
       <Table>
         <TableHead>
           <TableRow>

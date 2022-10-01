@@ -70,7 +70,7 @@ const Years = () => {
 
   return (
     <Container>
-      <Typography mt={4} variant="body1">
+      <Typography my={4} variant="h4">
         <strong>Detalle del modelo {model?.name}</strong>
       </Typography>
       <Grid container spacing={2}>

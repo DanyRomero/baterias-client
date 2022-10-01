@@ -31,8 +31,8 @@ export default function Brands() {
     axios
       .get(`${API_URL}/marcas`)
       .then((response) => {
-        console.log(response.data)
-        setBrands(response.data)
+        console.log(response.data);
+        setBrands(response.data);
       })
       .catch((error) => console.log(error));
   };
@@ -64,7 +64,9 @@ export default function Brands() {
 
   return (
     <Container>
-      <Typography mt={4} variant="body1" ><strong>Listado de marcas</strong></Typography>
+      <Typography my={4} variant="h4">
+        <strong>Listado de marcas</strong>
+      </Typography>
       <Grid container spacing={2}>
         <Grid item md={9} xs>
           <form>
