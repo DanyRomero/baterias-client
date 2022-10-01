@@ -1,23 +1,38 @@
-import * as React from "react";
 import { TextField, Grid, Button, Container, Typography } from "@mui/material";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import LoadingComponent from "../components/Loading";
+import { API_URL } from "../utils/consts";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import BrandsTable from "../components/BrandsTable";
-import BrandForm from "../components/BrandForm";
-import { API_URL } from "../utils/consts";
+import YearsTable from "../components/YearsTable";
+import YearsForm from "../components/YearsForm";
 
-export default function Brands() {
+const Years = () => {
+  const { id } = useParams();
+  const [model, setModel] = useState(null);
   const [open, setOpen] = useState(false);
-  const [brands, setBrands] = useState([]);
   const [openEdit, setOpenEdit] = useState(false);
-  const [editingBrand, setEditingBrand] = useState(null);
+  const [editingYear, setEditingYear] = useState(null);
   const [filter, setFilter] = useState("");
 
   const handleInput = (e) => {
     setFilter(e.target.value);
   };
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/modelos/${id}`)
+      .then((response) => {
+        setModel(response.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  if (!model) {
+    return <LoadingComponent />;
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,44 +42,37 @@ export default function Brands() {
     setOpen(false);
   };
 
-  const getBrands = () => {
-    axios
-      .get(`${API_URL}/marcas`)
-      .then((response) => {
-        console.log(response.data)
-        setBrands(response.data)
-      })
-      .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    getBrands();
-  }, []);
-
-  const handleNewBrand = (formData) => {
-    return axios.post(`${API_URL}/marcas`, formData).then((response) => {
-      getBrands();
-      setOpen(false);
-    });
-  };
-
-  const handleEditBrand = (formData) => {
+  const handleNewYear = (formData) => {
     return axios
-      .put(`${API_URL}/marcas/${editingBrand._id}`, formData)
+      .post(`${API_URL}/modelos/${model._id}/rangos`, formData)
       .then((response) => {
-        getBrands();
+        setModel(response.data);
+        setOpen(false);
+      });
+  };
+
+  const handleEditYear = (formData) => {
+    return axios
+      .put(
+        `${API_URL}/modelos/${model._id}/rangos/${editingYear._id}`,
+        formData
+      )
+      .then((response) => {
+        setModel(response.data);
         setOpenEdit(false);
       });
   };
 
-  const editBrand = (brand) => {
-    setEditingBrand(brand);
+  const editYear = (year) => {
+    setEditingYear(year);
     setOpenEdit(true);
   };
 
   return (
     <Container>
-      <Typography mt={4} variant="body1" ><strong>Listado de marcas</strong></Typography>
+      <Typography mt={4} variant="body1">
+        <strong>Detalle del modelo {model?.name}</strong>
+      </Typography>
       <Grid container spacing={2}>
         <Grid item md={9} xs>
           <form>
@@ -72,7 +80,7 @@ export default function Brands() {
               <Grid item xs>
                 <TextField
                   size="small"
-                  label="Buscar por Nombre"
+                  label="Buscar por Año"
                   value={filter}
                   fullWidth
                   onChange={handleInput}
@@ -88,33 +96,35 @@ export default function Brands() {
         </Grid>
         <Grid item xs="auto">
           <Button variant="outlined" onClick={handleClickOpen}>
-            <AddIcon /> Marca
+            <AddIcon /> Año
           </Button>
           {open && (
-            <BrandForm
+            <YearsForm
               open={open}
               onClose={handleClose}
-              onSubmit={handleNewBrand}
+              onSubmit={handleNewYear}
               submitText="Agregar"
             />
           )}
         </Grid>
       </Grid>
-      <BrandsTable
-        brands={brands}
-        getBrands={getBrands}
-        onEdit={editBrand}
+      <YearsTable
+        years={model.years}
+        setModel={setModel}
+        onEdit={editYear}
         filter={filter}
+        modelId={model._id}
       />
       {openEdit && (
-        <BrandForm
+        <YearsForm
           open={openEdit}
           onClose={() => setOpenEdit(false)}
-          onSubmit={handleEditBrand}
+          onSubmit={handleEditYear}
           submitText="Editar"
-          brand={editingBrand}
+          year={editingYear}
         />
       )}
     </Container>
   );
-}
+};
+export default Years;

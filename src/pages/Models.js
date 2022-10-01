@@ -1,4 +1,4 @@
-import { TextField, Grid, Button, Container } from "@mui/material";
+import { TextField, Grid, Button, Container, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -85,7 +85,7 @@ const Models = () => {
 
 
   return <Container>
-    <h3>Detalle de la marca {brand?.name}</h3>
+    <Typography mt={4} variant="body1" ><strong>Detalle de la marca {brand?.name}</strong></Typography>
     <Grid container spacing={2}>
       <Grid item md={9} xs>
         <form>

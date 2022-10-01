@@ -6,45 +6,55 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
 
-const ModelForm = (props) => {
-  const { open, onClose, onSubmit, submitText, model, brandId } = props;
-  const [modelInput, setModelInput] = useState(model?.name || "");
+const YearsForm = (props) => {
+  const { open, onClose, onSubmit, submitText, year } = props;
+  const [fromInput, setFromInput] = useState(year?.from || "");
+  const [toInput, setToInput] = useState(year?.to || "");
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
-    if(modelInput.trim().length === 0){
-      setErrors({ name: { message: "Ingresa el modelo" } });
-      setModelInput("")
-      return
-    }
-    onSubmit({ name: modelInput, brand: brandId })
-      .then(() => setModelInput(""))
+    
+    onSubmit({ from: fromInput, to: toInput })
+      .then(() => setFromInput(""))
       .catch((error) => {
         if (error.response.data.errors) {
           setErrors(error.response.data.errors);
         } else {
-          setErrors({ name: { message: "Información incorrecta" } });
+          setErrors({ from: { message: "Información incorrecta" } });
         }
       });
   };
 
   return (
     <Dialog fullWidth open={open} onClose={onClose}>
-      <DialogTitle>Modelo</DialogTitle>
+      <DialogTitle>Años</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>
           <TextField
-            error={errors.name !== undefined}
+            error={errors.from !== undefined}
+            type="number"
             margin="dense"
-            label="Nombre"
+            label="Año inicio"
             variant="standard"
             fullWidth
-            name="name"
-            value={modelInput}
-            helperText={errors?.name?.message}
-            onChange={(e) => setModelInput(e.target.value)}
+            name="from"
+            value={fromInput}
+            helperText={errors?.from?.message}
+            onChange={(e) => setFromInput(e.target.value)}
+          />
+          <TextField
+            error={errors.from !== undefined}
+            type="number"
+            margin="dense"
+            label="Año Final"
+            variant="standard"
+            fullWidth
+            name="to"
+            value={toInput}
+            helperText={errors?.to?.message}
+            onChange={(e) => setToInput(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
@@ -56,4 +66,4 @@ const ModelForm = (props) => {
   );
 };
 
-export default ModelForm;
+export default YearsForm;

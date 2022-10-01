@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Brands from "./pages/Brands";
 import Batteries from "./pages/Batteries";
 import Models from "./pages/Models";
+import Years from "./pages/Years";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -77,6 +78,10 @@ export default function App() {
         <Route
           path="/marcas/:id"
           element={user ? <Models /> : <Navigate to="/admin" replace />}
+        />
+        <Route
+          path="/modelos/:id"
+          element={user ? <Years /> : <Navigate to="/admin" replace />}
         />
       </Routes>
     </div>
