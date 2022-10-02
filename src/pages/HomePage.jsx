@@ -9,6 +9,7 @@ import Select from "@mui/material/Select";
 import { API_URL } from "../utils/consts";
 import axios from "axios";
 import { Button, Container, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [brand, setBrand] = useState("");
@@ -16,6 +17,7 @@ function HomePage() {
   const [year, setYear] = useState("");
   const [brands, setBrands] = useState([]);
   const [models, setModels] = useState([]);
+  const navigate = useNavigate();
 
   const selectedModel = models.find((modelMap) => modelMap._id === model);
 
@@ -34,7 +36,7 @@ function HomePage() {
 
   const handleModelChange = (event) => {
     setModel(event.target.value);
-    setYear("")
+    setYear("");
   };
 
   const handleYearChange = (event) => {
@@ -43,7 +45,14 @@ function HomePage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submit!", { brand, model, year });
+
+    axios
+      .post(`${API_URL}/ordenes`, { brand, model, year })
+      .then((response) => {
+        localStorage.setItem("orderId", response.data._id);
+        navigate("/bateria");
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

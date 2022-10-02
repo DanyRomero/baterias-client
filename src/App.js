@@ -13,6 +13,7 @@ import Batteries from "./pages/Batteries";
 import Models from "./pages/Models";
 import Years from "./pages/Years";
 import AdminLayout from "./components/AdminLayout";
+import SelectBattery from "./pages/SelectBattery";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -57,11 +58,16 @@ export default function App() {
   if (isLoading) {
     return <LoadingComponent />;
   }
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route element={<AdminLayout handleLogout={handleLogout} user={user} />}>
+        <Route path="/bateria" element={<SelectBattery />} />
+
+        <Route
+          element={<AdminLayout handleLogout={handleLogout} user={user} />}
+        >
           <Route
             path="/admin"
             element={<LogIn authenticate={authenticate} />}
