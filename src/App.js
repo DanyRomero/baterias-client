@@ -12,6 +12,7 @@ import Brands from "./pages/Brands";
 import Batteries from "./pages/Batteries";
 import Models from "./pages/Models";
 import Years from "./pages/Years";
+import AdminLayout from "./components/AdminLayout";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -58,31 +59,31 @@ export default function App() {
   }
   return (
     <div className="App">
-      <Navbar handleLogout={handleLogout} user={user} />
       <Routes>
-        {/*  {routes({ user, authenticate, handleLogout }).map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))} */}
-
         <Route path="/" element={<HomePage />} />
-        <Route path="/admin" element={<LogIn authenticate={authenticate} />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route
-          path="/marcas"
-          element={user ? <Brands /> : <Navigate to="/admin" replace />}
-        />
-        <Route
-          path="/baterias"
-          element={user ? <Batteries /> : <Navigate to="/admin" replace />}
-        />
-        <Route
-          path="/marcas/:id"
-          element={user ? <Models /> : <Navigate to="/admin" replace />}
-        />
-        <Route
-          path="/modelos/:id"
-          element={user ? <Years /> : <Navigate to="/admin" replace />}
-        />
+        <Route element={<AdminLayout handleLogout={handleLogout} user={user} />}>
+          <Route
+            path="/admin"
+            element={<LogIn authenticate={authenticate} />}
+          />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/marcas"
+            element={user ? <Brands /> : <Navigate to="/admin" replace />}
+          />
+          <Route
+            path="/baterias"
+            element={user ? <Batteries /> : <Navigate to="/admin" replace />}
+          />
+          <Route
+            path="/marcas/:id"
+            element={user ? <Models /> : <Navigate to="/admin" replace />}
+          />
+          <Route
+            path="/modelos/:id"
+            element={user ? <Years /> : <Navigate to="/admin" replace />}
+          />
+        </Route>
       </Routes>
     </div>
   );

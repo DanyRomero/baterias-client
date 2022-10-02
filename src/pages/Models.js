@@ -24,7 +24,7 @@ const Models = () => {
 
   const getModels = () => {
     axios
-      .get(`${API_URL}/modelos`)
+      .get(`${API_URL}/modelos`, {params:{id}})
       .then((response) => {
         console.log(response);
         setModels(response.data);
