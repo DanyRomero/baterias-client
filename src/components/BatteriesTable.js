@@ -11,10 +11,10 @@ import {
 import React from "react";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-
+import { API_URL } from "../utils/consts";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+
 
 
 const BatteriesTable = (props) => {
