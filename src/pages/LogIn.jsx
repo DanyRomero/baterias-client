@@ -6,6 +6,7 @@ import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 
 import {
+  Alert,
   Avatar,
   Box,
   Button,
@@ -15,7 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined';
+import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
@@ -45,7 +46,7 @@ export default function LogIn({ authenticate }) {
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      navigate("/marcas");
     });
   }
   const paperStyle = {
@@ -97,9 +98,11 @@ export default function LogIn({ authenticate }) {
             />
 
             {error && (
-              <Typography color="red" align="center">
-                {error.message}
-              </Typography>
+              <Stack  sx={{ width: "100%" }} spacing={2}>
+                <Alert severity="error">
+                  Error en la información ¡revisa tus datos!
+                </Alert>
+              </Stack>
             )}
 
             <Button

@@ -10,6 +10,7 @@ import { API_URL } from "../utils/consts";
 import axios from "axios";
 import { Button, Container, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import LoadingComponent from "../components/Loading";
 
 function HomePage() {
   const [brand, setBrand] = useState("");
@@ -66,8 +67,8 @@ function HomePage() {
 
   return (
     <div>
+     
       <img width="100%" src="/images/1.png" />
-      <Box></Box>
       <Container>
         <form onSubmit={handleSubmit}>
           <Stack py={5} spacing={3}>

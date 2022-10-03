@@ -63,7 +63,7 @@ export default function Brands() {
   };
 
   return (
-    <Container>
+    <Container >
       <Typography my={4} variant="h4">
         <strong>Listado de marcas</strong>
       </Typography>

@@ -14,6 +14,7 @@ import Models from "./pages/Models";
 import Years from "./pages/Years";
 import AdminLayout from "./components/AdminLayout";
 import SelectBattery from "./pages/SelectBattery";
+import Order from "./pages/Order";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -64,6 +65,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/bateria" element={<SelectBattery />} />
+        <Route path="/orden" element={<Order />} />
 
         <Route
           element={<AdminLayout handleLogout={handleLogout} user={user} />}

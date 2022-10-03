@@ -21,7 +21,7 @@ function SelectBattery() {
       .get(`${API_URL}/ordenes/${localStorage.orderId}`)
       .then((response) => {
         setOrder(response.data);
-        console.log(response.data);
+        console.log( "order get", response.data);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -43,7 +43,7 @@ function SelectBattery() {
     (year) => year._id === order.year
   );
   return (
-    <Container sx={{ py: 5 }}>
+    <Container sx={{ py: 5}} >
       <Typography variant="h4" mb={5}>
         Seleccionar Bateria
       </Typography>
@@ -53,17 +53,16 @@ function SelectBattery() {
             <Card>
               <CardMedia
                 component="img"
-                alt="green iguana"
-                max-height="140"
+                alt="battery"
                 image="/images/bateria.png"
               />
               <CardContent>
-                <Typography variant="h5" mb={2}>
-                  {battery.name}
+                <Typography variant="h6" mb={2}>
+                  <strong>{battery.name}</strong>
                 </Typography>
-                <Typography variant="body1">{battery.model}</Typography>
+                <Typography variant="body1">Modelo:{battery.model}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  ${battery.price}
+                  Precio: ${battery.price}
                 </Typography>
               </CardContent>
               <CardActions>
