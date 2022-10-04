@@ -28,7 +28,7 @@ const OrderDetails = (props) => {
           </TableRow>
           <TableRow>
             <TableCell>Dirección de entrega</TableCell>
-            <TableCell></TableCell>
+            <TableCell>{order?.address?.addressOne}  {order?.address?.addressTwo}, {order?.address?.town}, CP {order?.address?.zipCode},  {order?.address?.state} </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Vehículo </TableCell>
@@ -48,7 +48,7 @@ const OrderDetails = (props) => {
           </TableRow>
           <TableRow>
             <TableCell><strong>TOTAL</strong></TableCell>
-            <TableCell><strong>$ {order?.battery?.price}</strong></TableCell>
+            <TableCell><strong>MXN $ {order?.battery?.price}</strong></TableCell>
           </TableRow>
         </TableBody>
         </Table>

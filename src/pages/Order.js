@@ -4,6 +4,7 @@ import { API_URL } from "../utils/consts";
 import ClientForm from "../components/ClientForm";
 import { Paper, Typography, Container, Box, Grid } from "@mui/material";
 import LoadingComponent from "../components/Loading";
+import CheckoutStepper from "../components/CheckoutStepper";
 
 const Order = () => {
   const [order, setOrder] = useState(null);
@@ -28,8 +29,9 @@ const Order = () => {
   console.log("selected year", selectedYear);
   return (
     <Container sx={{ py: 5 }}>
-      <Paper elevation={6} sx={{ display: "flex" }}>
-        <Grid container spacing={2}>
+      <Box elevation={6}>
+        <CheckoutStepper activeStep={2}/>
+        <Grid py={5} container spacing={2}>
           <Grid item md={5}>
             <ClientForm />
           </Grid>
@@ -38,6 +40,9 @@ const Order = () => {
               <strong>Resumen del pedido</strong>
             </Typography>
             <Typography mt={2}>Dirección de entrega</Typography>
+            <Typography>
+              {order.address.addressOne}  {order?.address?.addressTwo}, {order.address.town}, CP {order.address.zipCode},  {order.address.state} 
+            </Typography>
             <hr />
             <Typography>Vehículo</Typography>
             <Typography>
@@ -46,7 +51,7 @@ const Order = () => {
             </Typography>
             <hr />
             <Typography>Batería</Typography>
-            <Typography>{order.battery.name}</Typography>
+            <Typography>{order?.battery?.name}</Typography>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography>Modelo {order.battery.model}</Typography>
               <Typography>${order.battery.price}</Typography>
@@ -57,12 +62,12 @@ const Order = () => {
                 <strong>Total</strong>
               </Typography>
               <Typography>
-                <strong>${order.battery.price}</strong>
+                <strong>MXN ${order.battery.price}</strong>
               </Typography>
             </Box>
           </Grid>
         </Grid>
-      </Paper>
+      </Box>
     </Container>
   );
 };

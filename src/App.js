@@ -17,6 +17,7 @@ import SelectBattery from "./pages/SelectBattery";
 import Order from "./pages/Order";
 import Orders from "./pages/Orders";
 import OrderDetails from "./components/OrderDetails";
+import Address from "./pages/Address";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -67,6 +68,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/bateria" element={<SelectBattery />} />
+        <Route path="/direccion" element={<Address />} />
         <Route path="/orden" element={<Order />} />
 
         <Route
