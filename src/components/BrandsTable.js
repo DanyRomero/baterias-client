@@ -44,8 +44,7 @@ const BrandsTable = (props) => {
   };
 
   let filteredBrands = brands;
-  console.log("filtered", filteredBrands)
-  if (filter) {
+    if (filter) {
     filteredBrands = brands.filter((brand) =>
       brand.name.toLowerCase().includes(filter.toLowerCase())
     );

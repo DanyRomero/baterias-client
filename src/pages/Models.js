@@ -24,9 +24,8 @@ const Models = () => {
 
   const getModels = () => {
     axios
-      .get(`${API_URL}/modelos`, {params:{id}})
+      .get(`${API_URL}/modelos`, { params: { id } })
       .then((response) => {
-        console.log(response);
         setModels(response.data);
       })
       .catch((error) => console.log(error));
@@ -36,7 +35,6 @@ const Models = () => {
     axios
       .get(`${API_URL}/marcas/${id}`)
       .then((response) => {
-        console.log(response.data);
         setBrand(response.data);
         getModels();
       })

@@ -6,11 +6,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import BatteriesTable from "../components/BatteriesTable";
 import BatteryForm from "../components/BatteryForm";
-
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../utils/consts";
 
 const Batteries = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [batteries, setBatteries] = useState([]);
   const [openEdit, setOpenEdit] = useState(false);
   const [editingBattery, setEditingBattery] = useState(null);
@@ -53,7 +52,6 @@ const Batteries = () => {
     axios
       .put(`${API_URL}/baterias/${editingBattery._id}`, formData)
       .then((response) => {
-        console.log(response)
         getBatteries();
         setOpenEdit(false);
       })

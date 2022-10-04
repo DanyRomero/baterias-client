@@ -13,7 +13,6 @@ const Order = () => {
     axios
       .get(`${API_URL}/ordenes/${localStorage.orderId}`)
       .then((response) => {
-        console.log("order", response.data);
         setOrder(response.data);
       })
       .catch((err) => console.log(err));
@@ -26,7 +25,7 @@ const Order = () => {
     (year) => year._id === order.year
   );
 
-  console.log("selected year", selectedYear);
+ 
   return (
     <Container sx={{ py: 5 }}>
       <Box elevation={6}>

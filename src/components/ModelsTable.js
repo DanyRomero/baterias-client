@@ -15,7 +15,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../utils/consts";
 
-
 const ModelsTable = (props) => {
   const { models, onEdit, filter } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -35,9 +34,6 @@ const ModelsTable = (props) => {
     axios
       .delete(`${API_URL}/modelos/${id}`)
       .then(() => {
-        // Once the delete request is resolved successfully
-        // navigate back to the list of projects.
-        console.log(props.getModels)
         props.getModels();
       })
       .catch((err) => console.log(err));

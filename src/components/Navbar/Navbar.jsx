@@ -24,6 +24,7 @@ const navUser = [
   { to: "/ordenes", title: "Ordenes" },
   {to: "/marcas", title: "Marcas"},
   {to: "/baterias", title: "Baterías"},
+  {to: "/usuarios", title: "Usuarios"},
 ]
 
 const navItems = ["login"];

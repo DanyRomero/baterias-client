@@ -13,14 +13,12 @@ const Orders = () => {
     axios
       .get(`${API_URL}/ordenes`)
       .then((response) => {
-        console.log("ordenes", response.data);
         setOrders(response.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   const selectedOrder = (order) => { setOrder(order)};
-  console.log("ORDEN",order)
 
   return (
     <Container>

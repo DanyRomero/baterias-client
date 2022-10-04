@@ -78,7 +78,10 @@ export default function App() {
             path="/admin"
             element={<LogIn authenticate={authenticate} />}
           />
-          <Route path="/signup" element={<Signup />} />
+          <Route 
+          path="/usuarios" 
+          element={user? <Signup /> : <Navigate to="/admin" replace />}
+          />
           <Route
             path="/marcas"
             element={user ? <Brands /> : <Navigate to="/admin" replace />}

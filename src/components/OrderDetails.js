@@ -27,6 +27,10 @@ const OrderDetails = (props) => {
             <TableCell>{order?.client?.name} {order?.client?.lastName}</TableCell>
           </TableRow>
           <TableRow>
+            <TableCell>Teléfono del cliente</TableCell>
+            <TableCell>{order?.client?.phone}</TableCell>
+          </TableRow>
+          <TableRow>
             <TableCell>Dirección de entrega</TableCell>
             <TableCell>{order?.address?.addressOne}  {order?.address?.addressTwo}, {order?.address?.town}, CP {order?.address?.zipCode},  {order?.address?.state} </TableCell>
           </TableRow>

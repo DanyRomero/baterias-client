@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signup } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import axios from "axios";
+import { API_URL } from "../utils/consts";
+
 
 export default function Signup({ authenticate }) {
+  
+  const[users, setUsers]= useState([])
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -40,44 +47,65 @@ export default function Signup({ authenticate }) {
     });
   }
 
+    useEffect(()=>{
+      axios
+      .get(`${API_URL}/usuarios`)
+      .then((response) => setUsers(response.data))
+      .catch((error) => console.log(error));
+    }, [])
+
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleFormSubmission} className="auth__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
-          name="username"
-          placeholder="Text"
-          value={username}
-          onChange={handleInputChange}
-          required
-        />
+    <Container>
+      <Typography my={4} variant="h4" color="text.secondary">
+        <strong>Crear un usuario</strong>
+      </Typography>
+      <form onSubmit={handleFormSubmission}>
+        <Grid container spacing={2}>
+          <Grid item>
+            <TextField
+              size="small"
+              fullWidth
+              id="input-username"
+              label="Correo"
+              value={username}
+              onChange={handleInputChange}
+              required
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              size="small"
+              fullWidth
+              id="input-password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={handleInputChange}
+              required
+              minLength="8"
+            />
+          </Grid>
 
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"
-        />
+          {error && (
+            <div className="error-block">
+              <p>There was an error submiting the form:</p>
+              <p>{error.message}</p>
+            </div>
+          )}
 
-        {error && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
-          </div>
-        )}
-
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
+          <Grid item>
+            <Button variant="contained" type="submit">
+              Crear
+            </Button>
+          </Grid>
+        </Grid>
       </form>
-    </div>
+      {users.map((user)=>{
+        <Box key={user._id}>
+          
+        </Box>
+      })}
+    </Container>
   );
 }

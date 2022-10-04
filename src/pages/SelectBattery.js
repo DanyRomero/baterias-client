@@ -27,8 +27,7 @@ function SelectBattery() {
       .get(`${API_URL}/ordenes/${localStorage.orderId}`)
       .then((response) => {
         setOrder(response.data);
-        console.log("order get", response.data);
-      })
+       })
       .catch((error) => console.error(error));
   }, []);
 
