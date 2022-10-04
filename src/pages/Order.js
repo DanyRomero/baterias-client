@@ -30,7 +30,7 @@ const Order = () => {
     <Container sx={{ py: 5 }}>
       <Paper elevation={6} sx={{ display: "flex" }}>
         <Grid container spacing={2}>
-          <Grid item md={6}>
+          <Grid item md={5}>
             <ClientForm />
           </Grid>
           <Grid item md={5} sx={{ ml: 3, py: 5, color: "text.secondary" }}>

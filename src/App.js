@@ -15,6 +15,8 @@ import Years from "./pages/Years";
 import AdminLayout from "./components/AdminLayout";
 import SelectBattery from "./pages/SelectBattery";
 import Order from "./pages/Order";
+import Orders from "./pages/Orders";
+import OrderDetails from "./components/OrderDetails";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -90,6 +92,10 @@ export default function App() {
           <Route
             path="/modelos/:id"
             element={user ? <Years /> : <Navigate to="/admin" replace />}
+          />
+          <Route
+            path="/ordenes/"
+            element={user ? <Orders /> : <Navigate to="/admin" replace />}
           />
         </Route>
       </Routes>

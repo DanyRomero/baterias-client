@@ -1,4 +1,3 @@
-import logo from "../logo.svg";
 import "../App.css";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
@@ -8,9 +7,10 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { API_URL } from "../utils/consts";
 import axios from "axios";
-import { Button, Container, Stack } from "@mui/material";
+import { Button, Chip, Container, Grid, Stack, Tooltip, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import LoadingComponent from "../components/Loading";
+import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
+import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 
 function HomePage() {
   const [brand, setBrand] = useState("");
@@ -67,9 +67,35 @@ function HomePage() {
 
   return (
     <div>
-     
-      <img width="100%" src="/images/1.png" />
+      <img width="100%" src="/images/carTitle.png" />
+      <marquee
+        style={{
+          marginTop: "-4px",
+          color: "white",
+          backgroundColor: "rgb(239, 21, 36)",
+          height: "40px",
+          fontSize: "20px",
+        }}
+        behavior="loop"
+        speed="normal"
+        direction="right"
+        scrollamount="6"
+      >
+        Diagnóstico e instalación sin costo.* En la compra de la batería
+      </marquee>
+
       <Container>
+        <Grid container align="center" justifyContent="center" spacing={5} p={2} > 
+          <Grid item sm={4} lg={3} color="text.secondary">
+            <PaidOutlinedIcon/>
+            <Typography >Paga en efectivo o tarjeta a la entrega</Typography>
+          </Grid>
+          <Grid item sm={4} lg={3} color="text.secondary">
+            <LocalOfferOutlinedIcon />
+            <Typography >Descuento al entregar tu batería usada</Typography>
+          </Grid>
+        </Grid>
+
         <form onSubmit={handleSubmit}>
           <Stack py={5} spacing={3}>
             <FormControl fullWidth>

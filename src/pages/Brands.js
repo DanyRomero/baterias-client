@@ -64,7 +64,7 @@ export default function Brands() {
 
   return (
     <Container >
-      <Typography my={4} variant="h4">
+      <Typography my={4} variant="h4" color="text.secondary">
         <strong>Listado de marcas</strong>
       </Typography>
       <Grid container spacing={2}>

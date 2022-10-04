@@ -21,7 +21,7 @@ import Typography from "@mui/material/Typography";
 
 const drawerWidth = 240;
 const navUser = [
-  { to: "/pedidos", title: "Ordenes" },
+  { to: "/ordenes", title: "Ordenes" },
   {to: "/marcas", title: "Marcas"},
   {to: "/baterias", title: "Baterías"},
 ]

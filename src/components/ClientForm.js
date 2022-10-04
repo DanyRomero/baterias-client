@@ -46,90 +46,84 @@ const ClientForm = () => {
   };
 
   return (
-    <Container sx={{ display: "flex" }}>
-      <form onSubmit={sendData}>
-        <Stack py={5} spacing={3}>
-          <Typography color="primary">
-            <strong>Datos de contacto</strong>
-          </Typography>
+    <form onSubmit={sendData}>
+      <Stack p={5} spacing={3}>
+        <Typography color="primary">
+          <strong>Datos de contacto</strong>
+        </Typography>
 
-          <TextField
-            fullWidth
-            label="Nombre"
-            id="name"
-            sx={{ m: 1, width: "25ch" }}
-            value={nameClient}
-            onChange={handleNameChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircleOutlinedIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            fullWidth
-            label="Apellido"
-            id="lastName"
-            sx={{ m: 1, width: "25ch" }}
-            value={lastNameClient}
-            onChange={handleLastNameChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircleOutlinedIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            fullWidth
-            label="Celular"
-            id="phone"
-            type="number"
-            sx={{ m: 1, width: "25ch" }}
-            value={phoneClient}
-            onChange={handlePhoneChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LocalPhoneOutlinedIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            fullWidth
-            label="Correo"
-            id="email"
-            type="email"
-            sx={{ m: 1, width: "25ch" }}
-            value={emailClient}
-            onChange={handleEmailChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <EmailOutlinedIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Button
-            type="submit"
-            disabled={
-              nameClient === "" &&
-              lastNameClient === "" &&
-              phoneClient === null &&
-              emailClient === ""
-            }
-            variant="contained"
-          >
-            Finalizar
-          </Button>
-        </Stack>
-      </form>
-    </Container>
+        <TextField
+          fullWidth
+          label="Nombre"
+          id="name"
+          value={nameClient}
+          onChange={handleNameChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleOutlinedIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Apellido"
+          id="lastName"
+          value={lastNameClient}
+          onChange={handleLastNameChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleOutlinedIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Celular"
+          id="phone"
+          type="number"
+          value={phoneClient}
+          onChange={handlePhoneChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <LocalPhoneOutlinedIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          fullWidth
+          label="Correo"
+          id="email"
+          type="email"
+          value={emailClient}
+          onChange={handleEmailChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailOutlinedIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button
+          type="submit"
+          disabled={
+            nameClient === "" ||
+            lastNameClient === "" ||
+            phoneClient === "" ||
+            emailClient === ""
+          }
+          variant="contained"
+        >
+          Finalizar
+        </Button>
+      </Stack>
+    </form>
   );
 };
 

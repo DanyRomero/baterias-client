@@ -18,8 +18,6 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-const names = ["Coco", "Taro", "Manu", "Dany"];
-
 const YearsForm = (props) => {
   const { open, onClose, onSubmit, submitText, year } = props;
   const [fromInput, setFromInput] = useState(year?.from || "");

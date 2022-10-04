@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Grid, Button, Container } from "@mui/material";
+import { TextField, Grid, Button, Container, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
@@ -66,7 +66,9 @@ const Batteries = () => {
 
   return (
     <Container>
-      <h3>Listado de baterías</h3>
+      <Typography my={4} variant="h4" color="text.secondary">
+        <strong>Listado de baterías</strong>
+      </Typography>
       <Grid container spacing={2}>
         <Grid item md={9} xs>
           <form>

@@ -78,7 +78,7 @@ const Models = () => {
 
   return (
     <Container>
-      <Typography my={4} variant="h4">
+      <Typography my={4} variant="h4" color="text.secondary">
         <strong>Detalle de la marca {brand?.name}</strong>
       </Typography>
       <Grid container spacing={2}>
