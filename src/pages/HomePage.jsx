@@ -6,11 +6,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { API_URL } from "../utils/consts";
 import axios from "axios";
-import { Button, Container, Grid, Stack, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Button, Container, Fab, Grid, Stack, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 function HomePage() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
@@ -176,6 +176,15 @@ function HomePage() {
             </Button>
           </Stack>
         </form>
+
+        <Fab
+          size="small"
+          href="https://wa.me/5215554053974?text=Quisiera%20información%20sobre%20mi%20batería"
+          color="success"
+          aria-label="whatsapp"
+        >
+          <WhatsAppIcon />
+        </Fab>
       </Container>
     </div>
   );
