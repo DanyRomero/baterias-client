@@ -27,7 +27,9 @@ const navUser = [
   {to: "/usuarios", title: "Usuarios"},
 ]
 
-const navItems = ["login"];
+const navItems = [
+  { to: "/login", title: "Login" }
+];
 
 const Navbar = (props) => {
   const { window } = props;
@@ -45,7 +47,7 @@ const Navbar = (props) => {
       <List>
         {navUser.map((item) => (
           <ListItem key={item.to} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton component={Link} to={item.to} sx={{ textAlign: "center" }}>
               <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
@@ -62,9 +64,9 @@ const Navbar = (props) => {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+          <ListItem key={item.to} disablePadding>
+            <ListItemButton component={Link} to={item.to} sx={{ textAlign: "center" }}>
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
