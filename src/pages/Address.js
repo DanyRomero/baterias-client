@@ -13,8 +13,8 @@ const Address = () => {
           <Grid item md={5}>
             <AddressForm />
           </Grid>
-          <Grid item md={5} sx={{ ml: 3, py: 5, color: "text.secondary" }}>
-            
+          <Grid item md={5} sx={{ m: 5, py: 5, color: "text.secondary" }}>
+            <img src="/images/map.jpg" />
           </Grid>
         </Grid>
       </Box>

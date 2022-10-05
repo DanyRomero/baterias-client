@@ -40,9 +40,8 @@ const AddressForm = () => {
         town,
         state,
       })
-      .then((response) => console.log(response.data))
+      .then((response) => navigate("/orden"))
       .catch((error) => console.error(error));
-    navigate("/orden");
   };
 
   return (
@@ -68,7 +67,6 @@ const AddressForm = () => {
 
         <TextField
           fullWidth
-          type="number"
           label="Código postal"
           id="addressTwo"
           value={zipCode}
