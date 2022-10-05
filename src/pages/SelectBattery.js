@@ -15,6 +15,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import CheckoutStepper from "../components/CheckoutStepper";
 import LoadingComponent from "../components/Loading";
+import WhatsApp from "../components/WhatsApp";
 import { API_URL } from "../utils/consts";
 
 function SelectBattery() {
@@ -85,6 +86,7 @@ function SelectBattery() {
           ))}
         </Grid>
       </Box>
+      <WhatsApp />
     </Container>
   );
 }

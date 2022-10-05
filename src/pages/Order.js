@@ -5,6 +5,7 @@ import ClientForm from "../components/ClientForm";
 import { Paper, Typography, Container, Box, Grid } from "@mui/material";
 import LoadingComponent from "../components/Loading";
 import CheckoutStepper from "../components/CheckoutStepper";
+import WhatsApp from "../components/WhatsApp";
 
 const Order = () => {
   const [order, setOrder] = useState(null);
@@ -67,6 +68,7 @@ const Order = () => {
           </Grid>
         </Grid>
       </Box>
+      <WhatsApp />
     </Container>
   );
 };

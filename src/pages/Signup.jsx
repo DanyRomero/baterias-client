@@ -4,15 +4,27 @@ import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Container,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import { API_URL } from "../utils/consts";
-
+import { Delete } from "@mui/icons-material";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 export default function Signup({ authenticate }) {
-  
-  const[users, setUsers]= useState([])
+  const [users, setUsers] = useState([]);
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -42,17 +54,32 @@ export default function Signup({ authenticate }) {
       }
       // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);
-      authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+
+      getUsers();
+      setForm({
+        username: "",
+        password: "",
+      });
     });
   }
 
-    useEffect(()=>{
-      axios
+  const getUsers = () => {
+    axios
       .get(`${API_URL}/usuarios`)
       .then((response) => setUsers(response.data))
       .catch((error) => console.log(error));
-    }, [])
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const deleteUser = (id) => {
+    axios
+      .delete(`${API_URL}/usuarios/${id}`)
+      .then((response) => getUsers())
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Container>
@@ -64,6 +91,8 @@ export default function Signup({ authenticate }) {
           <Grid item>
             <TextField
               size="small"
+              type="text"
+              name="username"
               fullWidth
               id="input-username"
               label="Correo"
@@ -87,25 +116,40 @@ export default function Signup({ authenticate }) {
             />
           </Grid>
 
-          {error && (
-            <div className="error-block">
-              <p>There was an error submiting the form:</p>
-              <p>{error.message}</p>
-            </div>
-          )}
-
           <Grid item>
             <Button variant="contained" type="submit">
               Crear
             </Button>
           </Grid>
         </Grid>
+        {error && (
+          <div className="error-block">
+            <br></br>
+            <Alert severity="error">
+              Hubo un error al mandar la información
+            </Alert>
+          </div>
+        )}
       </form>
-      {users.map((user)=>{
-        <Box key={user._id}>
-          
-        </Box>
-      })}
+      <List sx={{ marginTop: "20px" }}>
+        {users.map((user) => (
+          <Box>
+            <ListItem
+              sx={{
+                color: "text.secondary",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography>{user.username}</Typography>
+              <Button onClick={() => deleteUser(user._id)}>
+                <DeleteOutlineOutlinedIcon />
+              </Button>
+            </ListItem>
+            <Divider component="li" />
+          </Box>
+        ))}
+      </List>
     </Container>
   );
 }

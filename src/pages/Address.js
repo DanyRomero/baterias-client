@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import AddressForm from "../components/AddressForm";
 import CheckoutStepper from "../components/CheckoutStepper";
+import WhatsApp from "../components/WhatsApp";
 
 const Address = () => {
   return (
@@ -17,6 +18,7 @@ const Address = () => {
           </Grid>
         </Grid>
       </Box>
+      <WhatsApp />
     </Container>
   );
 };
