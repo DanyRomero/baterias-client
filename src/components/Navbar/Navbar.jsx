@@ -118,6 +118,7 @@ const Navbar = (props) => {
                     sx={{ color: "#fff" }}
                     onClick={props.handleLogout}
                   >
+                 
                     Logout
                   </Button>
                

@@ -14,6 +14,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -54,7 +55,7 @@ export default function Signup({ authenticate }) {
       }
       // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);
-
+      authenticate(res.data.user);
       getUsers();
       setForm({
         username: "",
@@ -131,25 +132,31 @@ export default function Signup({ authenticate }) {
           </div>
         )}
       </form>
-      <List sx={{ marginTop: "20px" }}>
-        {users.map((user) => (
-          <Box>
-            <ListItem
-              sx={{
-                color: "text.secondary",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography>{user.username}</Typography>
-              <Button onClick={() => deleteUser(user._id)}>
-                <DeleteOutlineOutlinedIcon />
-              </Button>
-            </ListItem>
-            <Divider component="li" />
-          </Box>
-        ))}
-      </List>
+      <Paper>
+        <List sx={{ marginTop: "20px" }}>
+          <ListItem>
+            <strong>Usuarios</strong>
+          </ListItem>
+          <Divider component="li" />
+          {users.map((user) => (
+            <Box key={user._id}>
+              <ListItem
+                sx={{
+                  color: "text.secondary",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography>{user.username}</Typography>
+                <Button onClick={() => deleteUser(user._id)}>
+                  <DeleteOutlineOutlinedIcon />
+                </Button>
+              </ListItem>
+              <Divider component="li" />
+            </Box>
+          ))}
+        </List>
+      </Paper>
     </Container>
   );
 }

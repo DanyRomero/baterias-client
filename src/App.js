@@ -18,6 +18,7 @@ import Order from "./pages/Order";
 import Orders from "./pages/Orders";
 import OrderDetails from "./components/OrderDetails";
 import Address from "./pages/Address";
+import Thanks from "./pages/Thanks"
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -70,6 +71,7 @@ export default function App() {
         <Route path="/bateria" element={<SelectBattery />} />
         <Route path="/direccion" element={<Address />} />
         <Route path="/orden" element={<Order />} />
+        <Route path="/confirmacion" element={<Thanks />} />
 
         <Route
           element={<AdminLayout handleLogout={handleLogout} user={user} />}
@@ -80,7 +82,7 @@ export default function App() {
           />
           <Route 
           path="/usuarios" 
-          element={<Signup /> }
+          element={user ? <Signup authenticate={authenticate}/> : <Navigate to="/admin" replace /> }
           />
           <Route
             path="/marcas"

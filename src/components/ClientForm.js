@@ -12,13 +12,14 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../utils/consts";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ClientForm = () => {
   const [nameClient, setNameClient] = useState("");
   const [lastNameClient, setLastNameClient] = useState("");
   const [phoneClient, setPhoneClient] = useState("");
   const [emailClient, setEmailClient] = useState("");
-
+  const navigate = useNavigate()
   const handleNameChange = (e) => {
     setNameClient(e.target.value);
   };
@@ -41,7 +42,7 @@ const ClientForm = () => {
         phone: phoneClient,
         email: emailClient,
       })
-      .then((response) => console.log(response.data))
+      .then((response) => navigate("/confirmacion"))
       .catch((error) => console.error(error));
   };
 
