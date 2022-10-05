@@ -10,8 +10,8 @@ import { Button, Container, Grid, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-
 import WhatsApp from "../components/WhatsApp";
+
 function HomePage() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
