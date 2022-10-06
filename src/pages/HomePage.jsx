@@ -96,7 +96,7 @@ function HomePage() {
       <Grid item md={4}>
         <Box p={4}>
           <Typography variant="h3" component="h1">
-            Baterias <span style={{ color: "red" }}>LTH</span> a domicilio
+            Baterías <span style={{ color: "red" }}>LTH</span> a domicilio
           </Typography>
 
           <Grid

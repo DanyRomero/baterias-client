@@ -21,14 +21,14 @@ import { API_URL } from "../utils/consts";
 function SelectBattery() {
   const [order, setOrder] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`${API_URL}/ordenes/${localStorage.orderId}`)
       .then((response) => {
         setOrder(response.data);
-       })
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -39,7 +39,7 @@ function SelectBattery() {
       })
       .then((response) => console.log(response.data))
       .catch((error) => console.error(error));
-      navigate("/direccion");
+    navigate("/direccion");
   };
 
   if (!order) {
@@ -51,15 +51,15 @@ function SelectBattery() {
   );
   return (
     <Container sx={{ py: 5 }}>
-      <Box sx={{ p: 3, color: "text.secondary" }}>
+      <Box sx={{ p: 3 }}>
         <CheckoutStepper activeStep={0} />
-        <Typography my={5} variant="h5" color="primary">
+        <Typography my={5} variant="h4" color="primary">
           <strong>Seleccionar batería</strong>
         </Typography>
         <Grid container spacing={3}>
           {selectedYear.batteries.map((battery) => (
             <Grid item xs={12} sm={4} key={battery._id}>
-              <Card>
+              <Card variant="outlined">
                 <CardMedia
                   component="img"
                   alt="battery"

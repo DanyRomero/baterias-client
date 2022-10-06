@@ -47,7 +47,7 @@ const AddressForm = () => {
   return (
     <form onSubmit={sendData}>
       <Stack p={5} spacing={3}>
-        <Typography color="primary">
+        <Typography variant="h4" color="primary">
           <strong>Dirección de envío</strong>
         </Typography>
         <TextField
