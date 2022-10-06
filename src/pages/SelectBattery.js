@@ -50,44 +50,49 @@ function SelectBattery() {
     (year) => year._id === order.year
   );
   return (
-    <Container sx={{ py: 5 }}>
-      <Box sx={{ p: 3 }}>
-        <CheckoutStepper activeStep={0} />
-        <Typography my={5} variant="h4" color="primary">
-          <strong>Seleccionar batería</strong>
-        </Typography>
-        <Grid container spacing={3}>
-          {selectedYear.batteries.map((battery) => (
-            <Grid item xs={12} sm={4} key={battery._id}>
-              <Card variant="outlined">
-                <CardMedia
-                  component="img"
-                  alt="battery"
-                  image="/images/bateria.png"
-                />
-                <CardContent sx={{ color: "text.secondary" }}>
-                  <Typography color="primary" variant="h6" mb={1}>
-                    <strong>{battery.name}</strong>
-                  </Typography>
-                  <Typography variant="body1">
-                    Modelo:{battery.model}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Precio: ${battery.price}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button onClick={() => sendBattery(battery)}>
-                    Seleccionar
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
+    <>
+      <Container>
+        <Grid container sx={{ py: 5 }}>
+          <Grid item xs={12} sm={12} sx={{ p: 3 }}>
+            <CheckoutStepper activeStep={0} />
+            <Typography my={5} variant="h4" color="primary">
+              <strong>Seleccionar batería</strong>
+            </Typography>
+          </Grid>
+          <Grid item container spacing={3}>
+            {selectedYear.batteries.map((battery) => (
+              <Grid item xs={12} sm={4} key={battery._id}>
+                <Card variant="outlined">
+                  <CardMedia
+                    sx={{ maxWidth: "60%", margin: "20px auto" }}
+                    component="img"
+                    alt="battery"
+                    image="/images/bateria.png"
+                  />
+                  <CardContent sx={{ color: "text.secondary" }}>
+                    <Typography color="primary" variant="h6" mb={1}>
+                      <strong>{battery.name}</strong>
+                    </Typography>
+                    <Typography variant="body1">
+                      Modelo:{battery.model}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Precio: ${battery.price}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button onClick={() => sendBattery(battery)}>
+                      Seleccionar
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
-      </Box>
-      <WhatsApp />
-    </Container>
+        <WhatsApp />
+      </Container>
+    </>
   );
 }
 
