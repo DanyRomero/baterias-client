@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import React from 'react'
-
+import moment from 'moment/moment';
 const OrderDetails = (props) => {
   const{ order }= props;
   
@@ -22,6 +22,10 @@ const OrderDetails = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
+          <TableRow>
+            <TableCell>Fecha y hora de la orden</TableCell>
+            <TableCell>{moment(`${order?.completedAt}`).format("DD/MM/YYYY HH:mm a")}</TableCell>
+          </TableRow>
           <TableRow>
             <TableCell>Nombre del cliente</TableCell>
             <TableCell>{order?.client?.name} {order?.client?.lastName}</TableCell>

@@ -21,7 +21,7 @@ const OrdersTable = (props) => {
           <ListItemButton key={order._id} onClick={() => sendOrder(order)}>
             <ListItemText
               primary={`${order.client.name} ${order.client.lastName}`}
-              secondary= {moment(`${order.completedAt}`).format("DD/MM/YYYY HH:mm")}
+              secondary= {moment(`${order.completedAt}`).format("DD/MM/YYYY HH:mm a")}
             ></ListItemText>
           </ListItemButton>
           <Divider component="li" />
