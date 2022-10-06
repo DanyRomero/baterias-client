@@ -2,24 +2,25 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import AddressForm from "../components/AddressForm";
 import CheckoutStepper from "../components/CheckoutStepper";
+import Map from "../components/Map";
 import WhatsApp from "../components/WhatsApp";
 
 const Address = () => {
   return (
-    <Container sx={{ py: 5 }}>
-      <Box elevation={6}>
-        <CheckoutStepper activeStep={1} />
-        <Grid py={5} container spacing={2}>
-          <Grid item md={5}>
-            <AddressForm />
-          </Grid>
-          <Grid item md={5} sx={{ m: 5, py: 5, color: "text.secondary" }}>
-            <img src="/images/map.jpg" />
-          </Grid>
+    <>
+      <Grid container sx={{ minHeight: "100vh" }}>
+        <Grid item md={5}>
+          <Box sx={{ p: 5 }}>
+            <CheckoutStepper activeStep={1} />
+          </Box>
+          <AddressForm />
         </Grid>
-      </Box>
+        <Grid item md={7}>
+          <Map />
+        </Grid>
+      </Grid>
       <WhatsApp />
-    </Container>
+    </>
   );
 };
 
