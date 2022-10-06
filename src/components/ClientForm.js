@@ -48,8 +48,8 @@ const ClientForm = () => {
 
   return (
     <form onSubmit={sendData}>
-      <Stack p={5} spacing={3}>
-        <Typography color="primary">
+      <Stack pb={5} px={5} spacing={3}>
+        <Typography variant="h4" color="primary">
           <strong>Datos de contacto</strong>
         </Typography>
 

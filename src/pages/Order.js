@@ -26,22 +26,25 @@ const Order = () => {
     (year) => year._id === order.year
   );
 
- 
   return (
-    <Container sx={{ py: 5 }}>
-      <Box elevation={6}>
-        <CheckoutStepper activeStep={2}/>
-        <Grid py={5} container spacing={2}>
-          <Grid item md={5}>
-            <ClientForm />
-          </Grid>
-          <Grid item md={5} sx={{ ml: 3, py: 5, color: "text.secondary" }}>
-            <Typography mt={5} color="primary">
+    <>
+      <Grid container sx={{ minHeight: "100vh" }}>
+        <Grid item md={5} xs={12}>
+          <Box sx={{ p: 5 }}>
+            <CheckoutStepper activeStep={2} />
+          </Box>
+          <ClientForm />
+        </Grid>
+        <Grid item container justifyContent="center" md={7} xs={12} sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}>
+          <Box sx={{ p: 5, color: "text.secondary", width: '500px' }}>
+            <Typography mt={5} variant="h4" color="primary">
               <strong>Resumen del pedido</strong>
             </Typography>
             <Typography mt={2}>Dirección de entrega</Typography>
             <Typography>
-              {order.address.addressOne}  {order?.address?.addressTwo}, {order.address.town}, CP {order.address.zipCode},  {order.address.state} 
+              {order.address.addressOne} {order?.address?.addressTwo},{" "}
+              {order.address.town}, CP {order.address.zipCode},{" "}
+              {order.address.state}
             </Typography>
             <hr />
             <Typography>Vehículo</Typography>
@@ -52,10 +55,13 @@ const Order = () => {
             <hr />
             <Typography>Batería</Typography>
             <Typography>{order?.battery?.name}</Typography>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Grid
+              item
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
               <Typography>Modelo {order.battery.model}</Typography>
               <Typography>${order.battery.price}</Typography>
-            </Box>
+            </Grid>
             <hr />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography>
@@ -65,11 +71,11 @@ const Order = () => {
                 <strong>MXN ${order.battery.price}</strong>
               </Typography>
             </Box>
-          </Grid>
+          </Box>
         </Grid>
-      </Box>
+      </Grid>
       <WhatsApp />
-    </Container>
+    </>
   );
 };
 
