@@ -82,7 +82,7 @@ export default function App() {
           />
           <Route 
           path="/usuarios" 
-          element={<Signup />}
+          element={user ? <Signup authenticate={authenticate}/> : <Navigate to="/admin" replace /> }
           />
           <Route
             path="/marcas"
