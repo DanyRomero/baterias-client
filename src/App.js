@@ -16,7 +16,7 @@ import AdminLayout from "./components/AdminLayout";
 import SelectBattery from "./pages/SelectBattery";
 import Order from "./pages/Order";
 import Orders from "./pages/Orders";
-import OrderDetails from "./components/OrderDetails";
+import NotFound from "./pages/NotFound"
 import Address from "./pages/Address";
 import Thanks from "./pages/Thanks"
 
@@ -72,7 +72,7 @@ export default function App() {
         <Route path="/direccion" element={<Address />} />
         <Route path="/orden" element={<Order />} />
         <Route path="/confirmacion" element={<Thanks />} />
-
+        <Route path ="*" element={<NotFound />} />
         <Route
           element={<AdminLayout handleLogout={handleLogout} user={user} />}
         >

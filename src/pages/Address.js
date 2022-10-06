@@ -9,13 +9,13 @@ const Address = () => {
   return (
     <>
       <Grid container sx={{ minHeight: "100vh" }}>
-        <Grid item md={5}>
+        <Grid item xs={12} md={5}>
           <Box sx={{ p: 5 }}>
             <CheckoutStepper activeStep={1} />
           </Box>
           <AddressForm />
         </Grid>
-        <Grid item md={7}>
+        <Grid item xs={12} md={7}>
           <Map />
         </Grid>
       </Grid>

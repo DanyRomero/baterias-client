@@ -31,17 +31,22 @@ const Thanks = () => {
   );
   console.log(order);
   return (
-    <Container sx={{ py: 5 }}>
-      <Grid container spacing={5}>
-        <Grid  mt={5} sm={5} item align="center" sx={{ color: "text.secondary" }}>
-          <CheckCircleOutlinedIcon  color="primary" fontSize="large" />
-          <Typography mt={2}><strong>¡Gracias por tu compra {order.client.name}!</strong></Typography>
-          <Typography mt={2}>
-            Tu orden ha sido confirmada y pronto estaremos contigo
-          </Typography>
+    <>
+      <Grid container sx={{ minHeight: "100vh" }}>
+        <Grid item md={5} xs={12}>
+          <Box sx={{ p: 5, textAlign: "center", color: "text.secondary" }}>
+            <CheckCircleOutlinedIcon color="primary" fontSize="large" />
+            <Typography mt={2}>
+              <strong>¡Gracias por tu compra {order.client.name}!</strong>
+            </Typography>
+            <Typography mt={2}>
+              Tu orden ha sido confirmada y pronto estaremos contigo
+            </Typography>
+          </Box>
         </Grid>
-        <Grid item sm={7}>
-          <Typography mt={5} color="primary">
+        <Grid item container justifyContent="center" md={7} xs={12} sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}>
+          <Box sx={{ p: 4, color: "text.secondary", width: '500px' }}>
+          <Typography mt={5} variant="h4" color="primary">
             <strong>Detalle del pedido</strong>
           </Typography>
           <Grid container mt={2}>
@@ -122,10 +127,11 @@ const Thanks = () => {
               Recuerda que puedes contactarnos por WhatsApp en cualquier momento
             </strong>
           </Typography>
+          </Box>
         </Grid>
       </Grid>
       <WhatsApp />
-    </Container>
+    </>
   );
 };
 

@@ -72,7 +72,7 @@ function HomePage() {
         <Stack height="100%">
           <img
             width="100%"
-            src="/images/car.png"
+            src="/images/carr.png"
             style={{ flexGrow: 1, objectFit: "cover" }}
           />
           <marquee
