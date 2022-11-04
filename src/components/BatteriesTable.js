@@ -62,7 +62,7 @@ const BatteriesTable = (props) => {
               <strong>Modelo</strong>
             </TableCell>
             <TableCell>
-              <strong>Marca</strong>
+              <strong>Línea</strong>
             </TableCell>
             <TableCell>
               <strong>Precio</strong>

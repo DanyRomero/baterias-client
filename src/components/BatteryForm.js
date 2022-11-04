@@ -53,18 +53,18 @@ const BatteryForm = (props) => {
 
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="demo-simple-select-standard-label">
-                Marca
+                Línea
               </InputLabel>
               <Select
                 labelId="demo-simple-select-standard-label"
                 id="demo-simple-select-standard"
                 value={batteryBrandInput}
                 onChange={(e) => setBatteryBrandInput(e.target.value)}
-                label="Marca"
+                label="Línea"
               >
                 <MenuItem value={"AGM"}>AGM</MenuItem>
-                <MenuItem value={"Full Power"}>Full Power</MenuItem>
                 <MenuItem value={"LTH"}>LTH</MenuItem>
+                <MenuItem value={"Full Power"}>Full Power</MenuItem>
               </Select>
             </FormControl>
            
@@ -84,7 +84,7 @@ const BatteryForm = (props) => {
               type="number"
               required
               margin="dense"
-              label="Garantía"
+              label="Garantía en meses"
               variant="standard"
               fullWidth
               name="guarantee"
