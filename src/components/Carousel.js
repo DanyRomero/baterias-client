@@ -26,7 +26,7 @@ const testimonials = [
   },
   {
     client: "Gerardo Ríos Aguila",
-    description: `Cambié mi batería hace poco y me orientaron.y recomendaron la batería 
+    description: `Cambié mi batería hace poco y me orientaron y recomendaron la batería 
     más óptima para mi vehículo. Ampliamente recomendable`,
   },
   {
@@ -107,11 +107,13 @@ export default function Carousel() {
                   color="text.secondary"
                   fontWeight="bold"
                   textAlign="center"
+                  ml={1}
                 >
                   Cliente de Distelub
                 </Typography>
               </Box>
             </SwiperSlide>
+           
           );
         })}
       </Swiper>

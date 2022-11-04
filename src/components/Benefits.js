@@ -52,7 +52,7 @@ const Benefits = () => {
               <Typography my={1} ml={3} variant="body2">
                 Te brindaremos las opciones adecuadas para tu vehículo, de las
                 cuales tu podrás elegir la de tu agrado. Recuerda que
-                podrás contar con asesoría personalizada.
+                podrás contar con <span style={{textDecoration:"underline"}}>asesoría personalizada</span>.
               </Typography>
             </Box>
           </Box>
@@ -76,7 +76,7 @@ const Benefits = () => {
                 Programa tu instalación
               </Typography>
               <Typography my={1} ml={3} variant="body2">
-                Obtendrás tu batería en menos de 24 horas en el domicilio
+                Obtendrás tu batería en menos de <span style={{textDecoration:"underline"}}>24 horas</span> en el domicilio
                 de tu elección
               </Typography>
             </Box>
@@ -127,8 +127,8 @@ const Benefits = () => {
               </Typography>
               <Typography my={1} ml={3} variant="body2">
                 Podrás obtener descuentos durante tu proceso de compra,
-                simplemente al pedir por este medio ya tendrás $200 MXN de
-                descuento
+                simplemente al pedir por este medio ya tendrás <span style={{textDecoration:"underline"}}>$200 MXN de
+                descuento</span> 
               </Typography>
             </Box>
           </Box>

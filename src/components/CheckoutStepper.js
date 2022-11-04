@@ -6,7 +6,7 @@ const CheckoutStepper = (props) => {
   return (
     <Stepper activeStep={activeStep}>
       <Step>
-        <StepLabel>Escoge Bateria</StepLabel>
+        <StepLabel>Escoge tu Bateria</StepLabel>
       </Step>
       <Step>
         <StepLabel>Programa tu servicio</StepLabel>

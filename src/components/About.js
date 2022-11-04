@@ -15,7 +15,7 @@ const About = () => {
         </Typography>
 
         <Typography
-          variant="body"
+          variant="body1"
           component="p"
           align="center"
           color="text.secondary"
@@ -28,7 +28,7 @@ const About = () => {
         </Typography>
         <br />
         <Typography
-          variant="body"
+          variant="body1"
           component="p"
           align="center"
           color="text.secondary"

@@ -77,38 +77,24 @@ function SelectBattery() {
                   />
                   <CardContent sx={{ color: "text.secondary" }}>
                     <Typography color="primary" variant="h6" mb={1}>
-                      <strong>{battery.name}</strong>
+                      <strong>{battery.model}</strong>
                     </Typography>
                     <Box display="flex" my={1}>
                       <Typography
+                        
                         variant="h6"
                         fontWeight="bold"
                         color="primary.dark"
                         mr={2}
                       >
-                        Precio: ${battery.price-400}
+                        Precio: ${battery.price - 200}
                       </Typography>
-                      <Box>
-                        <Typography
-                          variant="body2" fontWeight="bold"
-                        >
-                          Descuento de $200 MXN por comprar en este medio
-                         </Typography>
-                        <Typography
-                          variant="body2" fontWeight="bold"
-                        >
-                          Y al menos $200 MXN entregando batería usada
-                         </Typography>
-                        <Typography
-                          variant="body2"
-                        >
-                          *Excepto baterías de gel
-                         </Typography>
-                      </Box>
+                      <Typography variant="body2" fontWeight="bold">
+                        CUPÓN -$200 MXN
+                      </Typography>
                     </Box>
                     <Typography variant="body2" fontWeight="bold" my={2}>
-                      Precio regular: ${battery.price} sin entregar batería
-                      usada
+                      Precio regular: ${battery.price} MXN
                     </Typography>
                     <Button
                       variant="contained"
@@ -118,10 +104,7 @@ function SelectBattery() {
                       Comprar ahora
                     </Button>
                     <Box>
-                      <Typography variant="body2" mt={3}>
-                        Modelo:{battery.model}
-                      </Typography>
-                      <Box display="flex">
+                      <Box display="flex" mt={2}>
                         <RecommendOutlinedIcon fontSize="small" />
                         <Typography variant="body2" ml={1}>
                           Garantía:{battery.garanty} meses
@@ -147,6 +130,7 @@ function SelectBattery() {
                       </Box>
                     </Box>
                   </CardContent>
+                  <Button fullWidth>Detalles</Button>
                 </Card>
               </Grid>
             ))}
