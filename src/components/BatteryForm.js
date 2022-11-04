@@ -4,7 +4,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
 
 const BatteryForm = (props) => {
   const { open, onClose, onSubmit, submitText, battery } = props;
@@ -50,17 +50,24 @@ const BatteryForm = (props) => {
               value={batteryModelInput}
               onChange={(e) => setBatteryModelInput(e.target.value)}
             />
-            <TextField
-              required
-              margin="dense"
-              label="Marca"
-              variant="standard"
-              fullWidth
-              name="brand"
-              value={batteryBrandInput}
-              onChange={(e) => setBatteryBrandInput(e.target.value)}
-            />
-      
+
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+              <InputLabel id="demo-simple-select-standard-label">
+                Marca
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={batteryBrandInput}
+                onChange={(e) => setBatteryBrandInput(e.target.value)}
+                label="Marca"
+              >
+                <MenuItem value={"AGM"}>AGM</MenuItem>
+                <MenuItem value={"Full Power"}>Full Power</MenuItem>
+                <MenuItem value={"LTH"}>LTH</MenuItem>
+              </Select>
+            </FormControl>
+           
 
             <TextField
               type="number"
