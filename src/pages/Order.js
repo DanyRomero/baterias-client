@@ -54,12 +54,12 @@ const Order = () => {
             </Typography>
             <hr />
             <Typography>Batería</Typography>
-            <Typography>{order?.battery?.name}</Typography>
+            <Typography>Modelo {order.battery.model}</Typography>
             <Grid
               item
               sx={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Typography>Modelo {order.battery.model}</Typography>
+              <Typography>Marca {order.battery.brand}</Typography>
               <Typography>${order.battery.price}</Typography>
             </Grid>
             <hr />

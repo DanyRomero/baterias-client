@@ -99,14 +99,14 @@ const YearsForm = (props) => {
                       const selectedBattery = batteries.find(
                         (battery) => value === battery._id
                       );
-                      return <Chip key={value} label={selectedBattery?.name} />;
+                      return <Chip key={value} label={selectedBattery?.model} />;
                     })}
                   </Box>
                 )}
               >
                 {batteries.map((battery) => (
                   <MenuItem key={battery._id} value={battery._id}>
-                    {battery.name}
+                    {battery.model}
                   </MenuItem>
                 ))}
               </Select>

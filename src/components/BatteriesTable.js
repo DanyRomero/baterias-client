@@ -57,14 +57,22 @@ const BatteriesTable = (props) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>
-              <strong>Nombre</strong>
-            </TableCell>
+         
             <TableCell>
               <strong>Modelo</strong>
             </TableCell>
             <TableCell>
+              <strong>Marca</strong>
+            </TableCell>
+            <TableCell>
               <strong>Precio</strong>
+            </TableCell>
+            <TableCell>
+              <strong>Amperes</strong>
+            </TableCell>
+            <TableCell>
+              <strong>Garantía
+              </strong>
             </TableCell>
             <TableCell></TableCell>
           </TableRow>
@@ -72,9 +80,12 @@ const BatteriesTable = (props) => {
         <TableBody>
           {filteredBatteries.map((battery) => (
             <TableRow key={battery._id}>
-              <TableCell>{battery.name}</TableCell>
+              
               <TableCell>{battery.model}</TableCell>
+              <TableCell>{battery.brand}</TableCell>
               <TableCell>$ {battery.price}</TableCell>
+              <TableCell> {battery.amps} amperes</TableCell>
+              <TableCell>{battery.guarantee} meses</TableCell>
               <TableCell align="right">
                 <div>
                   <Button onClick={() => deleteBattery(battery._id)}>

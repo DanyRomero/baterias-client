@@ -23,6 +23,7 @@ import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import { border } from "@mui/system";
+import StarIcon from "@mui/icons-material/Star";
 
 function SelectBattery() {
   const [order, setOrder] = useState(null);
@@ -55,6 +56,13 @@ function SelectBattery() {
   const selectedYear = order.model.years.find(
     (year) => year._id === order.year
   );
+
+  const expensiveBattery = selectedYear.batteries.reduce((max, min) =>
+    max.price > min.price ? max : min
+  );
+
+  console.log("selected year", selectedYear);
+  console.log("expensive", expensiveBattery);
   return (
     <>
       <Container>
@@ -68,7 +76,23 @@ function SelectBattery() {
           <Grid item container spacing={3}>
             {selectedYear.batteries.map((battery) => (
               <Grid item xs={12} sm={4} key={battery._id}>
-                <Card variant="outlined">
+                <Card variant="outlined" sx={{ position: "relative" }}>
+                  {expensiveBattery._id === battery._id && (
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      p={1}
+                      position="absolute"
+                      bgcolor="red"
+                      color="white"
+                      borderRadius="0 10px"
+                    >
+                      <StarIcon />
+                      <Typography sx={{ color: "white" }}>
+                        Recomendada
+                      </Typography>
+                    </Box>
+                  )}
                   <CardMedia
                     sx={{ maxWidth: "60%", margin: "20px auto" }}
                     component="img"
@@ -81,7 +105,6 @@ function SelectBattery() {
                     </Typography>
                     <Box display="flex" my={1}>
                       <Typography
-                        
                         variant="h6"
                         fontWeight="bold"
                         color="primary.dark"
@@ -107,7 +130,7 @@ function SelectBattery() {
                       <Box display="flex" mt={2}>
                         <RecommendOutlinedIcon fontSize="small" />
                         <Typography variant="body2" ml={1}>
-                          Garantía:{battery.garanty} meses
+                          Garantía:{battery.guarantee} meses
                         </Typography>
                       </Box>
                       <Box display="flex">
@@ -125,7 +148,7 @@ function SelectBattery() {
                       <Box display="flex">
                         <BoltOutlinedIcon fontSize="small" />
                         <Typography variant="body2" ml={1}>
-                          Capacidad de arranque de {battery.start} amperes
+                          Capacidad de arranque de {battery.amps} amperes
                         </Typography>
                       </Box>
                     </Box>

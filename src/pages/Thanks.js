@@ -94,10 +94,11 @@ const Thanks = () => {
           <Grid container>
             <Grid item xs={6} sm={4}>
               <DynamicFormOutlinedIcon />
-              <Typography>Batería {order?.battery?.name}</Typography>
+              <Typography>Batería</Typography>
             </Grid>
             <Grid item xs={6} sm={8}>
               <Typography>Modelo {order.battery.model}</Typography>
+              <Typography>Marca {order.battery.brand}</Typography>
             </Grid>
           </Grid>
           <hr />

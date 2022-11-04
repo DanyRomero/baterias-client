@@ -44,11 +44,11 @@ const OrderDetails = (props) => {
           </TableRow>
           <TableRow>
             <TableCell>Batería</TableCell>
-            <TableCell>{order?.battery?.name}</TableCell>
+            <TableCell>Modelo {order?.battery?.model}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>Modelo {order?.battery?.model}</TableCell>
+            <TableCell>Marca {order?.battery?.brand}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell></TableCell>
