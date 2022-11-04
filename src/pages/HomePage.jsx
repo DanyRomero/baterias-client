@@ -8,10 +8,12 @@ import { API_URL } from "../utils/consts";
 import axios from "axios";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import WhatsApp from "../components/WhatsApp";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import Benefits from "../components/Benefits";
+import About from "../components/About";
+import CheckoutStepper from "../components/CheckoutStepper";
+import Footer from "../components/Footer";
+import Carousel from "../components/Carousel";
 
 function HomePage() {
   const [brand, setBrand] = useState("");
@@ -67,146 +69,143 @@ function HomePage() {
   }, []);
 
   return (
-    <Grid container sx={{ minHeight: "100vh" }}>
-      <Grid item md={8}>
-        <Stack height="100%">
-          <img
-            width="100%"
-            src="/images/carr.png"
-            style={{ flexGrow: 1, objectFit: "cover" }}
-          />
-          <marquee
-            style={{
-              marginTop: "-4px",
-              color: "white",
-              backgroundColor: "rgb(239, 21, 36)",
-              height: "40px",
-              fontSize: "20px",
-            }}
-            behavior="loop"
-            speed="normal"
-            direction="right"
-            scrollamount="6"
-          >
-            Diagnóstico e instalación sin costo.* En la compra de la batería
-          </marquee>
-        </Stack>
-        <WhatsApp />
-      </Grid>
-      <Grid item md={4}>
-        <Box p={4}>
-          <Typography variant="h3" component="h1">
-            Baterías <span style={{ color: "red" }}>LTH</span> a domicilio
-          </Typography>
+    <>
+      <Grid container sx={{ minHeight: "100vh" }}>
+        <Grid item md={8} sx={{ position: "relative" }}>
+          <Stack height="100%">
+            <Box
+              sx={{
+                position: "absolute",
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                background:
+                  "linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(2,0,36,0) 100%)",
+                pt: 1,
+              }}
+            >
+              <img src="/images/logoD.png" alt="" width="80px" />
+              <Typography variant="h5" component="h1" sx={{ color: "white" }}>
+                Distelub
+              </Typography>
+            </Box>
+            <img
+              width="100%"
+              src="/images/carr.png"
+              style={{ flexGrow: 1, objectFit: "cover" }}
+            />
+          </Stack>
+          <WhatsApp />
+        </Grid>
+        <Grid item md={4}>
+          <Box p={4}>
+            <Typography variant="h3" component="h1" mb={4}>
+              Baterías <span style={{ color: "red" }}>LTH</span> a domicilio
+            </Typography>
 
-          <Grid
-            container
-            align="center"
-            justifyContent="center"
-            spacing={2}
-            my={2}
-          >
-            <Grid item sm={4} color="text.secondary">
-              <PaidOutlinedIcon fontSize="large" color="primary" />
-              <Typography mt={1} variant="body2">
-                Paga en efectivo o tarjeta a la entrega
-              </Typography>
-            </Grid>
-            <Grid item sm={4} color="text.secondary">
-              <LocalOfferOutlinedIcon fontSize="large" color="primary" />
-              <Typography mt={1} variant="body2">
-                Descuento por tu batería usada
-              </Typography>
-            </Grid>
-            <Grid item sm={4} color="text.secondary">
-              <AccessTimeIcon fontSize="large" color="primary" />
-              <Typography mt={1} variant="body2">
-                Recíbela en menos de 24 horas
-              </Typography>
-            </Grid>
-          </Grid>
-
-          <form onSubmit={handleSubmit}>
-            <Stack py={5} spacing={3}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Marca</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={brand}
-                  label="Marca"
-                  onChange={handleBrandChange}
+            <Typography variant="body1" component="p" mb={3}>
+              Al ingresar tus datos, te ayudamos a encontrar la batería ideal
+              para tu vehículo y te la llevamos hasta la puerta de tu casa en 3
+              sencillos pasos.
+            </Typography>
+            <CheckoutStepper />
+            <Typography
+              variant="body1"
+              component="p"
+              mt={3}
+              sx={{
+                textAlign: "center",
+              }}
+            >
+              <strong>Inicia aquí y obtén un cupón de $200 pesos.</strong>
+            </Typography>
+            <form onSubmit={handleSubmit}>
+              <Stack py={5} spacing={3}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Marca</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={brand}
+                    label="Marca"
+                    onChange={handleBrandChange}
+                  >
+                    {brands.map((brand) => {
+                      return (
+                        <MenuItem key={brand._id} value={brand._id}>
+                          {brand.name}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+                <FormControl fullWidth>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    disabled={brand === ""}
+                  >
+                    Modelo
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={model}
+                    label="Modelo"
+                    disabled={brand === ""}
+                    onChange={handleModelChange}
+                  >
+                    {models.map((model) => {
+                      return (
+                        <MenuItem key={model._id} value={model._id}>
+                          {model.name}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+                <FormControl fullWidth>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    disabled={selectedModel === undefined}
+                  >
+                    Año
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={year}
+                    label="Año"
+                    onChange={handleYearChange}
+                    disabled={selectedModel === undefined}
+                  >
+                    {selectedModel?.years?.map((year) => {
+                      return (
+                        <MenuItem key={year._id} value={year._id}>
+                          {year.from} - {year.to}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                  disabled={year === ""}
                 >
-                  {brands.map((brand) => {
-                    return (
-                      <MenuItem key={brand._id} value={brand._id}>
-                        {brand.name}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-              <FormControl fullWidth>
-                <InputLabel
-                  id="demo-simple-select-label"
-                  disabled={brand === ""}
-                >
-                  Modelo
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={model}
-                  label="Modelo"
-                  disabled={brand === ""}
-                  onChange={handleModelChange}
-                >
-                  {models.map((model) => {
-                    return (
-                      <MenuItem key={model._id} value={model._id}>
-                        {model.name}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-              <FormControl fullWidth>
-                <InputLabel
-                  id="demo-simple-select-label"
-                  disabled={selectedModel === undefined}
-                >
-                  Año
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={year}
-                  label="Año"
-                  onChange={handleYearChange}
-                  disabled={selectedModel === undefined}
-                >
-                  {selectedModel?.years?.map((year) => {
-                    return (
-                      <MenuItem key={year._id} value={year._id}>
-                        {year.from} - {year.to}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-              <Button
-                type="submit"
-                variant="contained"
-                size="large"
-                disabled={year === ""}
-              >
-                Continuar
-              </Button>
-            </Stack>
-          </form>
-        </Box>
+                  Continuar
+                </Button>
+              </Stack>
+            </form>
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
+
+      <Benefits />
+      <Carousel />
+      <About />
+      <Footer />
+    </>
   );
 }
 

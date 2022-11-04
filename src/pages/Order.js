@@ -38,7 +38,7 @@ const Order = () => {
         <Grid item container justifyContent="center" md={7} xs={12} sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}>
           <Box sx={{ p: 5, color: "text.secondary", width: '500px' }}>
             <Typography mt={5} variant="h4" color="primary">
-              <strong>Resumen del pedido</strong>
+              <strong>Verifica la información de tu pedido</strong>
             </Typography>
             <Typography mt={2}>Dirección de entrega</Typography>
             <Typography>

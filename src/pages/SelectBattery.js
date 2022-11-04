@@ -14,9 +14,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import CheckoutStepper from "../components/CheckoutStepper";
+import Footer from "../components/Footer";
 import LoadingComponent from "../components/Loading";
 import WhatsApp from "../components/WhatsApp";
 import { API_URL } from "../utils/consts";
+import RecommendOutlinedIcon from "@mui/icons-material/RecommendOutlined";
+import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
+import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
+import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
+import { border } from "@mui/system";
 
 function SelectBattery() {
   const [order, setOrder] = useState(null);
@@ -73,18 +79,74 @@ function SelectBattery() {
                     <Typography color="primary" variant="h6" mb={1}>
                       <strong>{battery.name}</strong>
                     </Typography>
-                    <Typography variant="body1">
-                      Modelo:{battery.model}
+                    <Box display="flex" my={1}>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        color="primary.dark"
+                        mr={2}
+                      >
+                        Precio: ${battery.price-400}
+                      </Typography>
+                      <Box>
+                        <Typography
+                          variant="body2" fontWeight="bold"
+                        >
+                          Descuento de $200 MXN por comprar en este medio
+                         </Typography>
+                        <Typography
+                          variant="body2" fontWeight="bold"
+                        >
+                          Y al menos $200 MXN entregando batería usada
+                         </Typography>
+                        <Typography
+                          variant="body2"
+                        >
+                          *Excepto baterías de gel
+                         </Typography>
+                      </Box>
+                    </Box>
+                    <Typography variant="body2" fontWeight="bold" my={2}>
+                      Precio regular: ${battery.price} sin entregar batería
+                      usada
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Precio: ${battery.price}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button onClick={() => sendBattery(battery)}>
-                      Seleccionar
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      onClick={() => sendBattery(battery)}
+                    >
+                      Comprar ahora
                     </Button>
-                  </CardActions>
+                    <Box>
+                      <Typography variant="body2" mt={3}>
+                        Modelo:{battery.model}
+                      </Typography>
+                      <Box display="flex">
+                        <RecommendOutlinedIcon fontSize="small" />
+                        <Typography variant="body2" ml={1}>
+                          Garantía:{battery.garanty} meses
+                        </Typography>
+                      </Box>
+                      <Box display="flex">
+                        <SupportAgentOutlinedIcon fontSize="small" />
+                        <Typography variant="body2" ml={1}>
+                          Incluye servicio de auxilio en el camino sin costo
+                        </Typography>
+                      </Box>
+                      <Box display="flex">
+                        <PaymentOutlinedIcon fontSize="small" />
+                        <Typography variant="body2" ml={1}>
+                          Paga a meses sin intereses
+                        </Typography>
+                      </Box>
+                      <Box display="flex">
+                        <BoltOutlinedIcon fontSize="small" />
+                        <Typography variant="body2" ml={1}>
+                          Capacidad de arranque de {battery.start} amperes
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </CardContent>
                 </Card>
               </Grid>
             ))}
@@ -92,6 +154,7 @@ function SelectBattery() {
         </Grid>
         <WhatsApp />
       </Container>
+      <Footer />
     </>
   );
 }
