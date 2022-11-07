@@ -6,23 +6,44 @@ import Modal from "@mui/material/Modal";
 import { Divider, Grid } from "@mui/material";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 
+
+const modalWrapper = {
+  overflow:"auto",
+  maxHeight:"85vh",
+  display:"flex",
+};
+
+const modalBlock = {
+  position:"relative",
+  zIndex:0,
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"center",
+  margin:"auto",
+}
+
+const modalContentStyle ={
+  position:"relative",
+  background:"#fff",
+  boxShadow:24,
+  mt:3,
+  width:"60%",
+  mb:3,
+  borderRadius:"10px",
+  bgcolor: "background.paper",
+  borderRadius: "15px",
+  boxShadow: 24,
+  color: "#364A63",
+  p: 4,
+};
+
+
 const FullPowerModal = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "60%",
-    bgcolor: "background.paper",
-    borderRadius: "15px",
-    boxShadow: 24,
-    color: "#364A63",
-    p: 4,
-  };
+
 
   return (
     <div>
@@ -34,9 +55,11 @@ const FullPowerModal = () => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={modalWrapper}
         
       >
-        <Box sx={style}>
+        <Box sx={modalBlock}>
+        <Box sx={modalContentStyle}>
           <Box display="flex" justifyContent="space-between">
             <Box display="flex" alignItems="center">
               <img width="100vw" src="/images/FullPowerLogo.png" alt="" />
@@ -159,6 +182,7 @@ const FullPowerModal = () => {
             src="/images/FullBattery.png"
             alt=""
           />
+        </Box>
         </Box>
       </Modal>
     </div>
