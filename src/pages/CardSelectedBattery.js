@@ -100,7 +100,7 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
         </CardContent>
         {battery.brand === "LTH" && <LthModal />}
         {battery.brand === "AGM" && <AgmModal />}
-        {battery.brand === "Full Power" && <LthModal />}
+        {battery.brand === "Full Power" && <FullPowerModal />}
       </Card>
     </Grid>
   );
