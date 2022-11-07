@@ -22,18 +22,17 @@ const modalBlock = {
 }
 
 const modalContentStyle ={
-  position:"relative",
-  background:"#fff",
-  boxShadow:24,
-  mt:3,
-  width:"60%",
-  mb:3,
-  borderRadius:"10px",
+  position: "relative",
+  background: "#fff",
+  boxShadow: 24,
+  width: "60%",
+  margin: "70px",
+  borderRadius: "10px",
   bgcolor: "background.paper",
   borderRadius: "15px",
   boxShadow: 24,
   color: "#364A63",
-  p: 4,
+  padding: "25px",
 };
 
 
@@ -58,7 +57,7 @@ const LthModal = () => {
       >
       <Box sx={modalBlock}>
         <Box sx={modalContentStyle}>
-          <Box display="flex" justifyContent="space-between">
+          <Grid container display="flex" justifyContent="space-between">
             <Box display="flex" alignItems="center">
               <img width="100vw" src="/images/lthLogo.png" alt="" />
               <Typography ml={2} fontWeight="bold">Línea - LTH</Typography>
@@ -66,7 +65,7 @@ const LthModal = () => {
             <Typography variant="h6" fontWeight="bold">
               Energía que no se detiene
             </Typography>
-          </Box>
+          </Grid>
           <Grid container mt={2} spacing={4}>
             <Grid item md={6} p={1}>
               <Typography
@@ -129,6 +128,8 @@ const LthModal = () => {
             Características
           </Typography>
           <Box bgcolor="#ECF2F7" borderRadius="15px" p={3} position="relative">
+           <Grid container>
+            <Grid item md={7}>
             <Box display="flex">
               <CheckOutlinedIcon fontSize="small" />
               <Typography ml={1}>
@@ -154,8 +155,13 @@ const LthModal = () => {
             <Typography ml={1} fontWeight="bold" mt={1}>
               LTH® es el acumulador #1 en ventas en México.
             </Typography>
+            </Grid>
+            <Grid item md={5}>
+            <img width="100%" src="/images/lthBattery.png" alt="" />
+            </Grid>
+           </Grid>
           </Box>
-          <img style={{position:"absolute", right:"30px", maxWidth:"300px", bottom:0}} src="/images/lthBattery.png" alt="" />
+          
         </Box>
       </Box>
       </Modal>

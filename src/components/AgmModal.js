@@ -7,42 +7,39 @@ import { Grid } from "@mui/material";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 
 const modalWrapper = {
-  overflow:"auto",
-  maxHeight:"85vh",
-  display:"flex",
+  overflow: "auto",
+  maxHeight: "85vh",
+  display: "flex",
 };
 
 const modalBlock = {
-  position:"relative",
-  zIndex:0,
-  display:"flex",
-  alignItems:"center",
-  justifyContent:"center",
-  margin:"auto",
-}
+  position: "relative",
+  zIndex: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "auto",
+  
+};
 
-const modalContentStyle ={
-  position:"relative",
-  background:"#fff",
-  boxShadow:24,
-  mt:3,
-  width:"60%",
-  mb:3,
-  borderRadius:"10px",
+const modalContentStyle = {
+  position: "relative",
+  background: "#fff",
+  boxShadow: 24,
+  width: "60%",
+  margin:"70px",
+  borderRadius: "10px",
   bgcolor: "background.paper",
   borderRadius: "15px",
   boxShadow: 24,
   color: "#364A63",
-  p: 4,
+  padding:"25px",
 };
-
 
 const AgmModal = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  
 
   return (
     <div>
@@ -57,166 +54,188 @@ const AgmModal = () => {
         sx={modalWrapper}
       >
         <Box sx={modalBlock}>
-        <Box sx={modalContentStyle}>
-          <Box display="flex" justifyContent="space-between">
-            <Box display="flex" alignItems="center">
-              <img width="100vw" src="/images/agmLogo.png" alt="" />
-              <Typography ml={2} fontWeight="bold">Línea - AGM</Typography>
-            </Box>
-            <Typography variant="h6" fontWeight="bold">
-              Energía que no se detiene
+          <Box sx={modalContentStyle}>
+            <Grid container display="flex" justifyContent="space-between">
+              <Box display="flex" alignItems="center">
+                <img width="100vw" src="/images/agmLogo.png" alt="" />
+                <Typography ml={2} fontWeight="bold">
+                  Línea - AGM
+                </Typography>
+              </Box>
+              <Typography variant="h6" fontWeight="bold">
+                Energía que no se detiene
+              </Typography>
+            </Grid>
+            <Grid container mt={2} spacing={4}>
+              <Grid item md={6} p={1}>
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  fontWeight="bold"
+                >
+                  La energía del futuro, hoy
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  LTH AGM es la mejor batería de placa plana en el mercado. Su
+                  avanzada tecnología la hace más confiable, duradera y
+                  poderosa, asegurando el mejor desempeño para los vehículos
+                  actuales.
+                </Typography>
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  fontWeight="bold"
+                  mt={5}
+                >
+                  Automotriz
+                </Typography>
+                <Box display="flex" alignItems="center">
+                  <Typography
+                    width="85px"
+                    variant="h2"
+                    color="white"
+                    bgcolor="red"
+                    borderRadius="15px"
+                    m={1}
+                    textAlign="center"
+                  >
+                    5
+                  </Typography>
+                  <Typography variant="h4">Años de garantía</Typography>
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography
+                    width="85px"
+                    variant="h2"
+                    color="white"
+                    bgcolor="blue"
+                    borderRadius="15px"
+                    p={1}
+                    m={1}
+                  >
+                    18
+                  </Typography>
+                  <Typography variant="h4">
+                    Meses de reemplazo sin costo
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={6}>
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  fontWeight="bold"
+                >
+                  Idel para vehículos con:
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  -Accesorios o equipados
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Alta demanda eléctrica
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Batería AGM de fábrica
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Batería debajo del asiento o en cajuela
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Sistema Start-Stop
+                </Typography>
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  fontWeight="bold"
+                  mt={2}
+                >
+                  Servicio Pesado
+                </Typography>
+                <Box display="flex" alignItems="center">
+                  <Typography
+                    width="85px"
+                    variant="h2"
+                    color="white"
+                    bgcolor="red"
+                    borderRadius="15px"
+                    m={1}
+                  >
+                    20
+                  </Typography>
+                  <Typography variant="h4">Meses de garantía</Typography>
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography
+                    variant="h2"
+                    color="white"
+                    bgcolor="blue"
+                    borderRadius="15px"
+                    p={1}
+                    m={1}
+                  >
+                    10
+                  </Typography>
+                  <Typography variant="h4">
+                    Meses de reemplazo sin costo
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+            <Typography variant="h6" fontWeight="bold" my={2}>
+              Características
             </Typography>
+            <Box
+              bgcolor="#ECF2F7"
+              borderRadius="15px"
+              p={3}
+              position="relative"
+            >
+              <Grid container>
+                <Grid item md={7}>
+                  <Box display="flex">
+                    <CheckOutlinedIcon fontSize="small" />
+                    <Typography ml={1}>
+                      Tecnología patentada POWERFRAME® en ambas rejillas.
+                    </Typography>
+                  </Box>
+                  <Box display="flex">
+                    <CheckOutlinedIcon fontSize="small" />
+                    <Typography ml={1}>
+                      Avanzada tecnología Absorvent Glass Mat (AGM).
+                    </Typography>
+                  </Box>
+                  <Box display="flex">
+                    <CheckOutlinedIcon fontSize="small" />
+                    <Typography ml={1}>
+                      Hasta 2 veces más duración y garantía que una batería
+                      convencional estándar.
+                    </Typography>
+                  </Box>
+                  <Box display="flex">
+                    <CheckOutlinedIcon fontSize="small" />
+                    <Typography ml={1}>
+                      Alta resistencia a la vibración.
+                    </Typography>
+                  </Box>
+                  <Box display="flex">
+                    <CheckOutlinedIcon fontSize="small" />
+                    <Typography ml={1}>Libre de derrames.</Typography>
+                  </Box>
+                </Grid>
+                <Grid item md={5} sx={{display:"flex", alignItems:"center"}}>
+                  <img
+                    style={{maxWidth:"100%"}}
+                    src="/images/agmBattery.png"
+                    alt=""
+                  />
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
-          <Grid container mt={2} spacing={4}>
-            <Grid item md={6} p={1}>
-              <Typography
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                fontWeight="bold"
-              >
-                La energía del futuro, hoy
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                LTH AGM es la mejor batería de placa plana en el mercado. Su avanzada tecnología
-                la hace más confiable, duradera y poderosa, asegurando el mejor desempeño para los
-                vehículos actuales.
-              </Typography>
-              <Typography
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                fontWeight="bold"
-                mt={5}
-              >
-                Automotriz
-              </Typography>
-              <Box display="flex" alignItems="center">
-                <Typography
-                  width="85px"
-                  variant="h2"
-                  color="white"
-                  bgcolor="red"
-                  borderRadius="15px"
-                  m={1}
-                  textAlign="center"
-                >
-                  5
-                </Typography>
-                <Typography variant="h4">Años de garantía</Typography>
-              </Box>
-              <Box display="flex" alignItems="center">
-                <Typography
-                  width="85px"
-                  variant="h2"
-                  color="white"
-                  bgcolor="blue"
-                  borderRadius="15px"
-                  p={1}
-                  m={1}
-                >
-                  18
-                </Typography>
-                <Typography variant="h4">
-                  Meses de reemplazo sin costo
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item md={6}>
-            <Typography
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                fontWeight="bold"
-              >
-                Idel para vehículos con:
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                -Accesorios o equipados
-              </Typography>
-              <Typography id="modal-modal-description">
-                -Alta demanda eléctrica
-              </Typography>
-              <Typography id="modal-modal-description">
-                -Batería AGM de fábrica
-              </Typography>
-              <Typography id="modal-modal-description">
-                -Batería debajo del asiento o en cajuela
-              </Typography>
-              <Typography id="modal-modal-description">
-                -Sistema Start-Stop
-              </Typography>
-              <Typography
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                fontWeight="bold"
-                mt={2}
-              >
-                Servicio Pesado
-              </Typography>
-              <Box display="flex" alignItems="center">
-                <Typography
-                  variant="h2"
-                  color="white"
-                  bgcolor="red"
-                  borderRadius="15px"
-                  m={1}
-                >
-                  20
-                </Typography>
-                <Typography variant="h4">Meses de garantía</Typography>
-              </Box>
-              <Box display="flex" alignItems="center">
-                <Typography
-                  variant="h2"
-                  color="white"
-                  bgcolor="blue"
-                  borderRadius="15px"
-                  p={1}
-                  m={1}
-                >
-                  10
-                </Typography>
-                <Typography variant="h4">
-                  Meses de reemplazo sin costo
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-          <Typography variant="h6" fontWeight="bold" my={2}>
-            Características
-          </Typography>
-          <Box bgcolor="#ECF2F7" borderRadius="15px" p={3} position="relative">
-            <Box display="flex">
-              <CheckOutlinedIcon fontSize="small" />
-              <Typography ml={1}>
-                Tecnología patentada POWERFRAME® en ambas rejillas.
-              </Typography>
-            </Box>
-            <Box display="flex">
-              <CheckOutlinedIcon fontSize="small" />
-              <Typography ml={1}>
-                Avanzada tecnología Absorvent Glass Mat (AGM).
-              </Typography>
-            </Box>
-            <Box display="flex">
-              <CheckOutlinedIcon fontSize="small" />
-              <Typography ml={1}>
-                Hasta 2 veces más duración y garantía que una batería convencional estándar.
-              </Typography>
-            </Box>
-            <Box display="flex">
-              <CheckOutlinedIcon fontSize="small" />
-              <Typography ml={1}>Alta resistencia a la vibración.</Typography>
-            </Box>
-            <Box display="flex">
-              <CheckOutlinedIcon fontSize="small" />
-              <Typography ml={1}>Libre de derrames.</Typography>
-            </Box>
-            <img style={{position:"absolute", right:0, maxWidth:"300px", bottom:0}} src="/images/agmBattery.png" alt="" />
-          </Box>
-        </Box>
         </Box>
       </Modal>
     </div>

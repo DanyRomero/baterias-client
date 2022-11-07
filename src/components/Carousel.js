@@ -52,7 +52,7 @@ export default function Carousel() {
         style={{
           minHeight: "250px",
           backgroundColor: "#ECF2F7",
-          padding: "25px 0",
+          padding: "40px 0",
           margin: "40px 0 90px 0",
           borderRadius: "15px",
         }}
@@ -66,29 +66,32 @@ export default function Carousel() {
           clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
       >
-        <img
-          style={{
-            position: "absolute",
-            maxWidth: "200px",
-            bottom: 0,
-            opacity: 0.2,
-          }}
-          src="/images/doted.png"
-          alt=""
-        />
+        <Box display={{ xs: "none", md: "block" }}>
+          <img
+            style={{
+              position: "absolute",
+              maxWidth: "200px",
+              bottom: 0,
+              opacity: 0.2,
+            }}
+            src="/images/doted.png"
+            alt=""
+          />
+        </Box>
+
         {testimonials.map((testimonial) => {
           const { client, description } = testimonial;
           return (
-            <SwiperSlide>
+            <SwiperSlide key={client} style={{ alignSelf: "center" }}>
               <Typography
                 variant="h6"
                 color="text.secondary"
                 fontWeight="bold"
                 textAlign="center"
                 maxWidth="60%"
-                margin="25px auto"
+                mx="auto"
+                mb={2}
               >
                 {description}
               </Typography>
@@ -113,7 +116,6 @@ export default function Carousel() {
                 </Typography>
               </Box>
             </SwiperSlide>
-           
           );
         })}
       </Swiper>
