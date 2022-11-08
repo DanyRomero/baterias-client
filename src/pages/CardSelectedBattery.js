@@ -44,12 +44,25 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
             <Typography sx={{ color: "white" }}>Recomendada</Typography>
           </Box>
         )}
-        <CardMedia
-          sx={{ maxWidth: "60%", margin: "20px auto" }}
+        {battery.brand === "LTH" && <CardMedia
+          sx={{ width:"250px", margin: "20px auto", height: "250px" }}
           component="img"
           alt="battery"
-          image="/images/bateria.png"
-        />
+          image="/images/lthBattery.png"
+        />}
+        {battery.brand === "AGM" && <CardMedia
+          sx={{ width:"250px", margin: "20px auto", height: "250px" }}
+          component="img"
+          alt="battery"
+          image="/images/agmBattery.png"
+        />}
+        {battery.brand === "Full Power" && <CardMedia
+          sx={{ width:"250px", margin: "20px auto", height: "250px"}}
+          component="img"
+          alt="battery"
+          image="/images/FullBattery.png"
+        />}
+        
         <CardContent sx={{ color: "text.secondary" }}>
           <Typography color="primary" variant="h6" mb={1}>
             <strong>{battery.model}</strong>
