@@ -43,7 +43,7 @@ export default function CheckBoxDirection() {
     axios
     .post(`${API_URL}/ordenes/${localStorage.orderId}/direccion`, {
      address: addressDetails,
-     deliveryType:"pickup",
+     deliveryType:"Pickup",
     })
     .then((response) => navigate("/orden"))
     .catch((error) => console.error(error));

@@ -40,6 +40,9 @@ const Order = () => {
             <Typography mt={5} variant="h4" color="primary">
               <strong>Verifica la información de tu pedido</strong>
             </Typography>
+            <Typography mt={2} fontWeight="bold">Entrega vía:  {order.deliveryType}</Typography>
+           
+            <hr />
             <Typography mt={2}>Dirección de entrega</Typography>
             <Typography>
               {order.address.addressOne} {order?.address?.addressTwo},{" "}

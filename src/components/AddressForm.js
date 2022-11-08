@@ -40,7 +40,7 @@ const AddressForm = ({zip}) => {
         zipCode,
         town,
         state},
-        deliveryType: "delivery",
+        deliveryType: "A domicilio",
       })
       .then((response) => navigate("/orden"))
       .catch((error) => console.error(error));
