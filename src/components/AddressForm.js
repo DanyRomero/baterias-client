@@ -66,6 +66,7 @@ const AddressForm = () => {
         />
 
         <TextField
+          type="number"
           fullWidth
           label="Código postal"
           id="addressTwo"

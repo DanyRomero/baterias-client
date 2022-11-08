@@ -84,6 +84,7 @@ export default function Carousel() {
           const { client, description } = testimonial;
           return (
             <SwiperSlide key={client} style={{ alignSelf: "center" }}>
+              
               <Typography
                 variant="h6"
                 color="text.secondary"
