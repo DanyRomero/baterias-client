@@ -22,9 +22,11 @@ const CP = [
 
 const Address = () => {
   const [zipCodeStatus, setZipCodeStatus] = useState("pending");
+  const [zipCode, setZipCode] = useState("");
 
   const handleZipCode = (zipCode) => {
     if (CP.includes(zipCode)) {
+      setZipCode(zipCode);
       setZipCodeStatus("valid");
     } else {
       setZipCodeStatus("invalid");
@@ -40,7 +42,7 @@ const Address = () => {
           {zipCodeStatus === "pending" && (
             <ZipCodeForm handleZipCode={handleZipCode} />
           )}
-          {zipCodeStatus === "valid" && <AddressForm />}
+          {zipCodeStatus === "valid" && <AddressForm zip={zipCode} />}
           {zipCodeStatus === "invalid" && <PickForm />}
         </Grid>
         <Grid item xs={12} md={7}>

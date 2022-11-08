@@ -5,10 +5,11 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from "../utils/consts";
 import axios from "axios";
 
-const AddressForm = () => {
+const AddressForm = ({zip}) => {
+
   const [addressOne, setAddressOne] = useState("");
   const [addressTwo, setAddressTwo] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [zipCode, setZipCode] = useState(zip);
   const [town, setTown] = useState("");
   const [state, setState] = useState("");
 
@@ -34,11 +35,12 @@ const AddressForm = () => {
     e.preventDefault();
     axios
       .post(`${API_URL}/ordenes/${localStorage.orderId}/direccion`, {
-        addressOne,
+       address: { addressOne,
         addressTwo,
         zipCode,
         town,
-        state,
+        state},
+        deliveryType: "delivery",
       })
       .then((response) => navigate("/orden"))
       .catch((error) => console.error(error));

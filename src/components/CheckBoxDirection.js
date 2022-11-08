@@ -5,6 +5,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Box, Button, Stack } from "@mui/material";
+import axios from "axios";
+import { API_URL } from "../utils/consts";
+import { useNavigate } from "react-router-dom";
 
 const addresses = [
   {
@@ -27,7 +30,8 @@ const addresses = [
 
 export default function CheckBoxDirection() {
   const [selectedAddress, setSelectedAddress] = React.useState("");
- 
+  const navigate = useNavigate();
+  
   const handleChange = (event) => {
     setSelectedAddress(event.target.value);
   };
@@ -35,8 +39,16 @@ export default function CheckBoxDirection() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const addressDetails = addresses.find((address) => address.name === selectedAddress)
-    console.log("selected", addressDetails)
+    
+    axios
+    .post(`${API_URL}/ordenes/${localStorage.orderId}/direccion`, {
+     address: addressDetails,
+     deliveryType:"pickup",
+    })
+    .then((response) => navigate("/orden"))
+    .catch((error) => console.error(error));
   }
+    console.log("order", localStorage.orderId)
 
   return (
     <form onSubmit={handleSubmit}>
