@@ -19,7 +19,7 @@ const PickForm = () => {
       <Typography variant="body1" textAlign="center" fontWeight="bold">
         De momento no contamos con entrega a domicilio para tu zona
       </Typography>
-      <Typography variant="body1" textAlign="center" fontWeight="bold" mt={3}>
+      <Typography variant="body1" textAlign="center" fontWeight="bold" my={3}>
         Pero te ofrecemos un{" "}
         <span style={{ color: "#1976D2" }}>15% de descuento </span> al pasar por
         tu batería a nuestras sucursales
