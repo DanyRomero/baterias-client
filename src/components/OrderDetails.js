@@ -63,12 +63,16 @@ const OrderDetails = (props) => {
             <TableCell>Precio $ {order?.battery?.price}</TableCell>
           </TableRow>
           <TableRow>
+            <TableCell>Cupón </TableCell>
+            <TableCell>-$ 200</TableCell>
+          </TableRow>
+          <TableRow>
             <TableCell>Entrega batería usada</TableCell>
             <TableCell>{order?.deliverBattery}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell><strong>TOTAL</strong></TableCell>
-            <TableCell><strong>MXN $ {order?.battery?.price}</strong></TableCell>
+            <TableCell><strong>MXN $ {order?.battery?.price -200}</strong></TableCell>
           </TableRow>
         </TableBody>
         </Table>

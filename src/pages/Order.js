@@ -85,13 +85,22 @@ const Order = () => {
               <Typography>Marca {order.battery.brand}</Typography>
               <Typography>${order.battery.price}</Typography>
             </Grid>
+            
+            <Grid
+              item
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Typography>Cupón</Typography>
+              <Typography>-$200</Typography>
+            </Grid>
+            
             <hr />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography>
                 <strong>Total</strong>
               </Typography>
               <Typography>
-                <strong>MXN ${order.battery.price}</strong>
+                <strong>MXN ${order.battery.price -200}</strong>
               </Typography>
             </Box>
           </Box>

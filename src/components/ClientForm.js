@@ -147,8 +147,8 @@ const ClientForm = () => {
           <EnergySavingsLeafOutlinedIcon
             fontSize="small"
             sx={{
-              backgroundColor: "primary.main",
-              color: "white",
+              backgroundColor: "success.main",
+              color:"white",
               p: 1,
               mr: 2,
               borderRadius: "50%",

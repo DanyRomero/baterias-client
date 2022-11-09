@@ -135,6 +135,18 @@ const Thanks = () => {
               </Grid>
             </Grid>
             <hr />
+            <Grid container>
+              <Grid item xs={6} sm={4}>
+                
+                <Typography>Precio</Typography>
+                <Typography>Cupón</Typography>
+              </Grid>
+              <Grid item xs={6} sm={8}>
+                <Typography> ${order.battery.price}</Typography>
+                <Typography>-$200</Typography>
+              </Grid>
+            </Grid>
+            <hr />
 
             <Box
               sx={{
@@ -147,7 +159,7 @@ const Thanks = () => {
                 <strong>Total de la orden</strong>
               </Typography>
               <Typography>
-                <strong>MXN ${order.battery.price}</strong>
+                <strong>MXN ${order.battery.price -200}</strong>
               </Typography>
             </Box>
 
