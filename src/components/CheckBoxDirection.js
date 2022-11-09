@@ -52,7 +52,7 @@ export default function CheckBoxDirection() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormControl sx={{ textAlign: "left" }}>
+      <FormControl sx={{ textAlign: "left", my: 3}}>
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"

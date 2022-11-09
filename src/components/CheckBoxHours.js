@@ -33,8 +33,9 @@ const CheckBoxHours = () => {
   const [deliveryHour, setDeliveryHour] = useState("");
 
   const today = moment().format("ddd");
+
   const tomorrow = moment().add(1, "days").format("ddd");
-  console.log(availableHrs);
+
   return (
     <Container>
       <Button

@@ -35,7 +35,7 @@ const Address = () => {
   };
   return (
     <>
-      <Grid container sx={{ minHeight: "100vh" }}>
+      <Grid container sx={{ minHeight: "100vh", m:1 }}>
         <Grid item xs={12} md={5}>
           <Box sx={{ p: 5 }}>
             <CheckoutStepper activeStep={1} />
