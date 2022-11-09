@@ -10,6 +10,9 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import moment from "moment";
+import axios from "axios";
+import { API_URL } from "../utils/consts";
+import { useNavigate } from "react-router-dom";
 
 const hours = ["10:30", "12:00", "13:30", "15:00", "16:30"];
 
@@ -28,13 +31,27 @@ function getAvailableHours() {
 
 const CheckBoxHours = () => {
   const availableHrs = getAvailableHours();
-  console.log(availableHrs)
+  const navigate = useNavigate();
+
   const [deliveryDate, setDeliveryDate] = useState("");
   const [deliveryHour, setDeliveryHour] = useState("");
 
-  const today = moment().format("ddd");
+  const today = moment().format("YYYY-MM-DD");
+  const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
 
-  const tomorrow = moment().add(1, "days").format("ddd");
+  const handleSchedule = () => {
+    const [hour, minutes] = deliveryHour.split(":")
+    const deliveryDatetime = moment(deliveryDate).hour(hour).minutes(minutes)
+    const schedule = deliveryDatetime.toISOString()
+    console.log({ deliveryDate, deliveryHour, schedule })
+
+    axios
+      .post(`${API_URL}/ordenes/${localStorage.orderId}/horario`, {
+        deliveryHour: schedule,
+      })
+      .then((response) => navigate("/orden"))
+      .catch((error) => console.error(error));
+  };
 
   return (
     <Container>
@@ -49,7 +66,7 @@ const CheckBoxHours = () => {
         }}
         onClick={() => setDeliveryDate(today)}
       >
-        {today}
+        {moment(today).format("ddd")}
       </Button>
       <Button
         variant="contained"
@@ -62,11 +79,10 @@ const CheckBoxHours = () => {
         }}
         onClick={() => setDeliveryDate(tomorrow)}
       >
-        {tomorrow}
+        {moment(tomorrow).format("ddd")}
       </Button>
 
       {deliveryDate === today && (
-        
         <Box>
           <Stack spacing={3} mt={2}>
             <RadioGroup
@@ -83,7 +99,7 @@ const CheckBoxHours = () => {
                       width: "100%",
                       p: 1,
                       borderRadius: "15px",
-                      mt:1,
+                      mt: 1,
                     }}
                     key={index}
                     value={hour}
@@ -97,6 +113,7 @@ const CheckBoxHours = () => {
               variant="contained"
               fullWidth
               disabled={deliveryHour === ""}
+              onClick={handleSchedule}
             >
               Continuar
             </Button>
@@ -104,7 +121,6 @@ const CheckBoxHours = () => {
         </Box>
       )}
       {deliveryDate === tomorrow && (
-        
         <Box>
           <Stack spacing={3} mt={2}>
             <RadioGroup
@@ -121,7 +137,7 @@ const CheckBoxHours = () => {
                       width: "100%",
                       p: 1,
                       borderRadius: "15px",
-                      mt:1,
+                      mt: 1,
                     }}
                     key={index}
                     value={hour}
@@ -135,13 +151,13 @@ const CheckBoxHours = () => {
               variant="contained"
               fullWidth
               disabled={deliveryHour === ""}
+              onClick={handleSchedule}
             >
               Continuar
             </Button>
           </Stack>
         </Box>
       )}
-      
     </Container>
   );
 };

@@ -48,7 +48,7 @@ export default function CheckBoxDirection() {
     .then((response) => navigate("/orden"))
     .catch((error) => console.error(error));
   }
-    console.log("order", localStorage.orderId)
+   
 
   return (
     <form onSubmit={handleSubmit}>
