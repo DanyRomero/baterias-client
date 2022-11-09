@@ -16,9 +16,9 @@ import StarIcon from "@mui/icons-material/Star";
 import LthModal from "../components/LthModal";
 import AgmModal from "../components/AgmModal";
 import FullPowerModal from "../components/FullPowerModal";
+import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 
 const CardSelectedBattery = ({ battery, order, sendBattery }) => {
-  
   const selectedYear = order.model.years.find(
     (year) => year._id === order.year
   );
@@ -44,25 +44,31 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
             <Typography sx={{ color: "white" }}>Recomendada</Typography>
           </Box>
         )}
-        {battery.brand === "LTH" && <CardMedia
-          sx={{ width:"250px", margin: "20px auto", height: "250px" }}
-          component="img"
-          alt="battery"
-          image="/images/lthBattery.png"
-        />}
-        {battery.brand === "AGM" && <CardMedia
-          sx={{ width:"250px", margin: "20px auto", height: "250px" }}
-          component="img"
-          alt="battery"
-          image="/images/agmBattery.png"
-        />}
-        {battery.brand === "Full Power" && <CardMedia
-          sx={{ width:"250px", margin: "20px auto", height: "250px"}}
-          component="img"
-          alt="battery"
-          image="/images/FullBattery.png"
-        />}
-        
+        {battery.brand === "LTH" && (
+          <CardMedia
+            sx={{ width: "250px", margin: "20px auto", height: "250px" }}
+            component="img"
+            alt="battery"
+            image="/images/lthBattery.png"
+          />
+        )}
+        {battery.brand === "AGM" && (
+          <CardMedia
+            sx={{ width: "250px", margin: "20px auto", height: "250px" }}
+            component="img"
+            alt="battery"
+            image="/images/agmBattery.png"
+          />
+        )}
+        {battery.brand === "Full Power" && (
+          <CardMedia
+            sx={{ width: "250px", margin: "20px auto", height: "250px" }}
+            component="img"
+            alt="battery"
+            image="/images/FullBattery.png"
+          />
+        )}
+
         <CardContent sx={{ color: "text.secondary" }}>
           <Typography color="primary" variant="h6" mb={1}>
             <strong>{battery.model}</strong>
@@ -90,25 +96,67 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
           >
             Comprar ahora
           </Button>
-          <Box>
+          {battery.brand === "LTH" && (
+            <>
+              <Box display="flex" mt={2}>
+                <RecommendOutlinedIcon fontSize="small" />
+                <Typography variant="body2" ml={1}>
+                  Garantía: 48 meses
+                </Typography>
+              </Box>
+              <Box display="flex">
+                <CurrencyExchangeOutlinedIcon fontSize="small" />
+                <Typography variant="body2" ml={1}>
+                  Reemplazo: 12 meses sin costo
+                </Typography>
+              </Box>
+            </>
+          )}
+          {battery.brand === "AGM" && (
+            <>
+              <Box display="flex" mt={2}>
+                <RecommendOutlinedIcon fontSize="small" />
+                <Typography variant="body2" ml={1}>
+                  Garantía: 60 meses
+                </Typography>
+              </Box>
+              <Box display="flex" >
+                <CurrencyExchangeOutlinedIcon fontSize="small" />
+                <Typography variant="body2" ml={1}>
+                  Reemplazo: 18 meses sin costo
+                </Typography>
+              </Box>
+            </>
+          )}
+          {battery.brand === "Full Power" && (
+            <>
+
             <Box display="flex" mt={2}>
               <RecommendOutlinedIcon fontSize="small" />
               <Typography variant="body2" ml={1}>
-                Garantía: {battery.guarantee} meses
+                Garantía: 48 meses
               </Typography>
             </Box>
             <Box display="flex">
-              <PaymentOutlinedIcon fontSize="small" />
+              <CurrencyExchangeOutlinedIcon fontSize="small" />
               <Typography variant="body2" ml={1}>
-                Paga a meses sin intereses
+                Reemplazo: 12 meses sin costo
               </Typography>
             </Box>
-            <Box display="flex">
-              <BoltOutlinedIcon fontSize="small" />
-              <Typography variant="body2" ml={1}>
-                Capacidad de arranque de {battery.amps} amperes
-              </Typography>
-            </Box>
+            </>
+          )}
+
+          <Box display="flex">
+            <PaymentOutlinedIcon fontSize="small" />
+            <Typography variant="body2" ml={1}>
+              Paga a meses sin intereses
+            </Typography>
+          </Box>
+          <Box display="flex">
+            <BoltOutlinedIcon fontSize="small" />
+            <Typography variant="body2" ml={1}>
+              Capacidad de arranque de {battery.amps} amperes
+            </Typography>
           </Box>
         </CardContent>
         {battery.brand === "LTH" && <LthModal />}
