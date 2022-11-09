@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 const Order = () => {
   const [order, setOrder] = useState(null);
 
+  console.log(order);
 
   useEffect(() => {
     axios
@@ -37,7 +38,6 @@ const Order = () => {
             <CheckoutStepper activeStep={2} />
           </Box>
           <ClientForm />
-          
         </Grid>
         <Grid
           item
@@ -63,9 +63,14 @@ const Order = () => {
               {order.address.state}
             </Typography>
             <hr />
-            <Typography mt={2}>Día y horario de entrega</Typography>
-            <Typography>{deliveryDate}</Typography>
-            <hr />
+            {order.deliveryType === "A domicilio" && 
+              <>
+                <Typography mt={2}>Día y horario de entrega</Typography>
+                <Typography>{deliveryDate}</Typography>
+                <hr />
+              </>
+            }
+
             <Typography>Vehículo</Typography>
             <Typography>
               {order.brand.name} {order.model.name} del año {selectedYear.from}{" "}
@@ -91,7 +96,6 @@ const Order = () => {
               </Typography>
             </Box>
           </Box>
-          
         </Grid>
       </Grid>
       <Footer />

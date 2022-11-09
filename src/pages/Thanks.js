@@ -92,18 +92,22 @@ const Thanks = () => {
               </Grid>
             </Grid>
             <hr />
-            <Grid container>
-              <Grid item xs={6} sm={4}>
-                <AccessTimeIcon />
-                <Typography>Día y hora de entrega</Typography>
-              </Grid>
-              <Grid item xs={6} sm={8}>
-                <Typography>
-                  {moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a")}
-                </Typography>
-              </Grid>
-            </Grid>
-            <hr />
+            {order.deliveryType === "A domicilio" && (
+              <>
+                <Grid container>
+                  <Grid item xs={6} sm={4}>
+                    <AccessTimeIcon />
+                    <Typography>Día y hora de entrega</Typography>
+                  </Grid>
+                  <Grid item xs={6} sm={8}>
+                    <Typography>
+                      {moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a")}
+                    </Typography>
+                  </Grid>
+                </Grid>
+                <hr />
+              </>
+            )}
             <Grid container>
               <Grid xs={6} item sm={4}>
                 <DirectionsCarOutlinedIcon />
