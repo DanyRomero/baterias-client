@@ -19,7 +19,6 @@ const modalBlock = {
   alignItems: "center",
   justifyContent: "center",
   margin: "auto",
-  
 };
 
 const modalContentStyle = {
@@ -27,13 +26,13 @@ const modalContentStyle = {
   background: "#fff",
   boxShadow: 24,
   width: "60%",
-  margin:"70px",
+  margin: "70px",
   borderRadius: "10px",
   bgcolor: "background.paper",
   borderRadius: "15px",
   boxShadow: 24,
   color: "#364A63",
-  padding:"25px",
+  padding: "25px",
 };
 
 const AgmModal = () => {
@@ -87,10 +86,28 @@ const AgmModal = () => {
                   variant="h6"
                   component="h2"
                   fontWeight="bold"
-                  mt={5}
+                  mt={3}
                 >
-                  Automotriz
+                  Idel para vehículos con:
                 </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  -Accesorios o equipados
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Alta demanda eléctrica
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Batería AGM de fábrica
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Batería debajo del asiento o en cajuela
+                </Typography>
+                <Typography id="modal-modal-description">
+                  -Sistema Start-Stop
+                </Typography>
+              </Grid>
+              <Grid item md={6}>
+         
                 <Box display="flex" alignItems="center">
                   <Typography
                     width="85px"
@@ -116,68 +133,6 @@ const AgmModal = () => {
                     m={1}
                   >
                     18
-                  </Typography>
-                  <Typography variant="h4">
-                    Meses de reemplazo sin costo
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item md={6}>
-                <Typography
-                  id="modal-modal-title"
-                  variant="h6"
-                  component="h2"
-                  fontWeight="bold"
-                >
-                  Idel para vehículos con:
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  -Accesorios o equipados
-                </Typography>
-                <Typography id="modal-modal-description">
-                  -Alta demanda eléctrica
-                </Typography>
-                <Typography id="modal-modal-description">
-                  -Batería AGM de fábrica
-                </Typography>
-                <Typography id="modal-modal-description">
-                  -Batería debajo del asiento o en cajuela
-                </Typography>
-                <Typography id="modal-modal-description">
-                  -Sistema Start-Stop
-                </Typography>
-                <Typography
-                  id="modal-modal-title"
-                  variant="h6"
-                  component="h2"
-                  fontWeight="bold"
-                  mt={2}
-                >
-                  Servicio Pesado
-                </Typography>
-                <Box display="flex" alignItems="center">
-                  <Typography
-                    width="85px"
-                    variant="h2"
-                    color="white"
-                    bgcolor="red"
-                    borderRadius="15px"
-                    m={1}
-                  >
-                    20
-                  </Typography>
-                  <Typography variant="h4">Meses de garantía</Typography>
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography
-                    variant="h2"
-                    color="white"
-                    bgcolor="blue"
-                    borderRadius="15px"
-                    p={1}
-                    m={1}
-                  >
-                    10
                   </Typography>
                   <Typography variant="h4">
                     Meses de reemplazo sin costo
@@ -226,9 +181,13 @@ const AgmModal = () => {
                     <Typography ml={1}>Libre de derrames.</Typography>
                   </Box>
                 </Grid>
-                <Grid item md={5} sx={{display:"flex", alignItems:"center"}}>
+                <Grid
+                  item
+                  md={5}
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
                   <img
-                    style={{maxWidth:"100%"}}
+                    style={{ maxWidth: "100%" }}
                     src="/images/agmBattery.png"
                     alt=""
                   />

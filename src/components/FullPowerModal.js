@@ -97,33 +97,11 @@ const FullPowerModal = () => {
                     </Typography>
                     <Typography variant="h4">Meses de garantía</Typography>
                   </Box>
-                  <Typography mb={5}>
+                  <Typography mt={2} mb={5}>
                     PRIMEROS 12 MESES DE REEMPLAZO SIN COSTO
                   </Typography>
                 </Box>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <Typography fontWeight="bold" color="primary">
-                    SERVICIO PESADO
-                  </Typography>
-                  <Box display="flex" alignItems="center">
-                    <Typography
-                      width="85px"
-                      variant="h2"
-                      color="#FFD400"
-                      bgcolor="black"
-                      borderRadius="15px"
-                      p={1}
-                      mr={1}
-                      mb={1}
-                    >
-                      24
-                    </Typography>
-                    <Typography variant="h4">Meses de garantía</Typography>
-                  </Box>
-                  <Typography mb={3}>
-                    PRIMEROS 9 MESES DE REEMPLAZO SIN COSTO
-                  </Typography>
-                </Box>
+               
               </Grid>
             </Grid>
             <Typography variant="h6" fontWeight="bold" my={2}>
