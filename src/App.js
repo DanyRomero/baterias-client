@@ -19,6 +19,7 @@ import Orders from "./pages/Orders";
 import NotFound from "./pages/NotFound"
 import Address from "./pages/Address";
 import Thanks from "./pages/Thanks"
+import Schedule from "./pages/Schedule";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -70,6 +71,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/bateria" element={<SelectBattery />} />
         <Route path="/direccion" element={<Address />} />
+        <Route path="/horario" element={<Schedule />} />
         <Route path="/orden" element={<Order />} />
         <Route path="/confirmacion" element={<Thanks />} />
         <Route path ="*" element={<NotFound />} />

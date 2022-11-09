@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import AddressForm from "../components/AddressForm";
 import CheckoutStepper from "../components/CheckoutStepper";
+import Footer from "../components/Footer";
 import Map from "../components/Map";
 import PickForm from "../components/PickForm";
 import WhatsApp from "../components/WhatsApp";
@@ -49,6 +50,7 @@ const Address = () => {
           <Map />
         </Grid>
       </Grid>
+      <Footer />
       <WhatsApp />
     </>
   );

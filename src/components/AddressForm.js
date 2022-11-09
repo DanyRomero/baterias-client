@@ -42,7 +42,7 @@ const AddressForm = ({zip}) => {
         state},
         deliveryType: "A domicilio",
       })
-      .then((response) => navigate("/orden"))
+      .then((response) => navigate("/horario"))
       .catch((error) => console.error(error));
   };
 
