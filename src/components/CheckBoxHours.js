@@ -28,7 +28,7 @@ function getAvailableHours() {
 
 const CheckBoxHours = () => {
   const availableHrs = getAvailableHours();
-
+  console.log(availableHrs)
   const [deliveryDate, setDeliveryDate] = useState("");
   const [deliveryHour, setDeliveryHour] = useState("");
 
@@ -39,6 +39,7 @@ const CheckBoxHours = () => {
   return (
     <Container>
       <Button
+        disabled={availableHrs.length === 0}
         variant="contained"
         sx={{
           backgroundColor: "primary.main",
@@ -140,7 +141,7 @@ const CheckBoxHours = () => {
           </Stack>
         </Box>
       )}
-      {availableHrs === [] && <p>No hay horarios disponibles para hoy</p>}
+      
     </Container>
   );
 };
