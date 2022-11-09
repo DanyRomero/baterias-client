@@ -20,7 +20,7 @@ const testimonials = [
     Gran calidad, servicio y costos. De ante mano los recomiendo enorme mente.`,
   },
   {
-    client: "maag Maag 1987",
+    client: "Laura Gómez",
     description: `Buena atención, variedad de precios y calidades; lo que no 
     ofrecen en todos los lugares. Aceptan tarjeta y promociones a meses`,
   },
@@ -30,7 +30,7 @@ const testimonials = [
     más óptima para mi vehículo. Ampliamente recomendable`,
   },
   {
-    client: "W wa",
+    client: "Edgar Sánchez",
     description: `De los pocos lugares que puden decirse con honestidad... Mi camioneta 
     tenía algunos detalles raros al arrancar, pensé que era algo mecánico con ellos revisaron 
     la batería y ya no cargaba correctamente, se tiene que sustitur. Me dieron mejor precio 
