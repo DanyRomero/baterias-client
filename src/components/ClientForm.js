@@ -28,7 +28,7 @@ const ClientForm = () => {
   const [phoneClient, setPhoneClient] = useState("");
   const [emailClient, setEmailClient] = useState("");
   const [deliverBattery, setDeliverBattery] = useState("");
-  
+
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -129,42 +129,48 @@ const ClientForm = () => {
           }}
         />
         <Typography color="primary" fontWeight="bold" variant="h5">
-          Deseo entregar mi batería usada
+          Deseo un descuento adicional
         </Typography>
-        <FormControl>
-          <RadioGroup
-            row
-            aria-labelledby="demo-radio-buttons-group-label"
-            name="radio-buttons-group"
-            value={deliverBattery}
-            onChange={handleChange}
-          >
-            <FormControlLabel value="Si" control={<Radio />} label="Si" />
-            <FormControlLabel value="No" control={<Radio />} label="No" />
-          </RadioGroup>
-        </FormControl>
-        <Box display="flex" m={6}>
-          <EnergySavingsLeafOutlinedIcon
-            fontSize="small"
-            sx={{
-              backgroundColor: "success.main",
-              color:"white",
-              p: 1,
-              mr: 2,
-              borderRadius: "50%",
-            }}
-          />
-
-          <Typography variant="subtitle2">
-            Recuerda que al entregar tu batería usada pudes recibir un
-            <span style={{ fontWeight: "bold", color: "#1976D2" }}>
-              {" "}
-              descuento adicional
-            </span>{" "}
-            entre $200 pesos a $400 pesos dependiendo del tipo y tamaño de tu
-            batería
+        <Box bgcolor="#ECF2F7" p={3} borderRadius="15px">
+          <Typography color="primary" fontWeight="bold" variant="body1">
+            Deseo entregar mi batería usada
           </Typography>
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+              value={deliverBattery}
+              onChange={handleChange}
+            >
+              <FormControlLabel value="Si" control={<Radio />} label="Si" />
+              <FormControlLabel value="No" control={<Radio />} label="No" />
+            </RadioGroup>
+          </FormControl>
+          <Box display="flex" my={4}>
+            <EnergySavingsLeafOutlinedIcon
+              fontSize="small"
+              sx={{
+                backgroundColor: "success.main",
+                color: "white",
+                p: 1,
+                mr: 2,
+                borderRadius: "50%",
+              }}
+            />
+
+            <Typography variant="subtitle2">
+              Recuerda que al entregar tu batería usada pudes recibir un
+              <span style={{ fontWeight: "bold", color: "#1976D2" }}>
+                {" "}
+                descuento adicional
+              </span>{" "}
+              entre $200 pesos a $400 pesos dependiendo del tipo y tamaño de tu
+              batería
+            </Typography>
+          </Box>
         </Box>
+
         <Button
           type="submit"
           disabled={
