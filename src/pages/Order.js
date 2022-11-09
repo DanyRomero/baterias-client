@@ -12,7 +12,6 @@ import Footer from "../components/Footer";
 const Order = () => {
   const [order, setOrder] = useState(null);
 
-  console.log(order);
 
   useEffect(() => {
     axios

@@ -27,6 +27,10 @@ const OrderDetails = (props) => {
             <TableCell>{moment(`${order?.completedAt}`).format("DD/MM/YYYY HH:mm a")}</TableCell>
           </TableRow>
           <TableRow>
+            <TableCell>Tipo de entrega</TableCell>
+            <TableCell>{order?.deliveryType} </TableCell>
+          </TableRow>
+          <TableRow>
             <TableCell>Nombre del cliente</TableCell>
             <TableCell>{order?.client?.name} {order?.client?.lastName}</TableCell>
           </TableRow>
@@ -37,6 +41,10 @@ const OrderDetails = (props) => {
           <TableRow>
             <TableCell>Dirección de entrega</TableCell>
             <TableCell>{order?.address?.addressOne}  {order?.address?.addressTwo}, {order?.address?.town}, CP {order?.address?.zipCode},  {order?.address?.state} </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Día y hora de entrega</TableCell>
+            <TableCell>{moment(order?.deliveryHour).format("DD/MM/YYYY HH:mm a")} </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Vehículo </TableCell>
@@ -52,7 +60,11 @@ const OrderDetails = (props) => {
           </TableRow>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>$ {order?.battery?.price}</TableCell>
+            <TableCell>Precio $ {order?.battery?.price}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Entrega batería usada</TableCell>
+            <TableCell>{order?.deliverBattery}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell><strong>TOTAL</strong></TableCell>

@@ -33,7 +33,7 @@ const Thanks = () => {
   const selectedYear = order.model.years.find(
     (year) => year._id === order.year
   );
-  console.log(order);
+ 
   return (
     <>
       <Grid container sx={{ minHeight: "100vh" }}>

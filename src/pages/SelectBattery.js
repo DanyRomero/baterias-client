@@ -46,8 +46,6 @@ function SelectBattery() {
     max.price > min.price ? max : min
   );
 
-  console.log("selected year", selectedYear);
-  console.log("expensive", expensiveBattery);
   return (
     <>
       <Container>
