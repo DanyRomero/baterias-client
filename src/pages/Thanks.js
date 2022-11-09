@@ -10,6 +10,10 @@ import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import DirectionsCarOutlinedIcon from "@mui/icons-material/DirectionsCarOutlined";
 import DynamicFormOutlinedIcon from "@mui/icons-material/DynamicFormOutlined";
 import WhatsApp from "../components/WhatsApp";
+import moment from "moment";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
+import Footer from "../components/Footer";
 
 const Thanks = () => {
   const [order, setOrder] = useState(null);
@@ -44,93 +48,139 @@ const Thanks = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item container justifyContent="center" md={7} xs={12} sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}>
-          <Box sx={{ p: 4, color: "text.secondary", width: '500px' }}>
-          <Typography mt={5} variant="h4" color="primary">
-            <strong>Detalle del pedido</strong>
-          </Typography>
-          <Grid container mt={2}>
-            <Grid item xs={6} sm={4}>
-              <PersonOutlineOutlinedIcon />
-              <Typography>Contacto</Typography>
-            </Grid>
-            <Grid item xs={6} sm={8}>
-              <Typography>
-                {order.client.name} {order.client.lastName}
-              </Typography>
-              <Typography>{order.client.phone}</Typography>
-              <Typography>{order.client.email}</Typography>
-            </Grid>
-          </Grid>
-
-          <hr />
-          <Grid container>
-            <Grid item xs={6} sm={4}>
-              <FmdGoodOutlinedIcon />
-              <Typography>Dirección de entrega</Typography>
-            </Grid>
-            <Grid item xs={6} sm={8}>
-              <Typography>
-                {order.address.addressOne} {order?.address?.addressTwo},{" "}
-                {order.address.town}, CP {order.address.zipCode},{" "}
-                {order.address.state}
-              </Typography>
-            </Grid>
-          </Grid>
-          <hr />
-          <Grid container>
-            <Grid xs={6} item sm={4}>
-              <DirectionsCarOutlinedIcon />
-              <Typography>Vehículo</Typography>
-            </Grid>
-            <Grid item xs={6} sm={8}>
-              <Typography>
-                {order.brand.name} {order.model.name} del año{" "}
-                {selectedYear.from} - {selectedYear.to}
-              </Typography>
-            </Grid>
-          </Grid>
-          <hr />
-          <Grid container>
-            <Grid item xs={6} sm={4}>
-              <DynamicFormOutlinedIcon />
-              <Typography>Batería</Typography>
-            </Grid>
-            <Grid item xs={6} sm={8}>
-              <Typography>Modelo {order.battery.model}</Typography>
-              <Typography>Marca {order.battery.brand}</Typography>
-            </Grid>
-          </Grid>
-          <hr />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "15px",
-            }}
-          >
-            <Typography>
-              <strong>Total de la orden</strong>
+        <Grid
+          item
+          container
+          justifyContent="center"
+          md={7}
+          xs={12}
+          sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}
+        >
+          <Box sx={{ p: 4, color: "text.secondary", width: "500px" }}>
+            <Typography mt={5} variant="h4" color="primary" fontWeight="bold">
+              Detalle del pedido
             </Typography>
-            <Typography>
-              <strong>MXN ${order.battery.price}</strong>
+            <Typography mt={2} fontWeight="bold">
+              Has escogido una entrega: {order.deliveryType}
             </Typography>
-          </Box>
+            <Grid container mt={2}>
+              <Grid item xs={6} sm={4}>
+                <PersonOutlineOutlinedIcon />
+                <Typography>Contacto</Typography>
+              </Grid>
+              <Grid item xs={6} sm={8}>
+                <Typography>
+                  {order.client.name} {order.client.lastName}
+                </Typography>
+                <Typography>{order.client.phone}</Typography>
+                <Typography>{order.client.email}</Typography>
+              </Grid>
+            </Grid>
 
-          <Typography variant="caption" display="block" gutterBottom>
-            *Precio incluye IVA
-          </Typography>
-          <Typography variant="caption" display="block" gutterBottom>
-            *Precio al entregar la batería usada
-          </Typography>
-          <Typography mt={3}>
-            <strong>
+            <hr />
+            <Grid container>
+              <Grid item xs={6} sm={4}>
+                <FmdGoodOutlinedIcon />
+                <Typography>Dirección de entrega</Typography>
+              </Grid>
+              <Grid item xs={6} sm={8}>
+                <Typography>
+                  {order.address.addressOne} {order?.address?.addressTwo},{" "}
+                  {order.address.town}, CP {order.address.zipCode},{" "}
+                  {order.address.state}
+                </Typography>
+              </Grid>
+            </Grid>
+            <hr />
+            <Grid container>
+              <Grid item xs={6} sm={4}>
+                <AccessTimeIcon />
+                <Typography>Día y hora de entrega</Typography>
+              </Grid>
+              <Grid item xs={6} sm={8}>
+                <Typography>
+                  {moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a")}
+                </Typography>
+              </Grid>
+            </Grid>
+            <hr />
+            <Grid container>
+              <Grid xs={6} item sm={4}>
+                <DirectionsCarOutlinedIcon />
+                <Typography>Vehículo</Typography>
+              </Grid>
+              <Grid item xs={6} sm={8}>
+                <Typography>
+                  {order.brand.name} {order.model.name} del año{" "}
+                  {selectedYear.from} - {selectedYear.to}
+                </Typography>
+              </Grid>
+            </Grid>
+            <hr />
+            <Grid container>
+              <Grid item xs={6} sm={4}>
+                <DynamicFormOutlinedIcon />
+                <Typography>Batería</Typography>
+              </Grid>
+              <Grid item xs={6} sm={8}>
+                <Typography>Modelo {order.battery.model}</Typography>
+                <Typography>Marca {order.battery.brand}</Typography>
+                <Typography>
+                  Entrega de batería usada: {order.deliverBattery}
+                </Typography>
+              </Grid>
+            </Grid>
+            <hr />
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "15px",
+              }}
+            >
+              <Typography>
+                <strong>Total de la orden</strong>
+              </Typography>
+              <Typography>
+                <strong>MXN ${order.battery.price}</strong>
+              </Typography>
+            </Box>
+
+            <Typography variant="caption" display="block" gutterBottom>
+              *Precio incluye IVA
+            </Typography>
+            {order.deliverBattery === "Si" && (
+              <Box display="flex" my={4}>
+                <EnergySavingsLeafOutlinedIcon
+                  fontSize="small"
+                  sx={{
+                    backgroundColor: "primary.main",
+                    color: "white",
+                    p: 1,
+                    mr: 2,
+                    borderRadius: "50%",
+                  }}
+                />
+
+                <Typography>
+                  Al momento de tu pago recibirás un
+                  <span style={{ fontWeight: "bold", color: "#1976D2" }}>
+                    {" "}
+                    descuento adicional
+                  </span>{" "}
+                  entre $200 pesos a $400 pesos dependiendo del tipo y tamaño de
+                  tu batería
+                </Typography>
+              </Box>
+            )}
+            <Typography mt={3} fontWeight="bold">
               Recuerda que puedes contactarnos por WhatsApp en cualquier momento
-            </strong>
-          </Typography>
+            </Typography>
           </Box>
         </Grid>
       </Grid>
+      <Footer />
       <WhatsApp />
     </>
   );

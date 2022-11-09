@@ -6,9 +6,12 @@ import { Paper, Typography, Container, Box, Grid } from "@mui/material";
 import LoadingComponent from "../components/Loading";
 import CheckoutStepper from "../components/CheckoutStepper";
 import WhatsApp from "../components/WhatsApp";
+import moment from "moment";
+import Footer from "../components/Footer";
 
 const Order = () => {
   const [order, setOrder] = useState(null);
+
 
   useEffect(() => {
     axios
@@ -25,7 +28,7 @@ const Order = () => {
   const selectedYear = order.model.years.find(
     (year) => year._id === order.year
   );
-
+  const deliveryDate = moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a");
   return (
     <>
       <Grid container sx={{ minHeight: "100vh" }}>
@@ -34,14 +37,24 @@ const Order = () => {
             <CheckoutStepper activeStep={2} />
           </Box>
           <ClientForm />
+          
         </Grid>
-        <Grid item container justifyContent="center" md={7} xs={12} sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}>
-          <Box sx={{ p: 5, color: "text.secondary", width: '500px' }}>
+        <Grid
+          item
+          container
+          justifyContent="center"
+          md={7}
+          xs={12}
+          sx={{ bgcolor: "rgb(192, 211, 229, .3)" }}
+        >
+          <Box sx={{ p: 5, color: "text.secondary", width: "500px" }}>
             <Typography mt={5} variant="h4" color="primary">
               <strong>Verifica la información de tu pedido</strong>
             </Typography>
-            <Typography mt={2} fontWeight="bold">Entrega vía:  {order.deliveryType}</Typography>
-           
+            <Typography mt={2} fontWeight="bold">
+              Entrega vía: {order.deliveryType}
+            </Typography>
+
             <hr />
             <Typography mt={2}>Dirección de entrega</Typography>
             <Typography>
@@ -49,6 +62,9 @@ const Order = () => {
               {order.address.town}, CP {order.address.zipCode},{" "}
               {order.address.state}
             </Typography>
+            <hr />
+            <Typography mt={2}>Día y horario de entrega</Typography>
+            <Typography>{deliveryDate}</Typography>
             <hr />
             <Typography>Vehículo</Typography>
             <Typography>
@@ -75,8 +91,10 @@ const Order = () => {
               </Typography>
             </Box>
           </Box>
+          
         </Grid>
       </Grid>
+      <Footer />
       <WhatsApp />
     </>
   );

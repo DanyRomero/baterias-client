@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
+
 import {
   Container,
   Stack,
@@ -9,6 +11,12 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Box,
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../utils/consts";
@@ -19,7 +27,13 @@ const ClientForm = () => {
   const [lastNameClient, setLastNameClient] = useState("");
   const [phoneClient, setPhoneClient] = useState("");
   const [emailClient, setEmailClient] = useState("");
-  const navigate = useNavigate()
+  const [deliverBattery, setDeliverBattery] = useState("");
+  
+  const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    setDeliverBattery(event.target.value);
+  };
   const handleNameChange = (e) => {
     setNameClient(e.target.value);
   };
@@ -37,10 +51,13 @@ const ClientForm = () => {
     e.preventDefault();
     axios
       .post(`${API_URL}/ordenes/${localStorage.orderId}/cliente`, {
-        name: nameClient,
-        lastName: lastNameClient,
-        phone: phoneClient,
-        email: emailClient,
+        client: {
+          name: nameClient,
+          lastName: lastNameClient,
+          phone: phoneClient,
+          email: emailClient,
+        },
+        deliverBattery,
       })
       .then((response) => navigate("/confirmacion"))
       .catch((error) => console.error(error));
@@ -111,13 +128,51 @@ const ClientForm = () => {
             ),
           }}
         />
+        <Typography color="primary" fontWeight="bold" variant="h5">
+          Deseo entregar mi batería usada
+        </Typography>
+        <FormControl>
+          <RadioGroup
+            row
+            aria-labelledby="demo-radio-buttons-group-label"
+            name="radio-buttons-group"
+            value={deliverBattery}
+            onChange={handleChange}
+          >
+            <FormControlLabel value="Si" control={<Radio />} label="Si" />
+            <FormControlLabel value="No" control={<Radio />} label="No" />
+          </RadioGroup>
+        </FormControl>
+        <Box display="flex" m={6}>
+          <EnergySavingsLeafOutlinedIcon
+            fontSize="small"
+            sx={{
+              backgroundColor: "primary.main",
+              color: "white",
+              p: 1,
+              mr: 2,
+              borderRadius: "50%",
+            }}
+          />
+
+          <Typography variant="subtitle2">
+            Recuerda que al entregar tu batería usada pudes recibir un
+            <span style={{ fontWeight: "bold", color: "#1976D2" }}>
+              {" "}
+              descuento adicional
+            </span>{" "}
+            entre $200 pesos a $400 pesos dependiendo del tipo y tamaño de tu
+            batería
+          </Typography>
+        </Box>
         <Button
           type="submit"
           disabled={
             nameClient === "" ||
             lastNameClient === "" ||
             phoneClient === "" ||
-            emailClient === ""
+            emailClient === "" ||
+            deliverBattery === ""
           }
           variant="contained"
         >

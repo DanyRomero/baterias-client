@@ -43,7 +43,6 @@ const CheckBoxHours = () => {
     const [hour, minutes] = deliveryHour.split(":")
     const deliveryDatetime = moment(deliveryDate).hour(hour).minutes(minutes)
     const schedule = deliveryDatetime.toISOString()
-    console.log({ deliveryDate, deliveryHour, schedule })
 
     axios
       .post(`${API_URL}/ordenes/${localStorage.orderId}/horario`, {

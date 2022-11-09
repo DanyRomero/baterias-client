@@ -49,8 +49,11 @@ const AddressForm = ({zip}) => {
   return (
     <form onSubmit={sendData}>
       <Stack p={5} spacing={3}>
-        <Typography variant="h4" color="primary">
-          <strong>Dirección de envío</strong>
+        <Typography variant="h4" color="primary" fontWeight="bold">
+          Dirección de envío
+        </Typography>
+        <Typography variant="subtitle2"  fontWeight="bold">
+          Recuerda que nuestro envío es gratuito
         </Typography>
         <TextField
           fullWidth
