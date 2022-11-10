@@ -12,8 +12,8 @@ const Benefits = () => {
   return (
     <Container sx={{ py: 12 }}>
       <Typography variant="h4" align="center">
-        <span style={{ color: "#1976D2" }}>Distelub</span> y{" "}
-        <span style={{ color: "red" }}>LTH</span> te envían tu batería a
+        <span style={{ color: "#1976D2" }}>Distelub</span> y {" "}
+        <span><img src="/images/lthLogo.png" width="120px" alt="" /></span>te envían tu batería a
         domicilio
       </Typography>
       <Typography variant="h5" align="center" mt={3}>

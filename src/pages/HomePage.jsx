@@ -100,7 +100,7 @@ function HomePage() {
         <Grid item md={4}>
           <Box p={4}>
             <Typography variant="h3" component="h1" mb={4}>
-              Baterías <span style={{ color: "red" }}>LTH</span> a domicilio
+              Baterías <span><img src="/images/lthLogo.png" width="120px" alt="" /></span>a domicilio
             </Typography>
 
             <Typography variant="body1" component="p" mb={3}>

@@ -13,10 +13,10 @@ import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import StarIcon from "@mui/icons-material/Star";
-import LthModal from "../components/LthModal";
-import AgmModal from "../components/AgmModal";
-import FullPowerModal from "../components/FullPowerModal";
-import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
+import LthModal from "./LthModal";
+import AgmModal from "./AgmModal";
+import FullPowerModal from "./FullPowerModal";
+import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
 
 const CardSelectedBattery = ({ battery, order, sendBattery }) => {
   const selectedYear = order.model.years.find(
@@ -26,10 +26,12 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
   const expensiveBattery = selectedYear.batteries.reduce((max, min) =>
     max.price > min.price ? max : min
   );
-  const {price, _id, brand, model} = battery
-  const comaPrice = price.toLocaleString('en-US', {maximumFractionDigits:2})
-  const cuponPrice = price -200
-  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
+  const { price, _id, brand, model } = battery;
+  const comaPrice = price.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  const cuponPrice = price - 200;
+  const comaCuponPrice = cuponPrice.toLocaleString("en-US", {
+    maximumFractionDigits: 2,
+  });
   return (
     <Grid item xs={12} sm={4} key={_id}>
       <Card variant="outlined" sx={{ position: "relative" }}>
@@ -74,7 +76,7 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
 
         <CardContent sx={{ color: "text.secondary" }}>
           <Typography color="primary" variant="h6" mb={1} fontWeight="bold">
-           {model}
+            {model}
           </Typography>
           <Box display="flex" my={1}>
             <Typography
@@ -123,7 +125,7 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
                   Garantía: 60 meses
                 </Typography>
               </Box>
-              <Box display="flex" >
+              <Box display="flex">
                 <CurrencyExchangeOutlinedIcon fontSize="small" />
                 <Typography variant="body2" ml={1}>
                   Reemplazo: 18 meses sin costo
@@ -133,19 +135,18 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
           )}
           {battery.brand === "Full Power" && (
             <>
-
-            <Box display="flex" mt={2}>
-              <RecommendOutlinedIcon fontSize="small" />
-              <Typography variant="body2" ml={1}>
-                Garantía: 48 meses
-              </Typography>
-            </Box>
-            <Box display="flex">
-              <CurrencyExchangeOutlinedIcon fontSize="small" />
-              <Typography variant="body2" ml={1}>
-                Reemplazo: 12 meses sin costo
-              </Typography>
-            </Box>
+              <Box display="flex" mt={2}>
+                <RecommendOutlinedIcon fontSize="small" />
+                <Typography variant="body2" ml={1}>
+                  Garantía: 48 meses
+                </Typography>
+              </Box>
+              <Box display="flex">
+                <CurrencyExchangeOutlinedIcon fontSize="small" />
+                <Typography variant="body2" ml={1}>
+                  Reemplazo: 12 meses sin costo
+                </Typography>
+              </Box>
             </>
           )}
 

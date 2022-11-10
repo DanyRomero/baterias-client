@@ -8,7 +8,7 @@ import LoadingComponent from "../components/Loading";
 import WhatsApp from "../components/WhatsApp";
 import { API_URL } from "../utils/consts";
 
-import CardSelectedBattery from "./CardSelectedBattery";
+import CardSelectedBattery from "../components/CardSelectedBattery";
 
 function SelectBattery() {
   const [order, setOrder] = useState(null);
@@ -58,7 +58,12 @@ function SelectBattery() {
           </Grid>
           <Grid item container spacing={3}>
             {selectedYear.batteries.map((battery, index) => (
-              <CardSelectedBattery  key={index} battery={battery} order={order} sendBattery={sendBattery} />
+              <CardSelectedBattery
+                key={index}
+                battery={battery}
+                order={order}
+                sendBattery={sendBattery}
+              />
             ))}
           </Grid>
         </Grid>
