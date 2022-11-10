@@ -14,6 +14,7 @@ import moment from "moment";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
 import Footer from "../components/Footer";
+import FinalProcess from "../components/FinalProcess";
 
 const Thanks = () => {
   const [order, setOrder] = useState(null);
@@ -52,6 +53,7 @@ const Thanks = () => {
               Tu orden ha sido confirmada y pronto estaremos contigo
             </Typography>
           </Box>
+          <FinalProcess />
         </Grid>
         <Grid
           item
