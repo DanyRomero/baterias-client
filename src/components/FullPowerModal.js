@@ -3,8 +3,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Divider, Grid } from "@mui/material";
+import {  Grid } from "@mui/material";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+
 
 const modalWrapper = {
   overflow: "auto",
@@ -41,7 +42,7 @@ const FullPowerModal = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <>
       <Button fullWidth onClick={handleOpen}>
         Detalles
       </Button>
@@ -52,6 +53,7 @@ const FullPowerModal = () => {
         aria-describedby="modal-modal-description"
         sx={modalWrapper}
       >
+     
         <Box sx={modalBlock}>
           <Box sx={modalContentStyle}>
             <Grid container display="flex" justifyContent="space-between">
@@ -161,7 +163,7 @@ const FullPowerModal = () => {
           </Box>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 };
 

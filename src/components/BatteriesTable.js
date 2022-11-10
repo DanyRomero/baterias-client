@@ -50,6 +50,9 @@ const BatteriesTable = (props) => {
       battery.name.toLowerCase().includes(filter.toLowerCase())
     );
   }
+
+
+  
   
 
   return (
@@ -83,7 +86,7 @@ const BatteriesTable = (props) => {
               
               <TableCell>{battery.model}</TableCell>
               <TableCell>{battery.brand}</TableCell>
-              <TableCell>$ {battery.price}</TableCell>
+              <TableCell>$ {battery.price.toLocaleString('en-US', {maximumFractionDigits:2})}</TableCell>
               <TableCell> {battery.amps} amperes</TableCell>
               <TableCell>{battery.guarantee} meses</TableCell>
               <TableCell align="right">

@@ -9,7 +9,10 @@ const OrderDetails = (props) => {
   }
 
   const selectedYear = order.model.years.find((year) =>year._id === order.year);
- 
+  const comaPrice = order.battery.price.toLocaleString('en-US', {maximumFractionDigits:2})
+  const cuponPrice = order.battery.price -200
+  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
+
   return (
     <div>
       <TableContainer sx={{ my: 3 }} component={Paper}>
@@ -60,7 +63,7 @@ const OrderDetails = (props) => {
           </TableRow>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>Precio $ {order?.battery?.price}</TableCell>
+            <TableCell>Precio $ {comaPrice}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Cupón </TableCell>
@@ -72,7 +75,7 @@ const OrderDetails = (props) => {
           </TableRow>
           <TableRow>
             <TableCell><strong>TOTAL</strong></TableCell>
-            <TableCell><strong>MXN $ {order?.battery?.price -200}</strong></TableCell>
+            <TableCell><strong>MXN $ {comaCuponPrice}</strong></TableCell>
           </TableRow>
         </TableBody>
         </Table>

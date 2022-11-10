@@ -57,8 +57,8 @@ function SelectBattery() {
             </Typography>
           </Grid>
           <Grid item container spacing={3}>
-            {selectedYear.batteries.map((battery) => (
-              <CardSelectedBattery battery={battery} order={order} sendBattery={sendBattery} />
+            {selectedYear.batteries.map((battery, index) => (
+              <CardSelectedBattery  key={index} battery={battery} order={order} sendBattery={sendBattery} />
             ))}
           </Grid>
         </Grid>

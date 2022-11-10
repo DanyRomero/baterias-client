@@ -13,6 +13,7 @@ import moment from "moment";
 import axios from "axios";
 import { API_URL } from "../utils/consts";
 import { useNavigate } from "react-router-dom";
+import 'moment/locale/es'
 
 const hours = ["10:30", "12:00", "13:30", "15:00", "16:30"];
 
@@ -28,14 +29,14 @@ function getAvailableHours() {
   }
   return lastHours;
 }
-
 const CheckBoxHours = () => {
   const availableHrs = getAvailableHours();
   const navigate = useNavigate();
-
+  
   const [deliveryDate, setDeliveryDate] = useState("");
   const [deliveryHour, setDeliveryHour] = useState("");
-
+  
+  moment.locale('es');
   const today = moment().format("YYYY-MM-DD");
   const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
 

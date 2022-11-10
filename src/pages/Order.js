@@ -29,6 +29,11 @@ const Order = () => {
     (year) => year._id === order.year
   );
   const deliveryDate = moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a");
+  const comaPrice = order.battery.price.toLocaleString('en-US', {maximumFractionDigits:2})
+  const cuponPrice = order.battery.price -200
+  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
+
+
   return (
     <>
       <Grid container sx={{ minHeight: "100vh" }}>
@@ -83,7 +88,7 @@ const Order = () => {
               sx={{ display: "flex", justifyContent: "space-between" }}
             >
               <Typography>Marca {order.battery.brand}</Typography>
-              <Typography>${order.battery.price}</Typography>
+              <Typography>${comaPrice}</Typography>
             </Grid>
             
             <Grid
@@ -100,7 +105,7 @@ const Order = () => {
                 <strong>Total</strong>
               </Typography>
               <Typography>
-                <strong>MXN ${order.battery.price -200}</strong>
+                <strong>MXN ${comaCuponPrice}</strong>
               </Typography>
             </Box>
           </Box>

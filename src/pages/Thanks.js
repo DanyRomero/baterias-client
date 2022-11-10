@@ -33,6 +33,11 @@ const Thanks = () => {
   const selectedYear = order.model.years.find(
     (year) => year._id === order.year
   );
+
+  const comaPrice = order.battery.price.toLocaleString('en-US', {maximumFractionDigits:2})
+  const cuponPrice = order.battery.price -200
+  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
+
  
   return (
     <>
@@ -142,7 +147,7 @@ const Thanks = () => {
                 <Typography>Cupón</Typography>
               </Grid>
               <Grid item xs={6} sm={8}>
-                <Typography> ${order.battery.price}</Typography>
+                <Typography> ${comaPrice}</Typography>
                 <Typography>-$200</Typography>
               </Grid>
             </Grid>
@@ -159,7 +164,7 @@ const Thanks = () => {
                 <strong>Total de la orden</strong>
               </Typography>
               <Typography>
-                <strong>MXN ${order.battery.price -200}</strong>
+                <strong>MXN ${comaCuponPrice}</strong>
               </Typography>
             </Box>
 

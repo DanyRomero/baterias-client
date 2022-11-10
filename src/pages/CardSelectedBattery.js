@@ -26,11 +26,14 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
   const expensiveBattery = selectedYear.batteries.reduce((max, min) =>
     max.price > min.price ? max : min
   );
-
+  const {price, _id, brand, model} = battery
+  const comaPrice = price.toLocaleString('en-US', {maximumFractionDigits:2})
+  const cuponPrice = price -200
+  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
   return (
-    <Grid item xs={12} sm={4} key={battery._id}>
+    <Grid item xs={12} sm={4} key={_id}>
       <Card variant="outlined" sx={{ position: "relative" }}>
-        {expensiveBattery._id === battery._id && (
+        {expensiveBattery._id === _id && (
           <Box
             display="flex"
             alignItems="center"
@@ -44,7 +47,7 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
             <Typography sx={{ color: "white" }}>Recomendada</Typography>
           </Box>
         )}
-        {battery.brand === "LTH" && (
+        {brand === "LTH" && (
           <CardMedia
             sx={{ width: "250px", margin: "20px auto", height: "250px" }}
             component="img"
@@ -52,7 +55,7 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
             image="/images/lthBattery.png"
           />
         )}
-        {battery.brand === "AGM" && (
+        {brand === "AGM" && (
           <CardMedia
             sx={{ width: "250px", margin: "20px auto", height: "250px" }}
             component="img"
@@ -60,7 +63,7 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
             image="/images/agmBattery.png"
           />
         )}
-        {battery.brand === "Full Power" && (
+        {brand === "Full Power" && (
           <CardMedia
             sx={{ width: "250px", margin: "20px auto", height: "250px" }}
             component="img"
@@ -70,8 +73,8 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
         )}
 
         <CardContent sx={{ color: "text.secondary" }}>
-          <Typography color="primary" variant="h6" mb={1}>
-            <strong>{battery.model}</strong>
+          <Typography color="primary" variant="h6" mb={1} fontWeight="bold">
+           {model}
           </Typography>
           <Box display="flex" my={1}>
             <Typography
@@ -80,14 +83,14 @@ const CardSelectedBattery = ({ battery, order, sendBattery }) => {
               color="primary.dark"
               mr={2}
             >
-              Precio: ${battery.price - 200}
+              Precio: ${comaCuponPrice}
             </Typography>
             <Typography variant="body2" fontWeight="bold">
               CUPÓN -$200 MXN
             </Typography>
           </Box>
           <Typography variant="body2" fontWeight="bold" my={2}>
-            Precio regular: ${battery.price} MXN
+            Precio regular: ${comaPrice} MXN
           </Typography>
           <Button
             variant="contained"
