@@ -6,28 +6,7 @@ import { Dialog, DialogContent, Grid, IconButton } from "@mui/material";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 
-const modalBlock = {
-  position: "relative",
-  zIndex: 0,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  margin: "auto",
-};
 
-const modalContentStyle = {
-  position: "relative",
-  background: "#fff",
-  boxShadow: 24,
-  width: "60%",
-  margin: "70px",
-  borderRadius: "10px",
-  bgcolor: "background.paper",
-  borderRadius: "15px",
-  boxShadow: 24,
-  color: "#364A63",
-  padding: "25px",
-};
 
 const AgmModal = () => {
   const [open, setOpen] = React.useState(false);
