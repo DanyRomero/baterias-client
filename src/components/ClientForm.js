@@ -165,7 +165,7 @@ const ClientForm = () => {
                 {" "}
                 descuento adicional
               </span>{" "}
-              entre $200 pesos a $400 pesos dependiendo del tipo y tamaño de tu
+              de $200 a $400 pesos dependiendo del tipo y tamaño de tu
               batería
             </Typography>
           </Box>
