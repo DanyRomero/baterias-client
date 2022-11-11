@@ -60,23 +60,24 @@ const FullPowerModal = () => {
                     flexDirection="column"
                     alignItems="center"
                   >
-                    <Typography fontWeight="bold" color="primary">
+                    <Typography fontWeight="bold" color="primary" mb={2}>
                       SERVICIO AUTOMOTRIZ
                     </Typography>
                     <Box display="flex" alignItems="center">
                       <Typography
                         width="85px"
-                        variant="h2"
                         color="#FFD400"
                         bgcolor="black"
                         borderRadius="15px"
+                        textAlign="center"
+                        sx={{ typography: { md: 'h2', xs: 'h4' } }}
                         p={1}
                         mr={1}
                         mb={1}
                       >
                         48
                       </Typography>
-                      <Typography variant="h4">Meses de garantía</Typography>
+                      <Typography variant="h4" sx={{ typography: { md: 'h4', xs: 'h6' } }} ><strong>Meses de garantía</strong></Typography>
                     </Box>
                     <Typography mt={2} mb={5}>
                       PRIMEROS 12 MESES DE REEMPLAZO SIN COSTO

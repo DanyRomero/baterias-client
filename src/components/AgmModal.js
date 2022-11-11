@@ -85,34 +85,39 @@ const AgmModal = () => {
                   </Typography>
                 </Grid>
                 <Grid item md={6}>
-                  <Box display="flex" alignItems="center">
+                  <Box display="flex" alignItems="center" mb={3}>
                     <Typography
                       width="85px"
-                      variant="h2"
                       color="white"
                       bgcolor="red"
                       borderRadius="15px"
-                      m={1}
                       textAlign="center"
+                      sx={{ typography: { md: 'h2', xs: 'h4' } }}
+                      m={1}
+                      mr={2}
+                      p={1}
                     >
-                      5
+                      60
                     </Typography>
-                    <Typography variant="h4">Años de garantía</Typography>
+                    <Typography variant="h4"sx={{ typography: { md: 'h4', xs: 'h6' } }} ><strong>Meses de garantía</strong></Typography>
                   </Box>
                   <Box display="flex" alignItems="center">
                     <Typography
                       width="85px"
-                      variant="h2"
                       color="white"
                       bgcolor="blue"
                       borderRadius="15px"
-                      p={1}
+                      textAlign="center"
+                      sx={{ typography: { md: 'h2', xs: 'h4' } }}
+                      py={1}
+                      px={2}
                       m={1}
+                      mr={2}
                     >
                       18
                     </Typography>
-                    <Typography variant="h4">
-                      Meses de reemplazo sin costo
+                    <Typography variant="h4" sx={{ typography: { md: 'h4', xs: 'h6' } }}>
+                      <strong>Meses de reemplazo sin costo</strong>
                     </Typography>
                   </Box>
                 </Grid>

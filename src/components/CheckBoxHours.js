@@ -29,6 +29,7 @@ function getAvailableHours() {
   }
   return lastHours;
 }
+
 const CheckBoxHours = () => {
   const availableHrs = getAvailableHours();
   const navigate = useNavigate();

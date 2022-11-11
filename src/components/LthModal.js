@@ -73,30 +73,36 @@ const LthModal = () => {
                   <Box display="flex" alignItems="center">
                     <Typography
                       width="85px"
-                      variant="h2"
                       color="white"
                       bgcolor="red"
                       borderRadius="15px"
+                      textAlign="center"
+                      sx={{ typography: { md: 'h2', xs: 'h4' } }}
                       m={1}
+                      mr={2}
+                      py={1}
                     >
                       48
                     </Typography>
-                    <Typography variant="h4">Meses de garantía</Typography>
+                    <Typography variant="h4" sx={{ typography: { md: 'h4', xs: 'h6' } }} ><strong>Meses de garantía</strong></Typography>
                   </Box>
-                  <Box display="flex" alignItems="center">
+                  <Box display="flex" alignItems="center" mt={3}>
                     <Typography
                       width="85px"
-                      variant="h2"
                       color="white"
                       bgcolor="blue"
                       borderRadius="15px"
-                      p={1}
+                      textAlign="center"
+                      sx={{ typography: { md: 'h2', xs: 'h4' } }}
+                      py={1}
+                      px={2}
                       m={1}
+                      mr={2}
                     >
                       12
                     </Typography>
-                    <Typography variant="h4">
-                      Meses de reemplazo sin costo
+                    <Typography variant="h4" sx={{ typography: { md: 'h4', xs: 'h6' } }}>
+                      <strong>Meses de reemplazo sin costo</strong>
                     </Typography>
                   </Box>
                 </Grid>
