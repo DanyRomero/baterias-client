@@ -30,8 +30,11 @@ const Order = () => {
   );
   const deliveryDate = moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a");
   const comaPrice = order.battery.price.toLocaleString('en-US', {maximumFractionDigits:2})
-  const cuponPrice = order.battery.price -200
-  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
+   const pickupDesc = order.battery.price * .15
+  const comapickUpDesc = pickupDesc.toLocaleString('en-US', {maximumFractionDigits:2})
+  const finalPickupPrice = order.battery.price -200 -pickupDesc
+  const finalDeliveryPrice = order.battery.price -200
+  
 
 
   return (
@@ -91,6 +94,7 @@ const Order = () => {
               <Typography>${comaPrice}</Typography>
             </Grid>
             
+            <hr />
             <Grid
               item
               sx={{ display: "flex", justifyContent: "space-between" }}
@@ -100,13 +104,27 @@ const Order = () => {
             </Grid>
             
             <hr />
+            {order.deliveryType === "Pickup" && <>
+            <Grid
+              item
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Typography>Descuento por recolección en sucursal</Typography>
+              <Typography>-${comapickUpDesc}</Typography>
+            </Grid>
+            
+            <hr />
+            </>}
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography>
                 <strong>Total</strong>
               </Typography>
-              <Typography>
-                <strong>MXN ${comaCuponPrice}</strong>
-              </Typography>
+              {order.deliveryType === "Pickup" ? <Typography fontWeight="bold">
+                MXN ${finalPickupPrice.toLocaleString('en-US', {maximumFractionDigits:2})}
+              </Typography>  :
+              <Typography fontWeight="bold">
+                MXN ${finalDeliveryPrice.toLocaleString('en-US', {maximumFractionDigits:2})}
+              </Typography>}
             </Box>
           </Box>
         </Grid>
