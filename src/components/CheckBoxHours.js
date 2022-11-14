@@ -38,8 +38,8 @@ const CheckBoxHours = () => {
   const [deliveryHour, setDeliveryHour] = useState("");
   
   moment.locale('es');
-  const today = moment().format("YYYY-MM-DD");
-  const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
+  let today = moment().format("YYYY-MM-DD");
+  let tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
 
   const handleSchedule = () => {
     const [hour, minutes] = deliveryHour.split(":")
@@ -53,11 +53,23 @@ const CheckBoxHours = () => {
       .then((response) => navigate("/orden"))
       .catch((error) => console.error(error));
   };
-console.log("today",  moment().format("ddd"))
+  
+  if(moment(today).day() === 0){
+    today = moment(today).add(1, "days").format("YYYY-MM-DD")
+  }
+
+  if(moment(tomorrow).day() === 1){
+    tomorrow = moment(tomorrow).add(1, "days").format("YYYY-MM-DD")
+  }
+  if(moment(tomorrow).day() === 0){
+    tomorrow = moment(tomorrow).add(1, "days").format("YYYY-MM-DD")
+  }
+ 
+
   return (
     <Container>
       <Button
-        disabled={availableHrs.length === 0 ||  moment().format("ddd") === "dom."}
+        disabled={availableHrs.length === 0}
         variant="contained"
         sx={{
           backgroundColor: "primary.main",
