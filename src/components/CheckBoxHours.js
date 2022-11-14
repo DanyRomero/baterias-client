@@ -53,11 +53,11 @@ const CheckBoxHours = () => {
       .then((response) => navigate("/orden"))
       .catch((error) => console.error(error));
   };
-
+console.log("today",  moment().format("ddd"))
   return (
     <Container>
       <Button
-        disabled={availableHrs.length === 0}
+        disabled={availableHrs.length === 0 ||  moment().format("ddd") === "dom."}
         variant="contained"
         sx={{
           backgroundColor: "primary.main",
