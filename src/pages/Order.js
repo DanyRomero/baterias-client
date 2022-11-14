@@ -30,7 +30,7 @@ const Order = () => {
   );
   const deliveryDate = moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a");
   const comaPrice = order.battery.price.toLocaleString('en-US', {maximumFractionDigits:2})
-   const pickupDesc = order.battery.price * .15
+  const pickupDesc = order.battery.price * .15
   const comapickUpDesc = pickupDesc.toLocaleString('en-US', {maximumFractionDigits:2})
   const finalPickupPrice = order.battery.price -200 -pickupDesc
   const finalDeliveryPrice = order.battery.price -200

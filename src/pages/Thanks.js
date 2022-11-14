@@ -35,11 +35,17 @@ const Thanks = () => {
     (year) => year._id === order.year
   );
 
-  const comaPrice = order.battery.price.toLocaleString('en-US', {maximumFractionDigits:2})
-  const cuponPrice = order.battery.price -200
-  const comaCuponPrice = cuponPrice.toLocaleString('en-US', {maximumFractionDigits:2})
+  const deliveryDate = moment(order.deliveryHour).format("DD/MM/YYYY HH:mm a");
+  const comaPrice = order.battery.price.toLocaleString("en-US", {
+    maximumFractionDigits: 2,
+  });
+  const pickupDesc = order.battery.price * 0.15;
+  const comapickUpDesc = pickupDesc.toLocaleString("en-US", {
+    maximumFractionDigits: 2,
+  });
+  const finalPickupPrice = order.battery.price - 200 - pickupDesc;
+  const finalDeliveryPrice = order.battery.price - 200;
 
- 
   return (
     <>
       <Grid container sx={{ minHeight: "100vh" }}>
@@ -144,13 +150,14 @@ const Thanks = () => {
             <hr />
             <Grid container>
               <Grid item xs={6} sm={4}>
-                
                 <Typography>Precio</Typography>
                 <Typography>Cupón</Typography>
+                {order.deliveryType === "Pickup" && <Typography>Descuento por recolección en sucursal</Typography> }
               </Grid>
               <Grid item xs={6} sm={8}>
                 <Typography> ${comaPrice}</Typography>
                 <Typography>-$200</Typography>
+                {order.deliveryType === "Pickup" && <Typography>-${comapickUpDesc}</Typography>}
               </Grid>
             </Grid>
             <hr />
@@ -165,9 +172,22 @@ const Thanks = () => {
               <Typography>
                 <strong>Total de la orden</strong>
               </Typography>
-              <Typography>
-                <strong>MXN ${comaCuponPrice}</strong>
-              </Typography>
+
+              {order.deliveryType === "Pickup" ? (
+                <Typography fontWeight="bold">
+                  MXN $
+                  {finalPickupPrice.toLocaleString("en-US", {
+                    maximumFractionDigits: 2,
+                  })}
+                </Typography>
+              ) : (
+                <Typography fontWeight="bold">
+                  MXN $
+                  {finalDeliveryPrice.toLocaleString("en-US", {
+                    maximumFractionDigits: 2,
+                  })}
+                </Typography>
+              )}
             </Box>
 
             <Typography variant="caption" display="block" gutterBottom>
@@ -192,8 +212,8 @@ const Thanks = () => {
                     {" "}
                     descuento adicional
                   </span>{" "}
-                  de $200 a $400 pesos dependiendo del tipo y tamaño de
-                  tu batería
+                  de $200 a $400 pesos dependiendo del tipo y tamaño de tu
+                  batería
                 </Typography>
               </Box>
             )}
