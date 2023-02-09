@@ -1,5 +1,13 @@
 import React from "react";
-import { TextField, Grid, Button, Container, Typography } from "@mui/material";
+import {
+  TextField,
+  Grid,
+  Button,
+  Container,
+  Typography,
+  CircularProgress,
+  Box,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
@@ -7,11 +15,14 @@ import { useState, useEffect } from "react";
 import BatteriesTable from "../components/BatteriesTable";
 import BatteryForm from "../components/BatteryForm";
 import { API_URL } from "../utils/consts";
+import { ArrowDownward } from "@mui/icons-material";
+import BatteryImportForm from "../components/BatteryImportForm";
 
 const Batteries = () => {
   const [open, setOpen] = useState(false);
   const [batteries, setBatteries] = useState([]);
   const [openEdit, setOpenEdit] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
   const [editingBattery, setEditingBattery] = useState(null);
   const [filter, setFilter] = useState("");
 
@@ -62,6 +73,26 @@ const Batteries = () => {
     setOpenEdit(true);
   };
 
+  const handleBatteryImport = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("csv", file);
+    setIsImporting(true);
+
+    axios
+      .post(`${API_URL}/importar-baterias`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => getBatteries())
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setIsImporting(false);
+        e.target.value = null;
+      });
+  };
+
   return (
     <Container>
       <Typography my={4} variant="h4" color="text.secondary">
@@ -92,6 +123,28 @@ const Batteries = () => {
           <Button variant="outlined" onClick={handleClickOpen}>
             <AddIcon /> Batería
           </Button>
+          <Button
+            variant="outlined"
+            sx={{ ml: 1 }}
+            component="label"
+            disabled={isImporting}
+          >
+            <input
+              type="file"
+              style={{ display: "none" }}
+              onChange={handleBatteryImport}
+              accept=".csv"
+            />
+            {isImporting ? (
+              <CircularProgress size={20} />
+            ) : (
+              <ArrowDownward fontSize="small" />
+            )}
+            <Box component="span" ml={1}>
+              Importar
+            </Box>
+          </Button>
+
           <BatteryForm
             open={open}
             onClose={handleClose}

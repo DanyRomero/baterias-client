@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+} from "@mui/material";
 
 const BatteryForm = (props) => {
   const { open, onClose, onSubmit, submitText, battery } = props;
@@ -37,6 +44,7 @@ const BatteryForm = (props) => {
   return (
     <Dialog fullWidth open={open} onClose={onClose}>
       <DialogTitle>Batería</DialogTitle>
+
       <form onSubmit={handleSubmit}>
         <DialogContent>
           <Stack spacing={3}>
@@ -67,7 +75,6 @@ const BatteryForm = (props) => {
                 <MenuItem value={"Full Power"}>Full Power</MenuItem>
               </Select>
             </FormControl>
-           
 
             <TextField
               type="number"
