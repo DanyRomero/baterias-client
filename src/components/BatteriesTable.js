@@ -14,23 +14,9 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import { API_URL } from "../utils/consts";
 import axios from "axios";
 
-
-
-
 const BatteriesTable = (props) => {
   const { batteries, filter, onEdit } = props;
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const ID = open ? "simple-popover" : undefined;
+  console.log(props)
 
   const deleteBattery = (id) => {
     axios
@@ -47,20 +33,15 @@ const BatteriesTable = (props) => {
 
   if (filter) {
     filteredBatteries = batteries.filter((battery) =>
-      battery.name.toLowerCase().includes(filter.toLowerCase())
+      battery.model.toLowerCase().includes(filter.toLowerCase())
     );
   }
-
-
-  
-  
 
   return (
     <TableContainer sx={{ mt: 3 }} component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-         
             <TableCell>
               <strong>Modelo</strong>
             </TableCell>
@@ -74,8 +55,7 @@ const BatteriesTable = (props) => {
               <strong>Amperes</strong>
             </TableCell>
             <TableCell>
-              <strong>Garantía
-              </strong>
+              <strong>Garantía</strong>
             </TableCell>
             <TableCell></TableCell>
           </TableRow>
@@ -83,10 +63,14 @@ const BatteriesTable = (props) => {
         <TableBody>
           {filteredBatteries.map((battery) => (
             <TableRow key={battery._id}>
-              
               <TableCell>{battery.model}</TableCell>
               <TableCell>{battery.brand}</TableCell>
-              <TableCell>$ {battery.price.toLocaleString('en-US', {maximumFractionDigits:2})}</TableCell>
+              <TableCell>
+                ${" "}
+                {battery.price.toLocaleString("en-US", {
+                  maximumFractionDigits: 2,
+                })}
+              </TableCell>
               <TableCell> {battery.amps} amperes</TableCell>
               <TableCell>{battery.guarantee} meses</TableCell>
               <TableCell align="right">
@@ -104,7 +88,7 @@ const BatteriesTable = (props) => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
-}
+  );
+};
 
-export default BatteriesTable
+export default BatteriesTable;

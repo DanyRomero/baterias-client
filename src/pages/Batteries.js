@@ -15,8 +15,7 @@ import { useState, useEffect } from "react";
 import BatteriesTable from "../components/BatteriesTable";
 import BatteryForm from "../components/BatteryForm";
 import { API_URL } from "../utils/consts";
-import { ArrowDownward } from "@mui/icons-material";
-import BatteryImportForm from "../components/BatteryImportForm";
+import ImportButton from "../components/ImportButton";
 
 const Batteries = () => {
   const [open, setOpen] = useState(false);
@@ -123,27 +122,7 @@ const Batteries = () => {
           <Button variant="outlined" onClick={handleClickOpen}>
             <AddIcon /> Batería
           </Button>
-          <Button
-            variant="outlined"
-            sx={{ ml: 1 }}
-            component="label"
-            disabled={isImporting}
-          >
-            <input
-              type="file"
-              style={{ display: "none" }}
-              onChange={handleBatteryImport}
-              accept=".csv"
-            />
-            {isImporting ? (
-              <CircularProgress size={20} />
-            ) : (
-              <ArrowDownward fontSize="small" />
-            )}
-            <Box component="span" ml={1}>
-              Importar
-            </Box>
-          </Button>
+          <ImportButton onSubmit={handleBatteryImport} isImporting= {isImporting} />
 
           <BatteryForm
             open={open}

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import BrandsTable from "../components/BrandsTable";
 import BrandForm from "../components/BrandForm";
 import { API_URL } from "../utils/consts";
+import ImportButton from "../components/ImportButton";
 
 export default function Brands() {
   const [open, setOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Brands() {
   const [openEdit, setOpenEdit] = useState(false);
   const [editingBrand, setEditingBrand] = useState(null);
   const [filter, setFilter] = useState("");
+  const [isImporting, setIsImporting] = useState(false);
 
   const handleInput = (e) => {
     setFilter(e.target.value);
@@ -61,6 +63,22 @@ export default function Brands() {
     setOpenEdit(true);
   };
 
+  const handleCatalogImport = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("csv", file);
+    setIsImporting(true);
+    axios.post(`${API_URL}/importar-catalogo`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+    .then((response)=>{})
+    .catch((error) => console.log(error))
+    .finally(()=>{
+      setIsImporting(false);
+      e.target.value = null
+    })
+  };
+
   return (
     <Container>
       <Typography my={4} variant="h4" color="text.secondary">
@@ -91,6 +109,10 @@ export default function Brands() {
           <Button variant="outlined" onClick={handleClickOpen}>
             <AddIcon /> Marca
           </Button>
+          <ImportButton
+            onSubmit={handleCatalogImport}
+            isImporting={isImporting}
+          />
           {open && (
             <BrandForm
               open={open}
