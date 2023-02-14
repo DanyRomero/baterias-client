@@ -30,6 +30,7 @@ const Orders = () => {
           <OrdersTable orders={orders} selectedOrder={selectedOrder} />
         </Grid>
         <Grid item sm={9}>
+         
           <OrderDetails order={order}/>
         </Grid>
       </Grid>
