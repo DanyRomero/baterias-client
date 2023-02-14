@@ -16,8 +16,7 @@ import axios from "axios";
 
 const BatteriesTable = (props) => {
   const { batteries, filter, onEdit } = props;
-  console.log(props)
-
+  
   const deleteBattery = (id) => {
     axios
       .delete(`${API_URL}/baterias/${id}`)

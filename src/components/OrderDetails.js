@@ -10,12 +10,22 @@ import {
   Button,
   Box,
 } from "@mui/material";
+import axios from "axios";
+import { API_URL } from "../utils/consts";
 import moment from "moment/moment";
 import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
 
-const OrderDetails = (props) => {
-  const { order } = props;
+const OrderDetails = ({ order }) => {
+  const printStatus = () => {
+    let today = new Date();
+    axios
+      .put(`${API_URL}/ordenes/${order._id}`, {
+        printedAt: today.toISOString(),
+      })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.error(error));
+  };
 
   if (!order) {
     return (
@@ -53,8 +63,9 @@ const OrderDetails = (props) => {
                     return <Button variant="outlined">Imprimir</Button>;
                   }}
                   content={() => componentRef.current}
-                  documentTitle="Nueva orden"
+                  documentTitle="Distelub- Nueva orden de baterías"
                   pageStyle="print"
+                  onAfterPrint={() => printStatus()}
                 />
               </TableCell>
             </TableRow>

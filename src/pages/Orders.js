@@ -9,6 +9,7 @@ import OrderDetails from "../components/OrderDetails";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState(null);
+
   useEffect(() => {
     axios
       .get(`${API_URL}/ordenes`)
@@ -19,6 +20,8 @@ const Orders = () => {
   }, []);
 
   const selectedOrder = (order) => { setOrder(order)};
+
+  
   
   return (
     <Container>
@@ -27,11 +30,11 @@ const Orders = () => {
       </Typography>
       <Grid container spacing={4}>
         <Grid item sm={3}>
-          <OrdersTable orders={orders} selectedOrder={selectedOrder} />
+          <OrdersTable orders={orders} selectedOrder={selectedOrder}/>
         </Grid>
         <Grid item sm={9}>
          
-          <OrderDetails order={order}/>
+          <OrderDetails order={order} />
         </Grid>
       </Grid>
     </Container>
