@@ -11,14 +11,17 @@ const Orders = () => {
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
+    getOrders()
+  }, []);
+
+  const getOrders = () =>{
     axios
       .get(`${API_URL}/ordenes`)
       .then((response) => {
         setOrders(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
-
+  }
   const selectedOrder = (order) => { setOrder(order)};
 
   
@@ -34,7 +37,7 @@ const Orders = () => {
         </Grid>
         <Grid item sm={9}>
          
-          <OrderDetails order={order} />
+          <OrderDetails order={order} getOrders = {getOrders} />
         </Grid>
       </Grid>
     </Container>

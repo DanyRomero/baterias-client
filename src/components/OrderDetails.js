@@ -16,14 +16,14 @@ import moment from "moment/moment";
 import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
 
-const OrderDetails = ({ order }) => {
+const OrderDetails = ({ order, getOrders }) => {
   const printStatus = () => {
     let today = new Date();
     axios
       .put(`${API_URL}/ordenes/${order._id}`, {
         printedAt: today.toISOString(),
       })
-      .then((response) => console.log(response.data))
+      .then((response) => getOrders())
       .catch((error) => console.error(error));
   };
 
