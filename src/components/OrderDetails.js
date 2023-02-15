@@ -57,7 +57,7 @@ const OrderDetails = ({ order, getOrders }) => {
               <TableCell>
                 <strong>Detalle de la Orden</strong>
               </TableCell>
-              <TableCell>
+              <TableCell align="right">
                 <ReactToPrint
                   trigger={() => {
                     return <Button variant="outlined">Imprimir</Button>;

@@ -14,7 +14,18 @@ const OrdersTable = ({ orders, selectedOrder, printStatus }) => {
   };
 
   return (
-    <List>
+    <List
+      sx={{
+        width: "100%",
+        maxWidth: 360,
+        bgcolor: "background.paper",
+        position: "relative",
+        overflow: "auto",
+        maxHeight: 550,
+        "& ul": { padding: 0 },
+      }}
+      
+    >
       {orders.map((order) => (
         <Box key={order._id}>
           <ListItemButton key={order._id} onClick={() => sendOrder(order)}>

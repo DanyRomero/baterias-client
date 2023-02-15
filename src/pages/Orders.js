@@ -31,11 +31,11 @@ const Orders = () => {
       <Typography my={4} variant="h4" color="text.secondary">
         <strong>Listado de órdenes</strong>
       </Typography>
-      <Grid container spacing={4}>
-        <Grid item sm={3}>
+      <Grid container spacing={4} justifyContent="center">
+        <Grid item sm={4}>
           <OrdersTable orders={orders} selectedOrder={selectedOrder}/>
         </Grid>
-        <Grid item sm={9}>
+        <Grid item sm={8} >
          
           <OrderDetails order={order} getOrders = {getOrders} />
         </Grid>
