@@ -1,3 +1,4 @@
+import { fontSize } from "@mui/joy/styles/styleFunctionSx";
 import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
@@ -8,7 +9,7 @@ const About = () => {
     <Box bgcolor="#ECF2F7" py={6}>
       <Container>
         <Typography variant="h4" align="center" my={3} color="primary">
-          Distelub
+          Baterías 911 <span style={{fontSize: '20px'}}>por Distelub</span>
         </Typography>
         <Typography variant="h5" align="center" my={3}>
           {year} años de experiencia

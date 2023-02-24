@@ -37,7 +37,7 @@ const Orders = () => {
         </Grid>
         <Grid item sm={8} >
          
-          <OrderDetails order={order} getOrders = {getOrders} />
+          <OrderDetails order={order} getOrders = {getOrders} selectedOrder={selectedOrder} />
         </Grid>
       </Grid>
     </Container>

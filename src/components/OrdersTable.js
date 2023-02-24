@@ -8,7 +8,9 @@ import {
 } from "@mui/material";
 import React from "react";
 import moment from "moment/moment";
-const OrdersTable = ({ orders, selectedOrder, printStatus }) => {
+
+
+const OrdersTable = ({ orders, selectedOrder }) => {
   const sendOrder = (order) => {
     selectedOrder(order);
   };
@@ -35,7 +37,7 @@ const OrdersTable = ({ orders, selectedOrder, printStatus }) => {
                 "DD/MM/YYYY HH:mm a"
               )}
             ></ListItemText>
-            {order.printedAt && <Chip label="Impreso" variant="outlined" />}
+            {order.printedAt && <Chip label="Impreso" variant="outlined" size="small"/>}
           </ListItemButton>
           <Divider component="li" />
         </Box>

@@ -15,8 +15,9 @@ import { API_URL } from "../utils/consts";
 import moment from "moment/moment";
 import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
+import { display } from "@mui/system";
 
-const OrderDetails = ({ order, getOrders }) => {
+const OrderDetails = ({ order, getOrders, selectedOrder }) => {
   const printStatus = () => {
     let today = new Date();
     axios
@@ -24,6 +25,25 @@ const OrderDetails = ({ order, getOrders }) => {
         printedAt: today.toISOString(),
       })
       .then((response) => getOrders())
+      .then((response) => {
+        axios
+          .get(`${API_URL}/ordenes/${order._id}`)
+          .then((order) => selectedOrder(order.data));
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const resetPrintStatus = () => {
+    axios
+      .put(`${API_URL}/ordenes/${order._id}`, {
+        printedAt: null,
+      })
+      .then((response) => getOrders())
+      .then((response) => {
+        axios
+          .get(`${API_URL}/ordenes/${order._id}`)
+          .then((order) => selectedOrder(order.data));
+      })
       .catch((error) => console.error(error));
   };
 
@@ -71,6 +91,25 @@ const OrderDetails = ({ order, getOrders }) => {
             </TableRow>
           </TableHead>
           <TableBody>
+            <TableRow>
+              <TableCell>Estatus de impresión</TableCell>
+              {order.printedAt ? (
+                <TableCell
+                  sx={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  {moment(`${order?.printedAt}`).format("DD/MM/YYYY HH:mm a")}
+                  <Button
+                    variant="text"
+                    size="small"
+                    onClick={() => resetPrintStatus()}
+                  >
+                    Marcar como no impreso
+                  </Button>
+                </TableCell>
+              ) : (
+                <TableCell>No impreso</TableCell>
+              )}
+            </TableRow>
             <TableRow>
               <TableCell>Fecha y hora de la orden</TableCell>
               <TableCell>
