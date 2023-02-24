@@ -86,7 +86,7 @@ function HomePage() {
             >
               <img src="/images/logoD.png" alt="" width="80px" />
               <Typography variant="h5" component="h1" sx={{ color: "white" }}>
-                Distelub
+                Baterías 911
               </Typography>
             </Box>
             <img

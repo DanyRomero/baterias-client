@@ -41,7 +41,7 @@ const Navbar = (props) => {
   const drawerUser = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Distelub
+        Baterías 911
       </Typography>
       <Divider />
       <List>
@@ -59,7 +59,7 @@ const Navbar = (props) => {
   const drawerItems = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Distelub
+        Baterías 911
       </Typography>
       <Divider />
       <List>
@@ -97,7 +97,7 @@ const Navbar = (props) => {
               variant="h6"
               component="div"
             >
-              Distelub
+              Baterías 911
             </Typography>
           </Box>
 

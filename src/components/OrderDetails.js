@@ -18,33 +18,29 @@ import ReactToPrint from "react-to-print";
 import { display } from "@mui/system";
 
 const OrderDetails = ({ order, getOrders, selectedOrder }) => {
-  const printStatus = () => {
-    let today = new Date();
+  const fetchOrder = () => {
     axios
-      .put(`${API_URL}/ordenes/${order._id}`, {
-        printedAt: today.toISOString(),
-      })
-      .then((response) => getOrders())
-      .then((response) => {
-        axios
-          .get(`${API_URL}/ordenes/${order._id}`)
-          .then((order) => selectedOrder(order.data));
+      .get(`${API_URL}/ordenes/${order._id}`)
+      .then((order) => selectedOrder(order.data));
+  };
+
+  const updateOrder = (attributes) => {
+    axios
+      .put(`${API_URL}/ordenes/${order._id}`, attributes)
+      .then(() => {
+        getOrders();
+        fetchOrder();
       })
       .catch((error) => console.error(error));
   };
 
+  const printStatus = () => {
+    let today = new Date();
+    updateOrder({ printedAt: today.toISOString() });
+  };
+
   const resetPrintStatus = () => {
-    axios
-      .put(`${API_URL}/ordenes/${order._id}`, {
-        printedAt: null,
-      })
-      .then((response) => getOrders())
-      .then((response) => {
-        axios
-          .get(`${API_URL}/ordenes/${order._id}`)
-          .then((order) => selectedOrder(order.data));
-      })
-      .catch((error) => console.error(error));
+    updateOrder({ printedAt: null });
   };
 
   if (!order) {
@@ -83,7 +79,7 @@ const OrderDetails = ({ order, getOrders, selectedOrder }) => {
                     return <Button variant="outlined">Imprimir</Button>;
                   }}
                   content={() => componentRef.current}
-                  documentTitle="Distelub- Nueva orden de baterías"
+                  documentTitle="Baterías 911- Nueva orden"
                   pageStyle="print"
                   onAfterPrint={() => printStatus()}
                 />
