@@ -82,12 +82,15 @@ function HomePage() {
                 background:
                   "linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(2,0,36,0) 100%)",
                 pt: 1,
+                pl: 1,
+                m: 0,
+                right: 0,
               }}
             >
-              <img src="/images/logoD.png" alt="" width="80px" />
-              <Typography variant="h5" component="h1" sx={{ color: "white" }}>
+              <img src="/images/logoD.png" alt="" width="160px" />
+              {/* <Typography variant="h5" component="h1" sx={{ color: "white" }}>
                 Baterías 911
-              </Typography>
+              </Typography> */}
             </Box>
             <img
               width="100%"

@@ -63,12 +63,12 @@ const YearsTable = (props) => {
           {sortedYears.map((year) => (
             <TableRow key={year._id}>
               <TableCell>
-                <Link
+                <div
                   style={{ color: "#1976D2", textDecoration: "none" }}
                   to={`/modelos/${year._id}`}
                 >
                   {year.from} - {year.to}
-                </Link>
+                </div>
               </TableCell>
               <TableCell align="right">
                 <div>

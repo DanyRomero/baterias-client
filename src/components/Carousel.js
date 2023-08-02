@@ -113,7 +113,7 @@ export default function Carousel() {
                   textAlign="center"
                   ml={1}
                 >
-                  Cliente de Distelub
+                  Cliente
                 </Typography>
               </Box>
             </SwiperSlide>
