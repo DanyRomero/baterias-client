@@ -15,7 +15,18 @@ import { API_URL } from "../utils/consts";
 import moment from "moment/moment";
 import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
-import { display } from "@mui/system";
+
+function transformString(inputString) {
+  const words = inputString.split("_");
+
+  const capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+
+  const transformedString = capitalizedWords.join(" ");
+
+  return transformedString;
+}
 
 const OrderDetails = ({ order, getOrders, selectedOrder }) => {
   const fetchOrder = () => {
@@ -43,21 +54,31 @@ const OrderDetails = ({ order, getOrders, selectedOrder }) => {
     updateOrder({ printedAt: null });
   };
 
+  const handleClick = (status) => {
+    const now = new Date();
+    if (status === "en_ruta") {
+      updateOrder({ status: status, onTheWayAt: now });
+    } else if (status === "instalada") {
+      updateOrder({ status: status, instaledAt: now });
+    }
+    console.info("You clicked the Chip.");
+  };
+
   if (!order) {
     return (
-      <Typography color="primary" align="right">
+      <Typography color="primary" align="right" sx={{ my:5 }}>
         <strong>Selecciona una orden para ver los detalles</strong>
       </Typography>
     );
   }
 
-  const selectedYear = order.model.years.find(
+  const selectedYear = order.model?.years?.find(
     (year) => year._id === order.year
   );
-  const comaPrice = order.battery.price.toLocaleString("en-US", {
+  const comaPrice = order.battery?.price?.toLocaleString("en-US", {
     maximumFractionDigits: 2,
   });
-  const cuponPrice = order.battery.price - 200;
+  const cuponPrice = order.battery?.price - 200;
   const comaCuponPrice = cuponPrice.toLocaleString("en-US", {
     maximumFractionDigits: 2,
   });
@@ -65,13 +86,15 @@ const OrderDetails = ({ order, getOrders, selectedOrder }) => {
   const componentRef = useRef();
 
   return (
-    <>
-      <TableContainer ref={componentRef} sx={{ my: 3 }} component={Paper}>
+    <Box>
+      <TableContainer ref={componentRef} sx={{ my:5 }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell>
-                <strong>Detalle de la Orden</strong>
+                <strong>
+                  Detalle de la Orden - {order?.orderId ? order.orderId : "S/N"}
+                </strong>
               </TableCell>
               <TableCell align="right">
                 <ReactToPrint
@@ -105,6 +128,32 @@ const OrderDetails = ({ order, getOrders, selectedOrder }) => {
               ) : (
                 <TableCell>No impreso</TableCell>
               )}
+            </TableRow>
+            <TableRow>
+              <TableCell>Estatus</TableCell>
+              <TableCell
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                {order?.status ? transformString(order.status) : "Sin estatus"}
+                {order.status === "recibida" && (
+                  <Button
+                    color="primary"
+                    size="small"
+                    onClick={() => handleClick("en_ruta")}
+                  >
+                    Actualizar a ruta
+                  </Button>
+                )}
+                {order.status === "en_ruta" && (
+                  <Button
+                    color="primary"
+                    size="small"
+                    onClick={() => handleClick("instalada")}
+                  >
+                    Actualizar a instalada
+                  </Button>
+                )}
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Fecha y hora de la orden</TableCell>
@@ -143,21 +192,25 @@ const OrderDetails = ({ order, getOrders, selectedOrder }) => {
             <TableRow>
               <TableCell>Vehículo </TableCell>
               <TableCell>
-                {order?.brand?.name}, {order?.model?.name}, {selectedYear.from}{" "}
-                - {selectedYear.to}
+                {order?.brand?.name}, {order?.model?.name}, {selectedYear?.from}{" "}
+                - {selectedYear?.to}
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Batería</TableCell>
-              <TableCell>Modelo {order?.battery?.model}</TableCell>
+              <TableCell>
+                Modelo {order?.battery?.model ? order?.battery?.model : "-"}
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell>Marca {order?.battery?.brand}</TableCell>
+              <TableCell>
+                Marca {order?.battery?.brand ? order?.battery?.brand : "-"}
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell>Precio $ {comaPrice}</TableCell>
+              <TableCell>Precio $ {comaPrice ? comaPrice : "-"}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Cupón </TableCell>
@@ -172,13 +225,13 @@ const OrderDetails = ({ order, getOrders, selectedOrder }) => {
                 <strong>TOTAL</strong>
               </TableCell>
               <TableCell>
-                <strong>MXN $ {comaCuponPrice}</strong>
+                <strong>MXN $ {comaCuponPrice ? comaCuponPrice : "-"}</strong>
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 };
 

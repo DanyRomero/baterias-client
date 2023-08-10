@@ -71,7 +71,7 @@ export default function Brands() {
     axios.post(`${API_URL}/importar-catalogo`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
-    .then((response)=>{})
+    .then((response)=>{getBrands()})
     .catch((error) => console.log(error))
     .finally(()=>{
       setIsImporting(false);
