@@ -38,7 +38,7 @@ const Orders = () => {
       >
         <OrdersTable orders={orders} selectedOrder={selectedOrder} />
       </Box>
-      <Box flexGrow={1} overflow="auto" height="100%" px={5}>
+      <Box flexGrow={1} overflow="auto" height="100%" pl={5} pr={1} bgcolor="rgb(192, 211, 229, .3)">
         <Grid container>
           <Grid item sm={8}>
             <OrderDetails

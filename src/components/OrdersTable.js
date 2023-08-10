@@ -18,9 +18,10 @@ const OrdersTable = ({ orders, selectedOrder }) => {
 
   return (
     <Box>
-      <Typography py={4} pl={2} variant="h4" color="text.secondary">
+      <Typography py={3} pl={2} variant="h5" color="primary">
         <strong>Listado de órdenes</strong>
       </Typography>
+      <Divider />
       <List>
         {orders.map((order) => (
           <Box key={order._id}>
