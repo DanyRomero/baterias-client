@@ -42,10 +42,6 @@ function SelectBattery() {
     (year) => year._id === order.year
   );
 
-  const expensiveBattery = selectedYear.batteries?.reduce((max, min) =>
-    max.price > min.price ? max : min
-  );
-
   return (
     <>
       <Container>
