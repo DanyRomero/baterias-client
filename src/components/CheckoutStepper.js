@@ -9,10 +9,10 @@ const CheckoutStepper = (props) => {
         <StepLabel>Escoge tu Bateria</StepLabel>
       </Step>
       <Step>
-        <StepLabel>Programa y confirma tu servicio</StepLabel>
+        <StepLabel>Prográmala y confírmala</StepLabel>
       </Step>
       <Step>
-        <StepLabel>Recíbe en hasta 24hrs</StepLabel>
+        <StepLabel>Recíbela en hasta 24hrs</StepLabel>
       </Step>
     </Stepper>
   );
