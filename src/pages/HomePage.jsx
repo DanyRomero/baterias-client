@@ -87,7 +87,7 @@ function HomePage() {
                 right: 0,
               }}
             >
-              <img src="/images/logoD.png" alt="" width="160px" />
+              <img src="/images/traced-baterias_logo.png" alt="" width="160px" />
               {/* <Typography variant="h5" component="h1" sx={{ color: "white" }}>
                 Baterías 911
               </Typography> */}
@@ -102,28 +102,18 @@ function HomePage() {
         </Grid>
         <Grid item md={4}>
           <Box p={4}>
-            <Typography variant="h3" component="h1" mb={4}>
-              Baterías <span><img src="/images/lthLogo.png" width="120px" alt="" /></span>a domicilio
+            <Typography variant="h2" component="h1" mb={4}>
+              Baterías a domicilio
             </Typography>
-
             <Typography variant="body1" component="p" mb={3}>
               Al ingresar tus datos, te ayudamos a encontrar la batería ideal
               para tu vehículo y te la llevamos hasta la puerta de tu casa en 3
               sencillos pasos.
             </Typography>
             <CheckoutStepper />
-            <Typography
-              variant="body1"
-              component="p"
-              mt={3}
-              sx={{
-                textAlign: "center",
-              }}
-            >
-              <strong>Inicia aquí y obtén un cupón de $200 pesos.</strong>
-            </Typography>
+            <img  width="90%" src="/images/cupon.png" style= {{margin: "25px auto"}}/>
             <form onSubmit={handleSubmit}>
-              <Stack py={5} spacing={3}>
+              <Stack spacing={3}>
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Marca</InputLabel>
                   <Select
